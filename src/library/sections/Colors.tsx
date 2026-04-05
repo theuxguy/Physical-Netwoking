@@ -79,19 +79,13 @@ const APP_COLORS = [
   { color: "#0a0a0a", label: "Header (dark)",   value: "#0a0a0a", note: "Main header background dark" },
 ];
 
-function SwatchGrid({ swatches, cols = 6, bg = "white" }: {
+function SwatchGrid({ swatches, cols = 6 }: {
   swatches: { color: string; label: string; value: string; note?: string; border?: boolean }[];
   cols?: number;
-  bg?: "white" | "dark";
 }) {
   return (
     <div
-      className={cn(
-        "grid gap-4 p-5 rounded-xl border",
-        bg === "dark"
-          ? "bg-[#1a1a1a] border-[#404040]"
-          : "bg-white border-slate-200"
-      )}
+      className="grid gap-4 p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950"
       style={{ gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))` }}
     >
       {swatches.map((s) => (
@@ -129,7 +123,6 @@ const TOKEN_ROWS: [string, string, string, string][] = [
 export function Colors() {
   const [mode, setMode] = useState<Mode>("light");
   const isDark = mode === "dark";
-  const bg = isDark ? "dark" : "white";
 
   const surfaces = isDark ? SURFACES_DARK : SURFACES_LIGHT;
   const text     = isDark ? TEXT_DARK     : TEXT_LIGHT;
@@ -165,25 +158,25 @@ export function Colors() {
       <div className="space-y-8">
 
         <Group title="Surfaces & Backgrounds">
-          <SwatchGrid swatches={surfaces} cols={6} bg={bg} />
+          <SwatchGrid swatches={surfaces} cols={6} />
         </Group>
 
         <Group title="Text & Foreground">
-          <SwatchGrid swatches={text} cols={5} bg={bg} />
+          <SwatchGrid swatches={text} cols={5} />
         </Group>
 
         <Group title="Status Colors">
           <p className="text-xs text-slate-500 dark:text-slate-400">
             Always pair border + fill together.{isDark && " In dark mode, border colors are slightly brighter to maintain contrast against dark surfaces."}
           </p>
-          <SwatchGrid swatches={status} cols={6} bg={bg} />
+          <SwatchGrid swatches={status} cols={6} />
         </Group>
 
         <Group title="App-Specific Colors">
           <p className="text-xs text-slate-500 dark:text-slate-400">
             Hardcoded values outside the CSS variable system. Avoid using in new components unless necessary.
           </p>
-          <SwatchGrid swatches={APP_COLORS} cols={4} bg={bg} />
+          <SwatchGrid swatches={APP_COLORS} cols={4} />
         </Group>
 
         <Group title="Chart Palette">
@@ -191,7 +184,7 @@ export function Colors() {
             Used by Recharts via <code className="font-mono">--chart-1</code> through <code className="font-mono">--chart-5</code>.{" "}
             {isDark ? "Dark palette uses cooler, more vibrant hues." : "Light palette uses warm, earthy tones."}
           </p>
-          <SwatchGrid swatches={charts} cols={5} bg={bg} />
+          <SwatchGrid swatches={charts} cols={5} />
         </Group>
 
         <Group title="CSS Variable Reference">
