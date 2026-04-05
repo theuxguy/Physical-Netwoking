@@ -1,0 +1,67 @@
+@import './fonts.css';
+@import './tailwind.css';
+@import './theme.css';
+
+/* ── Toast: muted grey background (light + dark), AA/AAA contrast ── */
+[data-sonner-toaster] [data-sonner-toast][data-styled='true'] {
+  background: #f1f5f9 !important;   /* slate-100 — clearly grey, not white */
+  border-color: #cbd5e1 !important; /* slate-300 */
+  color: #0f172a !important;        /* slate-900 — 17:1 contrast ratio, AAA */
+}
+
+/* Dark mode */
+[data-sonner-toaster][data-sonner-theme='dark'] [data-sonner-toast][data-styled='true'] {
+  background: #1e293b !important;   /* slate-800 */
+  border-color: #334155 !important; /* slate-700 */
+  color: #f1f5f9 !important;        /* slate-100 — 13:1 contrast ratio, AAA */
+}
+
+/* Close button matches toast background */
+[data-sonner-toaster] [data-sonner-toast][data-styled='true'] [data-close-button] {
+  background: #f1f5f9 !important;
+  border-color: #cbd5e1 !important;
+  color: #0f172a !important;
+}
+
+/* ── Toast: align icon vertically with title ── */
+[data-sonner-toast][data-styled='true'] {
+  align-items: center;
+}
+
+/* ── Toast: slide in from right ── */
+
+/* 1. Unmounted — positioned off-screen to the right */
+[data-sonner-toaster][data-x-position='right'] [data-sonner-toast][data-y-position='top'] {
+  --y: translateX(110%);
+}
+
+/* 2. Mounted (fallback, not expanded) — slide to origin */
+[data-sonner-toaster][data-x-position='right'] [data-sonner-toast][data-y-position='top'][data-mounted='true'] {
+  --y: translateX(0);
+}
+
+/* 3. Mounted + expanded — use Sonner's vertical stacking offset (higher specificity wins) */
+[data-sonner-toaster][data-x-position='right'] [data-sonner-toast][data-y-position='top'][data-mounted='true'][data-expanded='true'] {
+  --y: translateY(calc(var(--lift) * var(--offset)));
+}
+
+/* 4. Dismissed — slide out to the right */
+[data-sonner-toaster][data-x-position='right'] [data-sonner-toast][data-y-position='top'][data-removed='true'][data-swipe-out='false'] {
+  --y: translateX(110%);
+  opacity: 0;
+}
+
+/* ── Toast: smooth height collapse when a toast is removed (others slide up) ── */
+[data-sonner-toast] {
+  transition: transform 350ms cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 300ms ease,
+              height 350ms cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 200ms ease;
+}
+
+/* ── Toast: close button pinned to top-right corner ── */
+[data-sonner-toaster][data-x-position='right'] [data-sonner-toast][data-styled='true'] [data-close-button] {
+  --toast-close-button-start: unset;
+  --toast-close-button-end: 0;
+  --toast-close-button-transform: translate(35%, -35%);
+}
