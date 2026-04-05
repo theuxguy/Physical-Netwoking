@@ -363,12 +363,12 @@ export function NetworkDiagram({ onADClick, expandedAD, expandedBlocks }: Networ
         <div className="absolute right-4 top-4 z-30 flex items-center gap-2">
           <button
             onClick={() => { setCurrentWindowDate(initialEndDate); setHasMovedWindow(false); setShowComparison(false); }}
-            className="flex items-center gap-1.5 bg-white dark:bg-[#1a1a1a] border border-gray-300 dark:border-[#404040] rounded px-3 py-1.5 text-xs dark:text-white hover:bg-gray-50 dark:hover:bg-[#2a2a2a] transition-colors"
+            className="flex items-center gap-2 bg-white dark:bg-[#1a1a1a] border border-gray-300 dark:border-[#404040] rounded px-3 py-2 text-xs dark:text-white hover:bg-gray-50 dark:hover:bg-[#2a2a2a] transition-colors"
           >
             <RefreshCw className="w-3 h-3" />
             <span>Refresh</span>
           </button>
-          <div className="bg-white dark:bg-[#1a1a1a] border border-gray-300 dark:border-[#404040] rounded px-3 py-1.5 text-xs font-bold dark:text-white">
+          <div className="bg-white dark:bg-[#1a1a1a] border border-gray-300 dark:border-[#404040] rounded px-3 py-2 text-xs font-bold dark:text-white">
             Showing live data for {formatDate(currentWindowDate)}
           </div>
         </div>

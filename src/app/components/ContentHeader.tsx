@@ -167,7 +167,7 @@ export function ContentHeader({ isRegionView = false, regionCode }: ContentHeade
         {/* Time range dropdown */}
         <div className="relative" ref={dropdownRef}>
           <button
-            className="px-3 py-1.5 border border-gray-300 dark:border-[#404040] rounded text-sm bg-white dark:bg-[#1a1a1a] dark:text-white min-w-[160px] flex items-center justify-between hover:bg-gray-50 dark:hover:bg-[#252525]"
+            className="px-3 py-2 border border-gray-300 dark:border-[#404040] rounded text-sm bg-white dark:bg-[#1a1a1a] dark:text-white min-w-[160px] flex items-center justify-between hover:bg-gray-50 dark:hover:bg-[#252525]"
             onClick={() => setIsDropdownOpen(!isDropdownOpen)}
           >
             <span>{getDropdownLabel(selectedOption)}</span>

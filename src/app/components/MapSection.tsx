@@ -48,7 +48,7 @@ export function MapSection() {
               className="relative bg-gray-100 dark:bg-[#1a1a1a] border-r border-gray-300 dark:border-[#404040] flex-1"
             >
               {/* Timestamp display - Current */}
-              <div className="absolute top-4 right-4 z-10 bg-white dark:bg-[#1a1a1a] border border-gray-300 dark:border-[#404040] rounded px-3 py-1.5 text-xs dark:text-white">
+              <div className="absolute top-4 right-4 z-10 bg-white dark:bg-[#1a1a1a] border border-gray-300 dark:border-[#404040] rounded px-3 py-2 text-xs dark:text-white">
                 <div className="text-[#de8011] font-bold">Showing live data for: Current</div>
                 <div className="text-gray-500 dark:text-gray-400 text-sm mt-1">Read-only</div>
               </div>
@@ -109,13 +109,13 @@ export function MapSection() {
             {!showComparison && (
               <button
                 onClick={handleRefresh}
-                className="flex items-center gap-1.5 bg-white dark:bg-[#1a1a1a] border border-gray-300 dark:border-[#404040] rounded px-3 py-1.5 text-xs dark:text-white hover:bg-gray-50 dark:hover:bg-[#2a2a2a] transition-colors"
+                className="flex items-center gap-2 bg-white dark:bg-[#1a1a1a] border border-gray-300 dark:border-[#404040] rounded px-3 py-2 text-xs dark:text-white hover:bg-gray-50 dark:hover:bg-[#2a2a2a] transition-colors"
               >
                 <RefreshCw className="w-3 h-3" />
                 <span>Refresh</span>
               </button>
             )}
-            <div className="bg-white dark:bg-[#1a1a1a] border border-gray-300 dark:border-[#404040] rounded px-3 py-1.5 text-xs dark:text-white">
+            <div className="bg-white dark:bg-[#1a1a1a] border border-gray-300 dark:border-[#404040] rounded px-3 py-2 text-xs dark:text-white">
               <span className={showComparison ? "text-[#5ba8d0] font-bold" : "font-bold"}>
                 Showing live data for {formatDateRange()}
               </span>
