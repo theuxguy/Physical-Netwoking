@@ -2,7 +2,10 @@ import { createRoot } from "react-dom/client";
 import "./styles/index.css";
 
 const root = createRoot(document.getElementById("root")!);
-const path = window.location.pathname;
+
+// Strip the Vite base path so routing works both locally and on GitHub Pages
+const base = import.meta.env.BASE_URL.replace(/\/$/, ""); // e.g. "" or "/Physical-Netwoking"
+const path = window.location.pathname.replace(base, "") || "/";
 
 if (path === "/library" || path.startsWith("/library/")) {
   import("./library/LibraryApp").then(({ LibraryApp }) => {
