@@ -8,7 +8,7 @@ function TableRealmEmptyText({ text }: TableRealmEmptyTextProps) {
     <div className="bg-[#f8f8f8] dark:bg-[#252525] relative shrink-0 w-full">
       <div className="flex flex-row items-center justify-center size-full">
         <div className="content-stretch flex items-center justify-center p-[10px] relative w-full">
-          <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[#222] dark:text-[#e0e0e0] text-[14px] whitespace-nowrap">{text}</p>
+          <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[#222] dark:text-[#e0e0e0] text-[14px] whitespace-nowrap">{text}</p>
         </div>
       </div>
     </div>
@@ -30,7 +30,7 @@ export default function TableRealmEmpty() {
             <div className="bg-[#f8f8f8] dark:bg-[#252525] relative shrink-0 w-full">
               <div className="flex flex-row items-center justify-center size-full">
                 <div className="content-stretch flex gap-[10px] items-center justify-center p-[10px] relative w-full">
-                  <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[14px] text-black dark:text-white whitespace-nowrap">Metrics</p>
+                  <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[14px] text-black dark:text-white whitespace-nowrap">Metrics</p>
                   <div className="relative shrink-0 size-[16px]" data-name="SORT">
                     <div className="absolute inset-[16.67%]" data-name="Vector">
                       <svg className="absolute block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 10.6667 10.6667">
@@ -61,7 +61,7 @@ export default function TableRealmEmpty() {
             <div className="bg-[#f8f8f8] dark:bg-[#252525] relative shrink-0 w-full h-[46px]">
               <div className="flex flex-row items-center justify-center size-full">
                 <div className="content-stretch flex items-center justify-center p-[10px] relative w-full">
-                  <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[14px] text-black dark:text-white whitespace-nowrap">Metro</p>
+                  <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[14px] text-black dark:text-white whitespace-nowrap">Metro</p>
                 </div>
               </div>
             </div>
@@ -71,7 +71,7 @@ export default function TableRealmEmpty() {
                 <div className="content-stretch flex items-center justify-center px-[10px] py-[8px] relative size-full">
                   <div className="bg-[rgba(80,130,35,0.2)] dark:bg-[rgba(80,130,35,0.15)] content-stretch flex items-center justify-center p-[4px] relative rounded-[3px] shrink-0">
                     <div aria-hidden="true" className="absolute border border-[#508223] dark:border-[#6ba32e] border-solid inset-0 pointer-events-none rounded-[3px]" />
-                    <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[#508223] dark:text-[#6ba32e] text-[11px] whitespace-nowrap">Healthy</p>
+                    <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[#508223] dark:text-[#6ba32e] text-[11px] whitespace-nowrap">Healthy</p>
                   </div>
                 </div>
               </div>
@@ -82,7 +82,7 @@ export default function TableRealmEmpty() {
                 <div className="content-stretch flex items-center justify-center px-[10px] py-[8px] relative size-full">
                   <div className="bg-[rgba(80,130,35,0.2)] dark:bg-[rgba(80,130,35,0.15)] content-stretch flex items-center justify-center p-[4px] relative rounded-[3px] shrink-0">
                     <div aria-hidden="true" className="absolute border border-[#508223] dark:border-[#6ba32e] border-solid inset-0 pointer-events-none rounded-[3px]" />
-                    <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[#508223] dark:text-[#6ba32e] text-[11px] whitespace-nowrap">Healthy</p>
+                    <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[#508223] dark:text-[#6ba32e] text-[11px] whitespace-nowrap">Healthy</p>
                   </div>
                 </div>
               </div>
@@ -93,7 +93,7 @@ export default function TableRealmEmpty() {
                 <div className="content-stretch flex items-center justify-center px-[10px] py-[8px] relative size-full">
                   <div className="bg-[rgba(80,130,35,0.2)] dark:bg-[rgba(80,130,35,0.15)] content-stretch flex items-center justify-center p-[4px] relative rounded-[3px] shrink-0">
                     <div aria-hidden="true" className="absolute border border-[#508223] dark:border-[#6ba32e] border-solid inset-0 pointer-events-none rounded-[3px]" />
-                    <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[#508223] dark:text-[#6ba32e] text-[11px] whitespace-nowrap">Healthy</p>
+                    <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[#508223] dark:text-[#6ba32e] text-[11px] whitespace-nowrap">Healthy</p>
                   </div>
                 </div>
               </div>
@@ -105,7 +105,7 @@ export default function TableRealmEmpty() {
           <div aria-hidden="true" className="absolute border border-[#dcdcdc] dark:border-[#505050] border-dashed inset-0 pointer-events-none" />
           <div className="flex flex-row items-center justify-center size-full">
             <div className="content-stretch flex items-center justify-center p-[10px] relative size-full">
-              <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[14px] text-black dark:text-white whitespace-nowrap">Add up to 3 regions</p>
+              <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[14px] text-black dark:text-white whitespace-nowrap">Add up to 3 regions</p>
             </div>
           </div>
         </div>

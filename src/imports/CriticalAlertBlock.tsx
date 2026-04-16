@@ -23,13 +23,13 @@ export default function Group() {
                                       <div className="bg-[rgba(214,59,37,0.2)] relative rounded-[6px] shrink-0" data-name="Badge">
                                         <div className="flex flex-row items-center justify-center size-full">
                                           <div className="content-stretch flex items-center justify-center p-[2px] relative">
-                                            <div className="flex flex-col font-['Inter:Regular',sans-serif] font-normal justify-center leading-[0] not-italic relative shrink-0 text-[#d63b25] text-[11px] whitespace-nowrap">
+                                            <div className="flex flex-col font-normal justify-center leading-[0] not-italic relative shrink-0 text-[#d63b25] text-[11px] whitespace-nowrap">
                                               <p className="leading-[16px]">Critical</p>
                                             </div>
                                           </div>
                                         </div>
                                       </div>
-                                      <p className="font-['Inter:Medium',sans-serif] font-medium leading-[20px] not-italic relative shrink-0 text-[#161513] text-[14px] w-[181px]" style={{ fontFeatureSettings: "'lnum', 'tnum'" }}>
+                                      <p className="font-medium font-medium leading-[20px] not-italic relative shrink-0 text-[#161513] text-[14px] w-[181px]" style={{ fontFeatureSettings: "'lnum', 'tnum'" }}>
                                         DXB AD-2 BLD-08 Insights
                                       </p>
                                     </div>
@@ -43,7 +43,7 @@ export default function Group() {
                     </div>
                   </div>
                   <div className="content-stretch flex flex-[1_0_0] items-start justify-end min-h-px min-w-px relative">
-                    <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[#00688c] text-[12px] whitespace-nowrap">View all issues</p>
+                    <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[#00688c] text-[12px] whitespace-nowrap">View all issues</p>
                   </div>
                 </div>
               </div>
@@ -72,7 +72,7 @@ export default function Group() {
                         </div>
                       </div>
                       <div className="col-1 grid-cols-[max-content] grid-rows-[max-content] inline-grid ml-[22.9px] mt-0 place-items-start relative row-1">
-                        <div className="col-1 font-['Inter:Regular',sans-serif] font-normal h-[13px] leading-[normal] ml-0 mt-0 not-italic relative row-1 text-[#665f5b] text-[11px] text-center w-[327px] whitespace-nowrap">
+                        <div className="col-1 font-normal h-[13px] leading-[normal] ml-0 mt-0 not-italic relative row-1 text-[#665f5b] text-[11px] text-center w-[327px] whitespace-nowrap">
                           <p className="-translate-x-1/2 absolute left-[10px] top-0">JFP</p>
                           <p className="-translate-x-1/2 absolute left-[57px] top-0">FFP</p>
                           <p className="-translate-x-1/2 absolute left-[105.5px] top-0">TFP</p>
@@ -85,7 +85,7 @@ export default function Group() {
                     </div>
                   </div>
                   <div className="col-1 grid-cols-[max-content] grid-rows-[max-content] inline-grid ml-0 mt-0 place-items-start relative row-1">
-                    <div className="col-1 content-stretch flex flex-col font-['Inter:Regular',sans-serif] font-normal gap-[5px] items-end leading-[normal] ml-0 mt-0 not-italic relative row-1 text-[#665f5b] text-[11px] text-center whitespace-nowrap">
+                    <div className="col-1 content-stretch flex flex-col font-normal gap-[5px] items-end leading-[normal] ml-0 mt-0 not-italic relative row-1 text-[#665f5b] text-[11px] text-center whitespace-nowrap">
                       <p className="relative shrink-0">30</p>
                       <p className="relative shrink-0">25</p>
                       <p className="relative shrink-0">20</p>
@@ -124,7 +124,7 @@ export default function Group() {
                   <div className="col-1 content-stretch flex flex-col items-start ml-[329.25px] mt-[85px] relative row-1">
                     <div className="bg-[#de8011] h-[38px] shrink-0 w-[40px]" />
                   </div>
-                  <p className="col-1 font-['Inter:Regular',sans-serif] font-normal leading-[normal] ml-[58.21px] mt-[147px] not-italic relative row-1 text-[#161513] text-[12px] text-center w-[292.57px]">Total critical and warning issues in AD-2 by building</p>
+                  <p className="col-1 font-normal leading-[normal] ml-[58.21px] mt-[147px] not-italic relative row-1 text-[#161513] text-[12px] text-center w-[292.57px]">Total critical and warning issues in AD-2 by building</p>
                 </div>
                 <div className="grid-cols-[max-content] grid-rows-[max-content] inline-grid place-items-start relative shrink-0 w-full">
                   <div className="col-1 content-stretch flex flex-col items-start ml-0 mt-0 relative row-1 w-[399px]">
@@ -148,7 +148,7 @@ export default function Group() {
                             </div>
                           </div>
                         </div>
-                        <p className="font-['Inter:Regular',sans-serif] font-normal not-italic relative shrink-0 text-[12px] text-black w-[331px]" style={{ fontFeatureSettings: "'lnum', 'tnum'" }}>
+                        <p className="font-normal not-italic relative shrink-0 text-[12px] text-black w-[331px]" style={{ fontFeatureSettings: "'lnum', 'tnum'" }}>
                           <span className="leading-[20px] text-[#222]">JFAB Performance</span>
                           <span className="leading-[20px]">{` has a high number (14) of `}</span>
                           <span className="leading-[20px] text-[#d63b25]">Critical</span>

@@ -12,7 +12,7 @@ export default function Health() {
                 <path d={svgPaths.p24a580} fill="var(--fill-0, white)" id="Vector" />
               </svg>
             </div>
-            <p className="font-['Inter:Regular',sans-serif] font-normal leading-[12px] not-italic relative shrink-0 text-[9px] text-center text-white whitespace-nowrap">FRA</p>
+            <p className="font-normal leading-[12px] not-italic relative shrink-0 text-[9px] text-center text-white whitespace-nowrap">FRA</p>
           </div>
         </div>
       </div>

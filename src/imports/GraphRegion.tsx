@@ -113,7 +113,7 @@ function Text2({ text, children, additionalClassNames = "" }: React.PropsWithChi
           <div className="content-stretch flex flex-col gap-[15px] items-end pr-[10px] relative w-full">{children}</div>
         </div>
       </div>
-      <p className="[text-decoration-skip-ink:none] decoration-solid font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[#00688c] text-[11px] text-right underline w-full">{text}</p>
+      <p className="[text-decoration-skip-ink:none] decoration-solid font-normal leading-[normal] not-italic relative shrink-0 text-[#00688c] text-[11px] text-right underline w-full">{text}</p>
     </div>
   );
 }
@@ -126,7 +126,7 @@ function Text1({ text, additionalClassNames = "" }: Text1Props) {
   return (
     <div className={clsx("absolute content-stretch flex flex-col items-center", additionalClassNames)}>
       <div aria-hidden="true" className="absolute border-0 border-[#b6b2ad] border-solid inset-0 pointer-events-none" />
-      <p className="font-['Helvetica_Neue:Regular',sans-serif] h-[24px] leading-[normal] not-italic relative shrink-0 text-[#222] text-[9px] text-center w-[18.156px]">{text}</p>
+      <p className="h-[24px] leading-[normal] not-italic relative shrink-0 text-[#222] text-[9px] text-center w-[18.156px]">{text}</p>
       <GraphRegionAlertsErrorS />
     </div>
   );
@@ -139,7 +139,7 @@ type TextProps = {
 function Text({ text, additionalClassNames = "" }: TextProps) {
   return (
     <div className={clsx("absolute content-stretch flex flex-col gap-[10px] items-center top-[6.61px]", additionalClassNames)}>
-      <p className="font-['Helvetica_Neue:Regular',sans-serif] h-[14.103px] leading-[normal] not-italic relative shrink-0 text-[9px] text-black text-center w-[17.727px]">{text}</p>
+      <p className="h-[14.103px] leading-[normal] not-italic relative shrink-0 text-[9px] text-black text-center w-[17.727px]">{text}</p>
       <GraphRegionAlertsWarningS />
     </div>
   );
@@ -217,7 +217,7 @@ type GraphRegionTextProps = {
 function GraphRegionText({ text, additionalClassNames = "" }: GraphRegionTextProps) {
   return (
     <div className={clsx("absolute content-stretch flex flex-col items-center", additionalClassNames)}>
-      <p className="font-['Helvetica_Neue:Regular',sans-serif] h-[23px] leading-[normal] not-italic relative shrink-0 text-[9px] text-black text-center w-[18px]">{text}</p>
+      <p className="h-[23px] leading-[normal] not-italic relative shrink-0 text-[9px] text-black text-center w-[18px]">{text}</p>
       <Success className="relative shrink-0 size-[14px]" />
     </div>
   );
@@ -383,7 +383,7 @@ type GraphRegionHelperProps = {
 
 function GraphRegionHelper({ text, text1, additionalClassNames = "" }: GraphRegionHelperProps) {
   return (
-    <div className={clsx("font-['Helvetica_Neue:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[0px] text-black", additionalClassNames)}>
+    <div className={clsx("leading-[normal] not-italic relative shrink-0 text-[0px] text-black", additionalClassNames)}>
       <p className="mb-0 text-[11px]">{text}</p>
       <p className="text-[#665f5b] text-[9px]">{text1}</p>
     </div>
@@ -427,7 +427,7 @@ function SearchLeftText({ text }: SearchLeftTextProps) {
           </svg>
         </div>
       </div>
-      <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[#665f5b] text-[14px] whitespace-nowrap">{text}</p>
+      <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[#665f5b] text-[14px] whitespace-nowrap">{text}</p>
     </div>
   );
 }
@@ -467,18 +467,18 @@ function Search({ className, state = "Default" }: SearchProps) {
               <Health>
                 <SearchVector />
                 <div className="bg-white content-stretch flex h-[8px] items-center justify-center p-[2px] relative rounded-[5px] shrink-0">
-                  <p className="font-['Inter:Medium',sans-serif] font-medium leading-[12px] not-italic relative shrink-0 text-[#508223] text-[7px] text-center whitespace-nowrap">ePOP</p>
+                  <p className="font-medium font-medium leading-[12px] not-italic relative shrink-0 text-[#508223] text-[7px] text-center whitespace-nowrap">ePOP</p>
                 </div>
-                <p className="font-['Inter:Regular',sans-serif] font-normal leading-[12px] not-italic relative shrink-0 text-[9px] text-center text-white whitespace-nowrap">DXB</p>
+                <p className="font-normal leading-[12px] not-italic relative shrink-0 text-[9px] text-center text-white whitespace-nowrap">DXB</p>
               </Health>
-              <p className="font-['Inter:Regular',sans-serif] font-normal leading-[12px] not-italic relative shrink-0 text-[14px] text-black whitespace-nowrap">New York (LGA)</p>
+              <p className="font-normal leading-[12px] not-italic relative shrink-0 text-[14px] text-black whitespace-nowrap">New York (LGA)</p>
             </div>
             <div className="content-stretch flex gap-[7px] items-start relative shrink-0">
               <Health additionalClassNames="w-[38px]" additionalClassNames1="w-full">
                 <SearchVector />
-                <p className="font-['Inter:Regular',sans-serif] font-normal leading-[12px] not-italic relative shrink-0 text-[9px] text-center text-white whitespace-nowrap">DXB</p>
+                <p className="font-normal leading-[12px] not-italic relative shrink-0 text-[9px] text-center text-white whitespace-nowrap">DXB</p>
               </Health>
-              <p className="font-['Inter:Regular',sans-serif] font-normal leading-[12px] not-italic relative shrink-0 text-[14px] text-black whitespace-nowrap">Newport (CWL)</p>
+              <p className="font-normal leading-[12px] not-italic relative shrink-0 text-[14px] text-black whitespace-nowrap">Newport (CWL)</p>
             </div>
           </div>
         </div>
@@ -531,15 +531,15 @@ function Legend({ className, state = "Expanded" }: LegendProps) {
           <Text2 text="How is this calculated?" additionalClassNames="opacity-0">
             <div className="content-stretch flex gap-[5px] items-end relative shrink-0">
               <Error className="relative shrink-0 size-[16px]" />
-              <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[#222] text-[14px] whitespace-nowrap">Critical</p>
+              <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[#222] text-[14px] whitespace-nowrap">Critical</p>
             </div>
             <div className="content-stretch flex gap-[5px] items-end relative shrink-0">
               <LegendFutureTrailingIcon02Warning />
-              <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[#222] text-[14px] whitespace-nowrap">Warning</p>
+              <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[#222] text-[14px] whitespace-nowrap">Warning</p>
             </div>
             <div className="content-stretch flex gap-[5px] items-end relative shrink-0">
               <Success className="relative shrink-0 size-[16px]" />
-              <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[#222] text-[14px] whitespace-nowrap">Healthy</p>
+              <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[#222] text-[14px] whitespace-nowrap">Healthy</p>
             </div>
           </Text2>
         </div>
@@ -551,7 +551,7 @@ function Legend({ className, state = "Expanded" }: LegendProps) {
                 <path d={svgPaths.p1b2b2880} fill="var(--fill-0, #161513)" id="vector" />
               </svg>
             </HelperbuttonLegend>
-            <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[#222] text-[14px] text-left whitespace-nowrap">Legend</p>
+            <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[#222] text-[14px] text-left whitespace-nowrap">Legend</p>
             <div className="flex items-center justify-center relative shrink-0">
               <div className="flex-none rotate-180">
                 <ArrowsCaretDown className="overflow-clip relative size-[20px]" />
@@ -568,15 +568,15 @@ function Legend({ className, state = "Expanded" }: LegendProps) {
         <Text2 text="How is this calculated?">
           <div className="content-stretch flex gap-[5px] items-end relative shrink-0">
             <Error className="relative shrink-0 size-[16px]" />
-            <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[#222] text-[14px] text-left whitespace-nowrap">Critical</p>
+            <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[#222] text-[14px] text-left whitespace-nowrap">Critical</p>
           </div>
           <div className="content-stretch flex gap-[5px] items-end relative shrink-0">
             <LegendFutureTrailingIcon02Warning />
-            <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[#222] text-[14px] text-left whitespace-nowrap">Warning</p>
+            <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[#222] text-[14px] text-left whitespace-nowrap">Warning</p>
           </div>
           <div className="content-stretch flex gap-[5px] items-end relative shrink-0">
             <Success className="relative shrink-0 size-[16px]" />
-            <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[#222] text-[14px] text-left whitespace-nowrap">Healthy</p>
+            <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[#222] text-[14px] text-left whitespace-nowrap">Healthy</p>
           </div>
         </Text2>
       </div>
@@ -588,7 +588,7 @@ function Legend({ className, state = "Expanded" }: LegendProps) {
               <path d={svgPaths.p2c32df00} fill="var(--fill-0, #161513)" id="vector" />
             </svg>
           </HelperbuttonLegend>
-          <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[#222] text-[14px] text-left whitespace-nowrap">Legend</p>
+          <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[#222] text-[14px] text-left whitespace-nowrap">Legend</p>
           <ArrowsCaretDown className="overflow-clip relative shrink-0 size-[20px]" />
         </HelperbuttonHelper>
       </div>
@@ -719,8 +719,8 @@ export default function GraphRegion() {
                               </div>
                             </div>
                             <div className="content-stretch flex flex-col gap-[5px] items-start justify-center relative shrink-0">
-                              <div className="font-['Helvetica_Neue:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[0px] text-black w-[112px]">
-                                <p className="font-['Inter:Regular',sans-serif] font-normal mb-0 text-[11px]">Customer Network (VPN/FastConnect)</p>
+                              <div className="leading-[normal] not-italic relative shrink-0 text-[0px] text-black w-[112px]">
+                                <p className="font-normal mb-0 text-[11px]">Customer Network (VPN/FastConnect)</p>
                                 <p className="text-[#665f5b] text-[9px]">Some info. here</p>
                               </div>
                               <Success className="relative shrink-0 size-[14px]" />
@@ -763,7 +763,7 @@ export default function GraphRegion() {
                           </div>
                         </div>
                         <div className="absolute content-stretch flex flex-col items-center left-[6px] top-[8px]">
-                          <p className="font-['Helvetica_Neue:Regular',sans-serif] h-[25px] leading-[normal] not-italic relative shrink-0 text-[9px] text-black text-center w-[24px]">BLD 22</p>
+                          <p className="h-[25px] leading-[normal] not-italic relative shrink-0 text-[9px] text-black text-center w-[24px]">BLD 22</p>
                           <GraphRegionAlertsErrorS />
                         </div>
                       </div>
@@ -775,7 +775,7 @@ export default function GraphRegion() {
                     <Wrapper>
                       <div className="grid-cols-[max-content] grid-rows-[max-content] inline-grid leading-[0] place-items-start relative shrink-0">
                         <div className="col-1 content-stretch flex items-center ml-0 mt-0 relative row-1">
-                          <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[#312d2a] text-[14px] whitespace-nowrap">Showing data for Aug 18, 2023 23:55pm UTC (Latest)</p>
+                          <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[#312d2a] text-[14px] whitespace-nowrap">Showing data for Aug 18, 2023 23:55pm UTC (Latest)</p>
                         </div>
                       </div>
                       <div className="relative shrink-0 size-[16px]" data-name="refresh">
@@ -864,11 +864,11 @@ export default function GraphRegion() {
                   <GraphRegionText text="BLD 13" additionalClassNames="left-[154.48px] top-[5.61px]" />
                   <GraphRegionText text="BLD 14" additionalClassNames="left-[190.48px] top-[5.61px]" />
                   <div className="absolute content-stretch flex flex-col items-center left-[79.48px] top-[5.61px]">
-                    <p className="font-['Helvetica_Neue:Regular',sans-serif] h-[23px] leading-[normal] not-italic relative shrink-0 text-[9px] text-black text-center w-[20px]">BLD 11</p>
+                    <p className="h-[23px] leading-[normal] not-italic relative shrink-0 text-[9px] text-black text-center w-[20px]">BLD 11</p>
                     <GraphRegionAlertsWarningS />
                   </div>
                   <div className="absolute content-stretch flex flex-col items-center left-[116.48px] top-[5.61px]">
-                    <p className="font-['Helvetica_Neue:Regular',sans-serif] h-[22px] leading-[normal] not-italic relative shrink-0 text-[9px] text-black text-center w-[19px]">BLD 12</p>
+                    <p className="h-[22px] leading-[normal] not-italic relative shrink-0 text-[9px] text-black text-center w-[19px]">BLD 12</p>
                     <GraphRegionAlertsWarningS />
                   </div>
                 </div>
@@ -903,11 +903,11 @@ export default function GraphRegion() {
                     <GraphRegionText text="BLD 16" additionalClassNames="left-[5.72px] top-[6.61px]" />
                     <GraphRegionText text="BLD 17" additionalClassNames="left-[42.72px] top-[6.61px]" />
                     <div className="absolute content-stretch flex flex-col items-center left-[78.72px] top-[6.61px]">
-                      <p className="font-['Helvetica_Neue:Regular',sans-serif] h-[22px] leading-[normal] not-italic relative shrink-0 text-[9px] text-black text-center w-[21px]">BLD 18</p>
+                      <p className="h-[22px] leading-[normal] not-italic relative shrink-0 text-[9px] text-black text-center w-[21px]">BLD 18</p>
                       <GraphRegionAlertsWarningS />
                     </div>
                     <div className="absolute content-stretch flex flex-col items-center left-[115.72px] top-[6.61px]">
-                      <p className="font-['Helvetica_Neue:Regular',sans-serif] h-[22px] leading-[normal] not-italic relative shrink-0 text-[9px] text-black text-center w-[20px]">BLD 19</p>
+                      <p className="h-[22px] leading-[normal] not-italic relative shrink-0 text-[9px] text-black text-center w-[20px]">BLD 19</p>
                       <GraphRegionAlertsWarningS />
                     </div>
                     <GraphRegionText text="BLD 20" additionalClassNames="left-[153.72px] top-[6.61px]" />
@@ -944,7 +944,7 @@ export default function GraphRegion() {
                   <GraphRegionText text="BLD 02" additionalClassNames="left-[6.18px] top-[5.61px]" />
                   <GraphRegionText text="BLD 03" additionalClassNames="gap-px left-[43.18px] top-[5.61px]" />
                   <div className="absolute content-stretch flex flex-col items-start left-[154.18px] top-[6.61px]">
-                    <p className="font-['Helvetica_Neue:Regular',sans-serif] h-[23px] leading-[normal] not-italic relative shrink-0 text-[9px] text-black text-center w-[18px]">BLD 06</p>
+                    <p className="h-[23px] leading-[normal] not-italic relative shrink-0 text-[9px] text-black text-center w-[18px]">BLD 06</p>
                     <Success className="relative shrink-0 size-[14px]" />
                   </div>
                   <GraphRegionText text="BLD 07" additionalClassNames="left-[191.18px] top-[7.61px]" />
@@ -1026,7 +1026,7 @@ export default function GraphRegion() {
           <div className="absolute contents inset-[63.37%_27.18%_29.42%_71.26%]">
             <div className="absolute content-stretch flex flex-col inset-[63.37%_27.18%_29.42%_71.26%] items-center">
               <div aria-hidden="true" className="absolute border-[#b6b2ad] border-solid border-t inset-[-1px_0_0_0] pointer-events-none" />
-              <p className="font-['Helvetica_Neue:Regular',sans-serif] h-[24px] leading-[normal] not-italic relative shrink-0 text-[#222] text-[9px] text-center w-[18.156px]">BLD 15</p>
+              <p className="h-[24px] leading-[normal] not-italic relative shrink-0 text-[#222] text-[9px] text-center w-[18.156px]">BLD 15</p>
               <GraphRegionAlertsErrorS />
             </div>
           </div>
@@ -1034,7 +1034,7 @@ export default function GraphRegion() {
         <div className="absolute contents inset-[31.78%_36.66%_60.63%_61.62%]">
           <div className="absolute content-stretch flex flex-col inset-[31.78%_36.66%_60.63%_61.62%] items-center">
             <div aria-hidden="true" className="absolute border-0 border-[#b6b2ad] border-solid inset-0 pointer-events-none" />
-            <p className="font-['Helvetica_Neue:Regular',sans-serif] h-[24px] leading-[normal] not-italic relative shrink-0 text-[9px] text-black text-center w-[20px]">BLD 23</p>
+            <p className="h-[24px] leading-[normal] not-italic relative shrink-0 text-[9px] text-black text-center w-[20px]">BLD 23</p>
             <Success className="relative shrink-0 size-[16px]" />
           </div>
         </div>

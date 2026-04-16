@@ -18,19 +18,19 @@ function StatusBadge({ status, onClick }: StatusBadgeProps) {
     healthy: {
       bg: 'bg-[rgba(80,130,35,0.2)] dark:bg-[rgba(80,130,35,0.15)]',
       border: 'border-[#508223] dark:border-[#6ba32e]',
-      text: 'text-[#E4E4E4]',
+      text: 'text-[#3a5c1a] dark:text-[#E4E4E4]',
       label: 'Healthy'
     },
     critical: {
       bg: 'bg-[rgba(214,59,37,0.2)] dark:bg-[rgba(214,59,37,0.15)]',
       border: 'border-[#d63b25] dark:border-[#e85540]',
-      text: 'text-[#E4E4E4]',
+      text: 'text-[#a02a18] dark:text-[#E4E4E4]',
       label: 'Critical'
     },
     warning: {
       bg: 'bg-[rgba(222,128,17,0.2)] dark:bg-[rgba(222,128,17,0.15)]',
       border: 'border-[rgba(222,128,17,0.6)] dark:border-[rgba(255,152,30,0.7)]',
-      text: 'text-[#E4E4E4]',
+      text: 'text-[#7a4a00] dark:text-[#E4E4E4]',
       label: 'Warning'
     }
   };
@@ -43,7 +43,7 @@ function StatusBadge({ status, onClick }: StatusBadgeProps) {
       onClick={onClick}
     >
       <div aria-hidden="true" className={`absolute border ${style.border} border-solid inset-0 pointer-events-none rounded-[3px]`} />
-      <p className={`font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 ${style.text} text-[11px] whitespace-nowrap`}>{style.label}</p>
+      <p className={`font-normal leading-[normal] not-italic relative shrink-0 ${style.text} text-[11px] whitespace-nowrap`}>{style.label}</p>
     </div>
   );
 }
@@ -181,13 +181,11 @@ export function RegionHealthTable({ expandedBlocks, onCloseBlock }: RegionHealth
   const blockData = useMemo(() => expandedBlocks.map(getBlockData), [expandedBlocks]);
 
   return (
-    <div className="h-[205px] bg-white dark:bg-[#1a1a1a] border border-[#d8d8d8] dark:border-[#404040] rounded-lg overflow-x-auto overflow-y-hidden pb-3">
-      <div className="relative h-full min-w-fit">
-        <div className="absolute bg-white dark:bg-[#1a1a1a] content-stretch flex inset-0 items-start min-w-fit">
+    <div className="bg-white dark:bg-[#1a1a1a] border border-[#d8d8d8] dark:border-[#404040] rounded-lg overflow-x-auto overflow-y-hidden">
+      <div className="flex items-stretch w-full" style={{ minWidth: 'max(100%, 500px)' }}>
           {/* Metrics Column */}
-          <div className="content-stretch flex h-full items-start relative shrink-0 w-[120px]">
-            <div aria-hidden="true" className="absolute border border-[#d8d8d8] dark:border-[#404040] border-solid inset-[-1px] pointer-events-none" />
-            <div className="content-stretch flex flex-[1_0_0] flex-col h-full items-start min-h-px min-w-px relative">
+          <div className="content-stretch flex items-start relative shrink-0 w-[110px] border-r border-[#d8d8d8] dark:border-[#404040]">
+            <div className="content-stretch flex flex-[1_0_0] flex-col items-start min-h-px min-w-px relative w-full">
               {/* Empty header cell */}
               <div className="bg-[#f8f8f8] dark:bg-[#252525] h-[37px] relative shrink-0 w-full">
                 <div className="flex flex-row items-center justify-center size-full">
@@ -198,7 +196,7 @@ export function RegionHealthTable({ expandedBlocks, onCloseBlock }: RegionHealth
               <div className="bg-[#f8f8f8] dark:bg-[#252525] relative shrink-0 w-full h-[46px]">
                 <div className="flex flex-row items-center justify-center size-full">
                   <div className="content-stretch flex gap-[10px] items-center justify-center p-[10px] relative w-full">
-                    <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[14px] text-black dark:text-white whitespace-nowrap">Metrics</p>
+                    <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[14px] text-black dark:text-white whitespace-nowrap">Metrics</p>
                     <div className="relative shrink-0 size-[16px]" data-name="SORT">
                       <div className="absolute inset-[16.67%]" data-name="Vector">
                         <svg className="absolute block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 10.6667 10.6667">
@@ -213,21 +211,21 @@ export function RegionHealthTable({ expandedBlocks, onCloseBlock }: RegionHealth
               <div className="bg-[#f8f8f8] dark:bg-[#252525] relative shrink-0 w-full h-[34px]">
                 <div className="flex flex-row items-center justify-center size-full">
                   <div className="content-stretch flex items-center justify-center p-[10px] relative w-full">
-                    <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[#222] dark:text-[#e0e0e0] text-[14px] whitespace-nowrap">Availability</p>
+                    <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[#222] dark:text-[#e0e0e0] text-[14px] whitespace-nowrap">Availability</p>
                   </div>
                 </div>
               </div>
               <div className="bg-[#f8f8f8] dark:bg-[#252525] relative shrink-0 w-full h-[34px]">
                 <div className="flex flex-row items-center justify-center size-full">
                   <div className="content-stretch flex items-center justify-center p-[10px] relative w-full">
-                    <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[#222] dark:text-[#e0e0e0] text-[14px] whitespace-nowrap">Performance</p>
+                    <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[#222] dark:text-[#e0e0e0] text-[14px] whitespace-nowrap">Performance</p>
                   </div>
                 </div>
               </div>
               <div className="bg-[#f8f8f8] dark:bg-[#252525] relative shrink-0 w-full h-[34px]">
                 <div className="flex flex-row items-center justify-center size-full">
                   <div className="content-stretch flex items-center justify-center p-[10px] relative w-full">
-                    <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[#222] dark:text-[#e0e0e0] text-[14px] whitespace-nowrap">Reliability</p>
+                    <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[#222] dark:text-[#e0e0e0] text-[14px] whitespace-nowrap">Reliability</p>
                   </div>
                 </div>
               </div>
@@ -235,7 +233,7 @@ export function RegionHealthTable({ expandedBlocks, onCloseBlock }: RegionHealth
           </div>
 
           {/* Metro Column */}
-          <div className="content-stretch flex h-full items-start relative shrink-0 w-[96px]">
+          <div className="content-stretch flex items-start relative shrink-0 w-[110px] border-r border-[#d8d8d8] dark:border-[#404040]">
             <div aria-hidden="true" className="absolute border-[#d5d5d5] dark:border-[#404040] border-b border-r border-solid border-t inset-[-1px_-1px_-1px_0] pointer-events-none" />
             <div className="content-stretch flex flex-[1_0_0] flex-col h-full items-start min-h-px min-w-px relative">
               {/* Empty header cell */}
@@ -248,7 +246,7 @@ export function RegionHealthTable({ expandedBlocks, onCloseBlock }: RegionHealth
               <div className="bg-[#f8f8f8] dark:bg-[#252525] relative shrink-0 w-full h-[46px]">
                 <div className="flex flex-row items-center justify-center size-full">
                   <div className="content-stretch flex items-center justify-center p-[10px] relative w-full">
-                    <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[14px] text-black dark:text-white whitespace-nowrap">Metro</p>
+                    <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[14px] text-black dark:text-white whitespace-nowrap">Metro</p>
                   </div>
                 </div>
               </div>
@@ -272,16 +270,16 @@ export function RegionHealthTable({ expandedBlocks, onCloseBlock }: RegionHealth
             // BLD blocks have different layout
             if (data.type === 'bld') {
               return (
-                <div key={block} className="contents">
+                <div key={block} className="flex flex-1 min-w-[400px] overflow-hidden border-r border-[#d8d8d8] dark:border-[#404040]">
                   {/* BLD Header Column */}
-                  <div className="content-stretch flex h-full items-start relative shrink-0 w-[96px]">
+                  <div className="content-stretch flex items-start relative flex-1 min-w-[80px]">
                     <div aria-hidden="true" className="absolute border-[#d5d5d5] dark:border-[#404040] border-b border-solid border-t inset-[-1px_0] pointer-events-none" />
                     <div className="content-stretch flex flex-[1_0_0] flex-col h-full items-start min-h-px min-w-px relative">
                       {/* Block label */}
                       <div className="bg-[rgba(214,59,37,0.2)] dark:bg-[rgba(214,59,37,0.15)] h-[37px] relative shrink-0 w-full">
                         <div className="flex flex-row items-center justify-center size-full">
                           <div className="content-stretch flex items-center justify-center p-[10px] relative w-full">
-                            <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[14px] text-black dark:text-white whitespace-nowrap">{getBlockLabel(block)}</p>
+                            <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[14px] text-black dark:text-white whitespace-nowrap">{getBlockLabel(block)}</p>
                           </div>
                         </div>
                       </div>
@@ -289,7 +287,7 @@ export function RegionHealthTable({ expandedBlocks, onCloseBlock }: RegionHealth
                       <div className="bg-[rgba(214,59,37,0.2)] dark:bg-[rgba(214,59,37,0.15)] h-[46px] relative shrink-0 w-full">
                         <div className="flex flex-row items-center justify-center size-full">
                           <div className="content-stretch flex items-center justify-center p-[10px] relative w-full">
-                            <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[14px] text-black dark:text-white whitespace-nowrap">Fabric</p>
+                            <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[14px] text-black dark:text-white whitespace-nowrap">Fabric</p>
                           </div>
                         </div>
                       </div>
@@ -307,7 +305,7 @@ export function RegionHealthTable({ expandedBlocks, onCloseBlock }: RegionHealth
                   </div>
 
                   {/* CFAB Column */}
-                  <div className="content-stretch flex h-full items-start relative shrink-0 w-[96px]">
+                  <div className="content-stretch flex items-start relative flex-1 min-w-[80px]">
                     <div aria-hidden="true" className="absolute border-[#d5d5d5] dark:border-[#404040] border-b border-solid border-t inset-[-1px_0] pointer-events-none" />
                     <div className="content-stretch flex flex-[1_0_0] flex-col h-full items-start min-h-px min-w-px relative">
                       {/* Empty header */}
@@ -316,7 +314,7 @@ export function RegionHealthTable({ expandedBlocks, onCloseBlock }: RegionHealth
                       <div className="bg-[rgba(214,59,37,0.2)] dark:bg-[rgba(214,59,37,0.15)] h-[46px] relative shrink-0 w-full">
                         <div className="flex flex-row items-center justify-center size-full">
                           <div className="content-stretch flex items-center justify-center p-[10px] relative w-full">
-                            <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[14px] text-black dark:text-white whitespace-nowrap">CFAB</p>
+                            <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[14px] text-black dark:text-white whitespace-nowrap">CFAB</p>
                           </div>
                         </div>
                       </div>
@@ -334,7 +332,7 @@ export function RegionHealthTable({ expandedBlocks, onCloseBlock }: RegionHealth
                   </div>
 
                   {/* JFAB Column */}
-                  <div className="content-stretch flex h-full items-start relative shrink-0 w-[96px]">
+                  <div className="content-stretch flex items-start relative flex-1 min-w-[80px]">
                     <div aria-hidden="true" className="absolute border-[#d5d5d5] dark:border-[#404040] border-b border-solid border-t inset-[-1px_0] pointer-events-none" />
                     <div className="content-stretch flex flex-[1_0_0] flex-col h-full items-start min-h-px min-w-px relative">
                       {/* Empty header */}
@@ -343,7 +341,7 @@ export function RegionHealthTable({ expandedBlocks, onCloseBlock }: RegionHealth
                       <div className="bg-[rgba(214,59,37,0.2)] dark:bg-[rgba(214,59,37,0.15)] h-[46px] relative shrink-0 w-full">
                         <div className="flex flex-row items-center justify-center size-full">
                           <div className="content-stretch flex items-center justify-center p-[10px] relative w-full">
-                            <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[14px] text-black dark:text-white whitespace-nowrap">JFAB</p>
+                            <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[14px] text-black dark:text-white whitespace-nowrap">JFAB</p>
                           </div>
                         </div>
                       </div>
@@ -361,7 +359,7 @@ export function RegionHealthTable({ expandedBlocks, onCloseBlock }: RegionHealth
                   </div>
 
                   {/* FFAB Column */}
-                  <div className="content-stretch flex h-full items-start relative shrink-0 w-[96px]">
+                  <div className="content-stretch flex items-start relative flex-1 min-w-[80px]">
                     <div aria-hidden="true" className="absolute border-[#d5d5d5] dark:border-[#404040] border-b border-solid border-t inset-[-1px_0] pointer-events-none" />
                     <div className="content-stretch flex flex-[1_0_0] flex-col h-full items-start min-h-px min-w-px relative">
                       {/* Empty header */}
@@ -370,7 +368,7 @@ export function RegionHealthTable({ expandedBlocks, onCloseBlock }: RegionHealth
                       <div className="bg-[rgba(214,59,37,0.2)] dark:bg-[rgba(214,59,37,0.15)] h-[46px] relative shrink-0 w-full">
                         <div className="flex flex-row items-center justify-center size-full">
                           <div className="content-stretch flex items-center justify-center p-[10px] relative w-full">
-                            <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[14px] text-black dark:text-white whitespace-nowrap">FFAB</p>
+                            <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[14px] text-black dark:text-white whitespace-nowrap">FFAB</p>
                           </div>
                         </div>
                       </div>
@@ -388,7 +386,7 @@ export function RegionHealthTable({ expandedBlocks, onCloseBlock }: RegionHealth
                   </div>
 
                   {/* TOR Column */}
-                  <div className="content-stretch flex h-full items-start relative shrink-0 w-[96px]">
+                  <div className="content-stretch flex items-start relative flex-1 min-w-[80px]">
                     <div aria-hidden="true" className="absolute border-[#d5d5d5] dark:border-[#404040] border-b border-solid border-t inset-[-1px_0] pointer-events-none" />
                     <div className="content-stretch flex flex-[1_0_0] flex-col h-full items-start min-h-px min-w-px relative">
                       {/* Close button */}
@@ -409,7 +407,7 @@ export function RegionHealthTable({ expandedBlocks, onCloseBlock }: RegionHealth
                       <div className="bg-[rgba(214,59,37,0.2)] dark:bg-[rgba(214,59,37,0.15)] h-[46px] relative shrink-0 w-full">
                         <div className="flex flex-row items-center justify-center size-full">
                           <div className="content-stretch flex items-center justify-center p-[10px] relative w-full">
-                            <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[14px] text-black dark:text-white whitespace-nowrap">TOR</p>
+                            <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[14px] text-black dark:text-white whitespace-nowrap">TOR</p>
                           </div>
                         </div>
                       </div>
@@ -431,16 +429,16 @@ export function RegionHealthTable({ expandedBlocks, onCloseBlock }: RegionHealth
             
             // AD blocks use the existing 2-column layout
             return (
-              <div key={block} className="contents">
+              <div key={block} className="flex flex-1 min-w-[160px] overflow-hidden border-r border-[#d8d8d8] dark:border-[#404040]">
                 {/* Fabric Column */}
-                <div className="content-stretch flex h-full items-start relative shrink-0 w-[96px]">
+                <div className="content-stretch flex items-start relative flex-1 min-w-[80px]">
                   <div aria-hidden="true" className="absolute border-[#d5d5d5] dark:border-[#404040] border-b border-solid border-t inset-[-1px_0] pointer-events-none" />
                   <div className="content-stretch flex flex-[1_0_0] flex-col h-full items-start min-h-px min-w-px relative">
                     {/* Block label */}
                     <div className="bg-[rgba(214,59,37,0.2)] dark:bg-[rgba(214,59,37,0.15)] h-[37px] relative shrink-0 w-full">
                       <div className="flex flex-row items-center justify-end size-full">
                         <div className="content-stretch flex items-center justify-end p-[10px] relative w-full">
-                          <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[14px] text-black dark:text-white whitespace-nowrap">{getBlockLabel(block)}</p>
+                          <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[14px] text-black dark:text-white whitespace-nowrap">{getBlockLabel(block)}</p>
                         </div>
                       </div>
                     </div>
@@ -448,7 +446,7 @@ export function RegionHealthTable({ expandedBlocks, onCloseBlock }: RegionHealth
                     <div className="bg-[rgba(214,59,37,0.2)] dark:bg-[rgba(214,59,37,0.15)] h-[46px] relative shrink-0 w-full">
                       <div className="flex flex-row items-center justify-center size-full">
                         <div className="content-stretch flex items-center justify-center p-[10px] relative w-full">
-                          <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[14px] text-black dark:text-white whitespace-nowrap">Fabric</p>
+                          <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[14px] text-black dark:text-white whitespace-nowrap">Fabric</p>
                         </div>
                       </div>
                     </div>
@@ -466,7 +464,7 @@ export function RegionHealthTable({ expandedBlocks, onCloseBlock }: RegionHealth
                 </div>
 
                 {/* TOR Column */}
-                <div className="content-stretch flex h-full items-start relative shrink-0 w-[96px]">
+                <div className="content-stretch flex items-start relative flex-1 min-w-[80px]">
                   <div aria-hidden="true" className="absolute border-[#d5d5d5] dark:border-[#404040] border-b border-solid border-t inset-[-1px_0] pointer-events-none" />
                   <div className="content-stretch flex flex-[1_0_0] flex-col h-full items-start min-h-px min-w-px relative">
                     {/* Close button */}
@@ -487,7 +485,7 @@ export function RegionHealthTable({ expandedBlocks, onCloseBlock }: RegionHealth
                     <div className="bg-[rgba(214,59,37,0.2)] dark:bg-[rgba(214,59,37,0.15)] h-[46px] relative shrink-0 w-full">
                       <div className="flex flex-row items-center justify-center size-full">
                         <div className="content-stretch flex items-center justify-center p-[10px] relative w-full">
-                          <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[14px] text-black dark:text-white whitespace-nowrap">TOR</p>
+                          <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[14px] text-black dark:text-white whitespace-nowrap">TOR</p>
                         </div>
                       </div>
                     </div>
@@ -507,18 +505,19 @@ export function RegionHealthTable({ expandedBlocks, onCloseBlock }: RegionHealth
             );
           })}
 
-          {/* Empty area with "Add up to X components" */}
-          <div className="bg-white dark:bg-[#1a1a1a] flex-[1_0_0] h-full min-h-px min-w-px relative">
-            <div aria-hidden="true" className="absolute border border-[#dcdcdc] dark:border-[#505050] border-dashed inset-0 pointer-events-none" />
-            <div className="flex flex-row items-center justify-center size-full">
-              <div className="content-stretch flex items-center justify-center p-[10px] relative size-full">
-                <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[14px] text-black dark:text-white whitespace-nowrap">
-                  {expandedBlocks.length === 0 ? 'Add up to 8 components' : `Add up to ${8 - expandedBlocks.length} more component${8 - expandedBlocks.length === 1 ? '' : 's'}`}
-                </p>
+          {/* Empty placeholder — only shown when no blocks added yet */}
+          {expandedBlocks.length === 0 && (
+            <div className="bg-white dark:bg-[#1a1a1a] flex-1 min-h-px min-w-px relative">
+              <div aria-hidden="true" className="absolute border border-[#dcdcdc] dark:border-[#505050] border-dashed inset-0 pointer-events-none" />
+              <div className="flex flex-row items-center justify-center size-full">
+                <div className="content-stretch flex items-center justify-center p-[10px] relative size-full">
+                  <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[14px] text-black dark:text-white whitespace-nowrap">
+                    Add up to 5 components
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
+          )}
       </div>
       <SideDrawer 
         isOpen={drawerState.isOpen} 

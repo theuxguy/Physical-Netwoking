@@ -1,4 +1,5 @@
 import { useState, useEffect, useMemo } from "react";
+import { useNavigate } from "react-router";
 import { ComposableMap, Geographies, Geography, ZoomableGroup, Marker, Line } from "react-simple-maps";
 import { useRegion } from "../app/contexts/RegionContext";
 import { useTimeRange } from "../app/contexts/TimeRangeContext";
@@ -72,14 +73,15 @@ const getHealthPercentage = (status: string) => {
   return Math.floor(Math.random() * 30) + 30; // 30-59% for danger
 };
 
-export default function Group({ overrideEndDate }: { overrideEndDate?: Date }) {
+export default function Group({ overrideEndDate, readOnly }: { overrideEndDate?: Date; readOnly?: boolean }) {
   const [position, setPosition] = useState({ coordinates: [0, 20], zoom: 3 });
   const [hoveredAirport, setHoveredAirport] = useState<string | null>(null);
   const [clickedAirport, setClickedAirport] = useState<string | null>(null);
   const [isPanning, setIsPanning] = useState(false);
   const [hoveredButton, setHoveredButton] = useState<string | null>(null);
   const [expandedButton, setExpandedButton] = useState<string | null>(null);
-  const [hoverTimer, setHoverTimer] = useState<NodeJS.Timeout | null>(null);
+  const [hoverTimer, setHoverTimer] = useState<ReturnType<typeof setTimeout> | null>(null);
+  const navigate = useNavigate();
   const { addRegion, removeRegion, expandedRegions } = useRegion();
   const { startDate, endDate } = useTimeRange();
   const { viewMode } = useViewMode();
@@ -225,14 +227,10 @@ export default function Group({ overrideEndDate }: { overrideEndDate?: Date }) {
   const activeAirport = clickedAirport || hoveredAirport;
 
   // Calculate scale factor for labels based on zoom level
+  // Always use 1/zoom so the visual size stays constant at all zoom levels
   const getLabelScale = (zoom: number) => {
-    if (zoom <= 2) {
-      // Up to 2x zoom, maintain constant visual size at 1.2x enlargement
-      return 1.2 / zoom;
-    } else {
-      // Beyond 2x zoom, maintain the size they had at 2x zoom
-      return 1.2 / 2;
-    }
+    const safeZoom = zoom && zoom > 0 ? zoom : 1;
+    return 1 / safeZoom;
   };
 
   const labelScale = getLabelScale(position.zoom);
@@ -251,10 +249,8 @@ export default function Group({ overrideEndDate }: { overrideEndDate?: Date }) {
 
   // Calculate fixed offset for hover cards that doesn't change with zoom
   const getHoverCardOffset = (zoom: number) => {
-    // Base offset at 1x zoom
-    const baseOffset = -50;
-    // Inverse scale to maintain constant visual distance
-    // Ensure zoom is never 0 or invalid
+    // Card height is 83px — offset keeps it fully above the marker
+    const baseOffset = -83;
     const safeZoom = zoom && zoom > 0 ? zoom : 1;
     return baseOffset / safeZoom;
   };
@@ -490,34 +486,24 @@ export default function Group({ overrideEndDate }: { overrideEndDate?: Date }) {
                 const statusColor = airport.status === "danger" ? "#d63b25" : airport.status === "warning" ? "#ac630c" : "#5f7d4f";
                 return (
                 <Marker key={airport.code} coordinates={airport.coordinates}>
-                  <foreignObject x="-12" y="-4" width="24" height="8" style={{ overflow: 'visible' }}>
+                  <foreignObject x="-20" y="-8" width="40" height="16" style={{ overflow: 'visible' }}>
                     <div
-                      className="relative rounded-[2px] h-[8px] cursor-pointer"
-                      onMouseEnter={() => {
-                        console.log('Mouse enter on marker:', airport.code);
-                        handleMouseEnter(airport.code);
-                      }}
-                      onMouseLeave={() => {
-                        console.log('Mouse leave on marker');
-                        handleMouseLeave();
-                      }}
-                      onClick={(e) => {
-                        console.log('Marker clicked (div):', airport.code);
-                        e.stopPropagation();
-                        handleMarkerClick(airport.code);
-                      }}
+                      className="relative rounded-[3px] h-[16px] cursor-pointer"
+                      onMouseEnter={readOnly ? undefined : () => { handleMouseEnter(airport.code); }}
+                      onMouseLeave={readOnly ? undefined : () => { handleMouseLeave(); }}
+                      onClick={readOnly ? undefined : (e) => { e.stopPropagation(); handleMarkerClick(airport.code); }}
                       style={{
                         backgroundColor: isSelected ? 'white' : statusColor,
                         transform: `scale(${labelScale})`,
                         transformOrigin: 'center center',
-                        pointerEvents: 'auto'
+                        pointerEvents: readOnly ? 'none' : 'auto'
                       }}
                     >
-                      <div aria-hidden="true" className="absolute border-solid inset-0 pointer-events-none rounded-[2px]" style={{ borderWidth: 1, borderColor: statusColor }} />
+                      <div aria-hidden="true" className="absolute border-solid inset-0 pointer-events-none rounded-[3px]" style={{ borderWidth: 1, borderColor: statusColor }} />
                       <div className="flex flex-row items-center justify-center size-full">
-                        <div className="content-stretch flex items-center justify-center px-[3px] relative size-full">
-                          <div className="content-stretch flex gap-[3px] items-center justify-center relative shrink-0">
-                            <div className="relative shrink-0 size-[6px]">
+                        <div className="content-stretch flex items-center justify-center px-[5px] relative size-full">
+                          <div className="content-stretch flex gap-[5px] items-center justify-center relative shrink-0">
+                            <div className="relative shrink-0 size-[10px]">
                               <svg className="absolute block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 10 10">
                                 {airport.status === "danger" ? (
                                   <path clipRule="evenodd" d={dangerSvgPaths.p1a4c9d80} fill={isSelected ? statusColor : "white"} fillRule="evenodd" />
@@ -528,7 +514,7 @@ export default function Group({ overrideEndDate }: { overrideEndDate?: Date }) {
                                 )}
                               </svg>
                             </div>
-                            <p className="font-['Inter',sans-serif] font-normal leading-[8px] not-italic relative shrink-0 text-[6px] text-center whitespace-nowrap" style={{ color: isSelected ? statusColor : 'white' }}>{airport.code}</p>
+                            <p className="font-normal leading-[16px] not-italic relative shrink-0 text-[10px] text-center whitespace-nowrap" style={{ color: isSelected ? statusColor : 'white' }}>{airport.code}</p>
                           </div>
                         </div>
                       </div>
@@ -539,28 +525,28 @@ export default function Group({ overrideEndDate }: { overrideEndDate?: Date }) {
               })}
               
               {/* Render hover card separately after all markers so it appears on top */}
-              {activeAirport && airportHealthData.find(a => a.code === activeAirport) && (() => {
+              {!readOnly && activeAirport && airportHealthData.find(a => a.code === activeAirport) && (() => {
                 const airport = airportHealthData.find(a => a.code === activeAirport)!;
                 const isRegionExpanded = expandedRegions.some(r => r.code === airport.code);
                 return (
                   <Marker key={`hover-${activeAirport}`} coordinates={airport.coordinates}>
-                    <foreignObject x="0" y={hoverCardOffset} width="90" height="50" style={{ overflow: 'visible', pointerEvents: 'auto' }}>
-                      <div 
+                    <foreignObject x="0" y={hoverCardOffset} width="180" height="83" style={{ overflow: 'visible', pointerEvents: 'auto' }}>
+                      <div
                         className={
-                          airport.status === "healthy" 
-                            ? "bg-[rgba(228,238,224,0.8)] content-stretch flex flex-col gap-[3px] items-start justify-center px-[6px] rounded-[6px] size-full backdrop-blur-sm relative z-[1000]"
+                          airport.status === "healthy"
+                            ? "bg-[rgba(228,238,224,0.8)] content-stretch flex flex-col gap-[6px] items-start justify-center px-[11px] rounded-[9px] size-full backdrop-blur-sm relative z-[1000]"
                             : airport.status === "warning"
-                            ? "bg-[rgba(255,243,224,0.8)] content-stretch flex flex-col gap-[3px] items-start justify-center px-[6px] rounded-[6px] size-full backdrop-blur-sm relative z-[1000]"
-                            : "bg-[rgba(255,228,224,0.8)] content-stretch flex flex-col gap-[3px] items-start justify-center px-[6px] rounded-[6px] size-full backdrop-blur-sm relative z-[1000]"
+                            ? "bg-[rgba(255,243,224,0.8)] content-stretch flex flex-col gap-[6px] items-start justify-center px-[11px] rounded-[9px] size-full backdrop-blur-sm relative z-[1000]"
+                            : "bg-[rgba(255,228,224,0.8)] content-stretch flex flex-col gap-[6px] items-start justify-center px-[11px] rounded-[9px] size-full backdrop-blur-sm relative z-[1000]"
                         }
                         onMouseEnter={() => handleMouseEnter(activeAirport)}
                         onMouseLeave={handleMouseLeave}
-                        style={{ 
+                        style={{
                           transform: `scale(${labelScale})`,
                           transformOrigin: 'left top'
                         }}
                       >
-                        <div aria-hidden="true" className="absolute border border-[rgba(22,21,19,0.12)] border-solid inset-0 pointer-events-none rounded-[6px]" />
+                        <div aria-hidden="true" className="absolute border border-[rgba(22,21,19,0.12)] border-solid inset-0 pointer-events-none rounded-[9px]" />
                         <div className="relative shrink-0">
                           <div className="content-stretch flex items-start relative">
                             <div className={
@@ -571,9 +557,9 @@ export default function Group({ overrideEndDate }: { overrideEndDate?: Date }) {
                                 : "bg-[#d63b25] relative rounded-[6px] shrink-0"
                             }>
                               <div className="flex flex-row items-center justify-center size-full">
-                                <div className="content-stretch flex items-center justify-center px-[4px] py-[2px] relative">
-                                  <div className="flex flex-col font-['OracleBrand_VF_Tb:Regular',sans-serif] font-normal justify-center leading-[0] relative shrink-0 text-[6px] text-white whitespace-nowrap" style={{ fontVariationSettings: "'wdth' 100", fontFeatureSettings: "'lnum', 'tnum'" }}>
-                                    <p className="leading-[8px]">
+                                <div className="content-stretch flex items-center justify-center px-[6px] py-[3px] relative">
+                                  <div className="flex flex-col font-normal justify-center leading-[0] relative shrink-0 text-[10px] text-white whitespace-nowrap" style={{ fontFeatureSettings: "'lnum', 'tnum'" }}>
+                                    <p className="leading-[14px]">
                                       {airport.status === "healthy" ? "Healthy" : airport.status === "warning" ? "Warning" : "Danger"} {airport.healthPercentage}%
                                     </p>
                                   </div>
@@ -582,12 +568,12 @@ export default function Group({ overrideEndDate }: { overrideEndDate?: Date }) {
                             </div>
                           </div>
                         </div>
-                        <p className="font-['Inter:Medium',sans-serif] font-medium leading-[8px] min-w-full not-italic relative shrink-0 text-[#161513] text-[6px] w-[min-content]" style={{ fontFeatureSettings: "'lnum', 'tnum'" }}>
+                        <p className="font-medium leading-[14px] not-italic relative shrink-0 text-[#161513] text-[10px]" style={{ fontFeatureSettings: "'lnum', 'tnum'" }}>
                           Region: {airport.name}
                         </p>
-                        <div className="content-stretch flex gap-[6px] items-center relative shrink-0">
-                          <div 
-                            className={`relative rounded-[12px] shrink-0 cursor-pointer hover:bg-[rgba(22,21,19,0.05)] transition-all duration-200 ${expandedButton === `left-${airport.code}` ? 'pr-[4px]' : ''}`}
+                        <div className="content-stretch flex gap-[11px] items-center relative shrink-0">
+                          <div
+                            className={`relative rounded-[15px] shrink-0 cursor-pointer hover:bg-[rgba(22,21,19,0.05)] transition-all duration-200 ${expandedButton === `left-${airport.code}` ? 'pr-[6px]' : ''}`}
                             onMouseEnter={() => {
                               setHoveredButton(`left-${airport.code}`);
                               if (hoverTimer) clearTimeout(hoverTimer);
@@ -602,33 +588,30 @@ export default function Group({ overrideEndDate }: { overrideEndDate?: Date }) {
                               setExpandedButton(null);
                             }}
                             onClick={(e) => {
-                              console.log('Left button clicked - adding region');
                               e.stopPropagation();
                               handleToggleRegion(airport.code, airport.name);
                             }}
                           >
-                            <div className="content-stretch flex items-center justify-center overflow-clip p-[4px] relative rounded-[inherit] gap-[2px]">
-                              <div className="relative shrink-0 size-[8px]">
+                            <div className="content-stretch flex items-center justify-center overflow-clip p-[6px] relative rounded-[inherit] gap-[4px]">
+                              <div className="relative shrink-0 size-[14px]">
                                 <svg className="absolute block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 10 10">
                                   {isRegionExpanded ? (
-                                    // Minus icon - horizontal line
                                     <path d="M0.832217 4.58334H9.16555V5.41667H0.832217V4.58334Z" fill="#161513" />
                                   ) : (
-                                    // Plus icon
                                     <path d={buttonSvgPaths.pea7b770} fill="#161513" />
                                   )}
                                 </svg>
                               </div>
                               {expandedButton === `left-${airport.code}` && (
-                                <span className="font-['Inter',sans-serif] font-normal text-[6px] text-[#161513] whitespace-nowrap">
+                                <span className="font-normal text-[9px] text-[#161513] whitespace-nowrap">
                                   {isRegionExpanded ? 'Remove' : 'Add'}
                                 </span>
                               )}
                             </div>
-                            <div aria-hidden="true" className="absolute border border-[rgba(22,21,19,0.5)] border-solid inset-0 pointer-events-none rounded-[12px]" />
+                            <div aria-hidden="true" className="absolute border border-[rgba(22,21,19,0.5)] border-solid inset-0 pointer-events-none rounded-[15px]" />
                           </div>
-                          <div 
-                            className={`relative rounded-[12px] shrink-0 cursor-pointer hover:bg-[rgba(22,21,19,0.05)] transition-all duration-200 ${expandedButton === `right-${airport.code}` ? 'pr-[4px]' : ''}`}
+                          <div
+                            className={`relative rounded-[15px] shrink-0 cursor-pointer hover:bg-[rgba(22,21,19,0.05)] transition-all duration-200 ${expandedButton === `right-${airport.code}` ? 'pr-[6px]' : ''}`}
                             onMouseEnter={() => {
                               setHoveredButton(`right-${airport.code}`);
                               if (hoverTimer) clearTimeout(hoverTimer);
@@ -643,23 +626,23 @@ export default function Group({ overrideEndDate }: { overrideEndDate?: Date }) {
                               setExpandedButton(null);
                             }}
                             onClick={(e) => {
-                              console.log('Right button clicked');
                               e.stopPropagation();
+                              navigate(`/region/${airport.code}`);
                             }}
                           >
-                            <div className="content-stretch flex items-center justify-center overflow-clip p-[4px] relative rounded-[inherit] gap-[2px]">
-                              <div className="relative shrink-0 size-[8px]">
+                            <div className="content-stretch flex items-center justify-center overflow-clip p-[6px] relative rounded-[inherit] gap-[4px]">
+                              <div className="relative shrink-0 size-[14px]">
                                 <svg className="absolute block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 10 10">
                                   <path clipRule="evenodd" d={buttonSvgPaths.p2f8eab00} fill="#161513" fillRule="evenodd" />
                                 </svg>
                               </div>
                               {expandedButton === `right-${airport.code}` && (
-                                <span className="font-['Inter',sans-serif] font-normal text-[6px] text-[#161513] whitespace-nowrap">
+                                <span className="font-normal text-[9px] text-[#161513] whitespace-nowrap">
                                   Check
                                 </span>
                               )}
                             </div>
-                            <div aria-hidden="true" className="absolute border border-[rgba(22,21,19,0.5)] border-solid inset-0 pointer-events-none rounded-[12px]" />
+                            <div aria-hidden="true" className="absolute border border-[rgba(22,21,19,0.5)] border-solid inset-0 pointer-events-none rounded-[15px]" />
                           </div>
                         </div>
                       </div>

@@ -1,4 +1,4 @@
-import { Filter } from "lucide-react";
+import { ScrollText } from "lucide-react";
 import { useViewMode } from "../contexts/ViewModeContext";
 
 export function BottomControls() {
@@ -34,12 +34,8 @@ export function BottomControls() {
       {/* Right: Action buttons */}
       <div className="flex gap-2">
         <button className="px-4 py-2 border border-gray-300 dark:border-[#404040] rounded text-sm flex items-center gap-2 bg-white dark:bg-[#1a1a1a] dark:text-white">
-          <span>⊕</span>
-          <span>Export</span>
-        </button>
-        <button className="px-4 py-2 border border-gray-300 dark:border-[#404040] rounded text-sm flex items-center gap-2 bg-white dark:bg-[#1a1a1a] dark:text-white">
-          <Filter className="w-4 h-4" />
-          <span>Filters</span>
+          <ScrollText className="w-4 h-4" />
+          <span>View logs</span>
         </button>
       </div>
     </div>

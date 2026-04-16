@@ -142,9 +142,9 @@ export default function Group() {
           </div>
         </div>
       </div>
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal inset-[0_83.87%_87.67%_1.37%] leading-[normal] not-italic text-[#161513] text-[8px]">Incident count (in thousands)</p>
+      <p className="absolute font-normal inset-[0_83.87%_87.67%_1.37%] leading-[normal] not-italic text-[#161513] text-[8px]">Incident count (in thousands)</p>
       <div className="absolute contents inset-[84.93%_0_2.83%_1.54%]">
-        <div className="absolute content-stretch flex font-['Inter:Regular',sans-serif] font-normal gap-[4px] inset-[84.93%_0_2.83%_1.54%] items-start leading-[normal] not-italic text-[#161513] text-[8px] text-center whitespace-nowrap">
+        <div className="absolute content-stretch flex font-normal gap-[4px] inset-[84.93%_0_2.83%_1.54%] items-start leading-[normal] not-italic text-[#161513] text-[8px] text-center whitespace-nowrap">
           <p className="relative shrink-0">{`07/06 `}</p>
           <p className="relative shrink-0">{`07/07 `}</p>
           <p className="relative shrink-0">{`07/08 `}</p>
@@ -191,7 +191,7 @@ export default function Group() {
         </div>
       </div>
       <div className="absolute contents inset-[16.44%_98.61%_18.89%_0.6%]">
-        <div className="absolute content-stretch flex flex-col font-['Inter:Regular',sans-serif] font-normal gap-px inset-[16.44%_98.61%_18.89%_0.6%] items-center leading-[normal] not-italic text-[#161513] text-[8px] text-center whitespace-nowrap">
+        <div className="absolute content-stretch flex flex-col font-normal gap-px inset-[16.44%_98.61%_18.89%_0.6%] items-center leading-[normal] not-italic text-[#161513] text-[8px] text-center whitespace-nowrap">
           <p className="relative shrink-0">20</p>
           <p className="relative shrink-0">15</p>
           <p className="relative shrink-0">10</p>

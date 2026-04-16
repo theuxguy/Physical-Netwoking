@@ -2,6 +2,25 @@ import { useState, useEffect, useMemo, useRef } from "react";
 import { useTimeRange } from "../contexts/TimeRangeContext";
 import { motion } from "motion/react";
 
+const MARGIN_LEFT = 35;
+const MARGIN_RIGHT = 5;
+const BAR_WIDTH = 6;
+const WINDOW_WIDTH = 20;
+
+function computeLastBarPosition(numBars: number, totalWidth: number): number {
+  const plotWidth = totalWidth - MARGIN_LEFT - MARGIN_RIGHT;
+  // Align window right edge with last bar right edge:
+  // marginLeft + pos*plotWidth + windowWidth/2 = marginLeft + ((n-1)/n)*plotWidth + barWidth
+  return ((numBars - 1) / numBars) + (BAR_WIDTH - WINDOW_WIDTH / 2) / plotWidth;
+}
+
+const BLUE_ORANGE_GAP_PX = 100;
+
+function computeBlueDefaultPosition(numBars: number, totalWidth: number): number {
+  const plotWidth = totalWidth - MARGIN_LEFT - MARGIN_RIGHT;
+  return computeLastBarPosition(numBars, totalWidth) - BLUE_ORANGE_GAP_PX / plotWidth;
+}
+
 type IncidentData = {
   date: string;
   healthy: number;
@@ -59,27 +78,47 @@ function generateInitialData(startDate: Date, endDate: Date): IncidentData[] {
   return data;
 }
 
+function formatTooltipTimestamp(date: Date): string {
+  const month = date.toLocaleString('en-US', { month: 'short' });
+  const day = String(date.getDate()).padStart(2, '0');
+  const year = date.getFullYear();
+  const hours = String(date.getHours()).padStart(2, '0');
+  const minutes = String(date.getMinutes()).padStart(2, '0');
+  return `${month} ${day}, ${year}  ${hours}:${minutes} UTC`;
+}
+
 export function IncidentChart() {
-  const { startDate, endDate, setTimeRange, isLoading, setIsLoading, setHasMovedWindow, showComparison, setCurrentWindowDate } = useTimeRange();
+  const { startDate, endDate, setTimeRange, isLoading, setIsLoading, setHasMovedWindow, showComparison, setCurrentWindowDate, setComparisonWindowDate } = useTimeRange();
   const containerRef = useRef<HTMLDivElement>(null);
   const [containerWidth, setContainerWidth] = useState(1200);
-  const [windowPosition, setWindowPosition] = useState(0.9); // Position as percentage (0-1), start at far right
+  const [windowPosition, setWindowPosition] = useState(() => computeLastBarPosition(165, 1200));
+  const initialPositionSet = useRef(false);
   const [isDragging, setIsDragging] = useState(false);
+  const [orangePosition, setOrangePosition] = useState(() => computeBlueDefaultPosition(165, 1200));
+  const [isOrangeDragging, setIsOrangeDragging] = useState(false);
   const [isPollingActive, setIsPollingActive] = useState(true);
-  const windowWidth = 20; // Width in pixels
+  const windowWidth = WINDOW_WIDTH;
   
   const [data, setData] = useState<IncidentData[]>(() => 
     generateInitialData(startDate, endDate)
   );
 
-  // Measure container width
+  // Measure container width and set initial window position once
   useEffect(() => {
     const updateWidth = () => {
       if (containerRef.current) {
-        setContainerWidth(containerRef.current.offsetWidth);
+        const w = containerRef.current.offsetWidth;
+        setContainerWidth(w);
+        if (!initialPositionSet.current) {
+          initialPositionSet.current = true;
+          const bluePos = computeLastBarPosition(data.length, w);
+          const orangePos = computeBlueDefaultPosition(data.length, w);
+          setWindowPosition(bluePos);
+          setOrangePosition(orangePos);
+        }
       }
     };
-    
+
     updateWidth();
     window.addEventListener('resize', updateWidth);
     return () => window.removeEventListener('resize', updateWidth);
@@ -121,12 +160,10 @@ export function IncidentChart() {
     const handleMouseMove = (e: MouseEvent) => {
       if (containerRef.current) {
         const rect = containerRef.current.getBoundingClientRect();
-        const marginLeft = 35;
-        const marginRight = 5;
-        const plotWidth = rect.width - marginLeft - marginRight;
+        const plotWidth = rect.width - MARGIN_LEFT - MARGIN_RIGHT;
         
         // Calculate position relative to plot area
-        const x = e.clientX - rect.left - marginLeft;
+        const x = e.clientX - rect.left - MARGIN_LEFT;
         const position = Math.max(0, Math.min(1, x / plotWidth));
         
         setWindowPosition(position);
@@ -172,19 +209,54 @@ export function IncidentChart() {
     };
   }, [isDragging, windowPosition, startDate, endDate, setTimeRange, setIsLoading, setHasMovedWindow, setCurrentWindowDate]);
 
+  // Handle orange window dragging
+  const handleOrangeMouseDown = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setIsOrangeDragging(true);
+  };
+
+  useEffect(() => {
+    if (!isOrangeDragging) return;
+
+    const handleMouseMove = (e: MouseEvent) => {
+      if (containerRef.current) {
+        const rect = containerRef.current.getBoundingClientRect();
+        const plotWidth = rect.width - MARGIN_LEFT - MARGIN_RIGHT;
+        const x = e.clientX - rect.left - MARGIN_LEFT;
+        const position = Math.max(0, Math.min(1, x / plotWidth));
+        setOrangePosition(position);
+      }
+    };
+
+    const handleMouseUp = () => {
+      setIsOrangeDragging(false);
+
+      const totalDuration = endDate.getTime() - startDate.getTime();
+      const windowCenter = startDate.getTime() + (orangePosition * totalDuration);
+      setComparisonWindowDate(new Date(windowCenter));
+    };
+
+    document.addEventListener('mousemove', handleMouseMove);
+    document.addEventListener('mouseup', handleMouseUp);
+    return () => {
+      document.removeEventListener('mousemove', handleMouseMove);
+      document.removeEventListener('mouseup', handleMouseUp);
+    };
+  }, [isOrangeDragging, orangePosition, startDate, endDate, setComparisonWindowDate]);
+
   // Custom SVG chart rendering
   const renderChart = useMemo(() => {
     const chartWidth = containerWidth;
     const chartHeight = 120;
-    const marginLeft = 35;
-    const marginRight = 5;
+    const marginLeft = MARGIN_LEFT;
+    const marginRight = MARGIN_RIGHT;
     const marginTop = 5;
     const marginBottom = 15;
-    
+
     const plotWidth = chartWidth - marginLeft - marginRight;
     const plotHeight = chartHeight - marginTop - marginBottom;
-    
-    const barWidth = 6;
+
+    const barWidth = BAR_WIDTH;
     const barGap = 1;
     
     const yMax = 40;
@@ -343,10 +415,10 @@ export function IncidentChart() {
           onMouseDown={handleMouseDown}
         />
         
-        {/* Orange window (current) - appears at far right when comparison is active */}
+        {/* Orange window - draggable when comparison is active */}
         {showComparison && (
           <rect
-            x={marginLeft + ((data.length - 1) / data.length) * plotWidth - (windowWidth / 2)}
+            x={marginLeft + (orangePosition * plotWidth) - (windowWidth / 2)}
             y={marginTop}
             width={windowWidth}
             height={plotHeight}
@@ -354,12 +426,23 @@ export function IncidentChart() {
             stroke="#de8011"
             strokeWidth="2"
             rx="5"
-            style={{ pointerEvents: 'none' }}
+            style={{ cursor: isOrangeDragging ? 'grabbing' : 'grab' }}
+            onMouseDown={handleOrangeMouseDown}
           />
         )}
       </svg>
     );
-  }, [data, containerWidth, windowPosition, isDragging, showComparison]);
+  }, [data, containerWidth, windowPosition, isDragging, orangePosition, isOrangeDragging, showComparison, handleOrangeMouseDown]);
+
+  // Live timestamps from current window positions (update during drag)
+  const totalDuration = endDate.getTime() - startDate.getTime();
+  const plotWidth = containerWidth - MARGIN_LEFT - MARGIN_RIGHT;
+  const blueTimestamp = formatTooltipTimestamp(new Date(startDate.getTime() + windowPosition * totalDuration));
+  const orangeTimestamp = formatTooltipTimestamp(new Date(startDate.getTime() + orangePosition * totalDuration));
+
+  // Pixel x-centre of each window within the chart container (accounting for left margin)
+  const blueXPct   = ((MARGIN_LEFT + windowPosition * plotWidth) / containerWidth) * 100;
+  const orangeXPct = ((MARGIN_LEFT + orangePosition * plotWidth) / containerWidth) * 100;
 
   return (
     <div className="px-6 pt-4">
@@ -368,7 +451,31 @@ export function IncidentChart() {
         <div className="absolute left-2 top-2 text-[11px] text-[#161513] dark:text-white">
           Incident count (in thousands)
         </div>
-        
+
+        {/* Blue window timestamp tooltip */}
+        {isDragging && (
+          <div
+            className="absolute z-20 -translate-x-1/2 pointer-events-none"
+            style={{ left: `${blueXPct}%`, top: 2 }}
+          >
+            <div className="bg-[#227e9e] text-white text-[10px] font-medium px-2 py-0.5 rounded whitespace-nowrap shadow">
+              {blueTimestamp}
+            </div>
+          </div>
+        )}
+
+        {/* Orange window timestamp tooltip */}
+        {isOrangeDragging && (
+          <div
+            className="absolute z-20 -translate-x-1/2 pointer-events-none"
+            style={{ left: `${orangeXPct}%`, top: 2 }}
+          >
+            <div className="bg-[#de8011] text-white text-[10px] font-medium px-2 py-0.5 rounded whitespace-nowrap shadow">
+              {orangeTimestamp}
+            </div>
+          </div>
+        )}
+
         {/* Chart */}
         <div className="h-full w-full flex items-end">
           <div ref={containerRef} className="w-full h-[120px]">

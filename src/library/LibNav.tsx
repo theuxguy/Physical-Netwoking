@@ -36,16 +36,16 @@ export function LibNav({ active, onSelect }: LibNavProps) {
       <div className="p-4 space-y-6 flex-1">
         {NAV.map((section) => (
           <div key={section.group}>
-            <p className="text-[10px] font-bold uppercase tracking-widest text-slate-400 dark:text-slate-600 px-2 mb-1.5">
+            <p className="text-[10px] font-bold uppercase tracking-widest text-slate-400 dark:text-slate-600 px-2 mb-2">
               {section.group}
             </p>
-            <ul className="space-y-0.5">
+            <ul className="space-y-1">
               {section.items.map((item) => (
                 <li key={item.id}>
                   <button
                     onClick={() => onSelect(item.id)}
                     className={cn(
-                      "w-full text-left px-2.5 py-1.5 rounded-md text-sm transition-colors",
+                      "w-full text-left px-3 py-2 rounded-md text-sm transition-colors",
                       active === item.id
                         ? "bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-slate-50 font-medium"
                         : "text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-900 hover:text-slate-900 dark:hover:text-slate-200"

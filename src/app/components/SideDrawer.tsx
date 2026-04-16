@@ -27,14 +27,14 @@ export function SideDrawer({ isOpen, onClose, component, metric, category }: Sid
       
       {/* Drawer */}
       <div 
-        className="fixed right-0 top-0 bottom-0 w-1/2 bg-white dark:bg-[#1a1a1a] shadow-xl z-50 flex flex-col"
+        className="fixed right-0 top-0 bottom-0 w-[70%] bg-white dark:bg-[#1a1a1a] shadow-xl z-50 flex flex-col"
         style={{
           animation: 'slideIn 0.3s ease-out',
         }}
       >
         {/* Header */}
         <div className="flex items-center justify-between px-8 py-6 border-b border-[#d8d8d8] dark:border-[#404040]">
-          <h2 className="font-['Inter:Regular',sans-serif] font-semibold text-[24px] text-black dark:text-white">
+          <h2 className="font-semibold text-[24px] text-black dark:text-white">
             {title}
           </h2>
           <button 

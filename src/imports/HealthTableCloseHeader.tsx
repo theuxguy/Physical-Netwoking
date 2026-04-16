@@ -19,7 +19,7 @@ function Helper({ additionalClassNames = "" }: HelperProps) {
       <Wrapper>
         <div className="bg-[rgba(80,130,35,0.2)] content-stretch flex items-center justify-center p-[4px] relative rounded-[3px] shrink-0">
           <div aria-hidden="true" className="absolute border border-[#508223] border-solid inset-0 pointer-events-none rounded-[3px]" />
-          <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[#508223] text-[11px] whitespace-nowrap">{"Healthy"}</p>
+          <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[#508223] text-[11px] whitespace-nowrap">{"Healthy"}</p>
         </div>
       </Wrapper>
     </div>
@@ -46,7 +46,7 @@ export default function Frame() {
       <div className="bg-[rgba(214,59,37,0.2)] h-[38px] relative shrink-0 w-full">
         <div className="flex flex-row items-center justify-center size-full">
           <div className="content-stretch flex items-center justify-center p-[10px] relative size-full">
-            <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[14px] text-black whitespace-nowrap">TOR</p>
+            <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[14px] text-black whitespace-nowrap">TOR</p>
           </div>
         </div>
       </div>
@@ -56,7 +56,7 @@ export default function Frame() {
         <Wrapper>
           <div className="bg-[rgba(214,59,37,0.2)] content-stretch flex items-center justify-center p-[4px] relative rounded-[3px] shrink-0">
             <div aria-hidden="true" className="absolute border border-[#d63b25] border-solid inset-0 pointer-events-none rounded-[3px]" />
-            <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[#d63b25] text-[11px] whitespace-nowrap">Critical</p>
+            <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[#d63b25] text-[11px] whitespace-nowrap">Critical</p>
           </div>
         </Wrapper>
       </div>

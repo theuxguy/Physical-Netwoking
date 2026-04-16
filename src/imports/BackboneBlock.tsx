@@ -15,7 +15,7 @@ export default function Group() {
               </div>
             </div>
             <div className="content-stretch flex gap-[5px] items-center relative shrink-0">
-              <p className="font-['Helvetica_Neue:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[11px] text-black dark:text-white whitespace-nowrap">Backbone</p>
+              <p className="leading-[normal] not-italic relative shrink-0 text-[11px] text-black dark:text-white whitespace-nowrap">Backbone</p>
               <div className="relative shrink-0 size-[13px]" data-name="Alerts / warning-s-24">
                 <div className="absolute inset-[10%]" data-name="Vector">
                   <svg className="absolute block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 11.666 11.666">

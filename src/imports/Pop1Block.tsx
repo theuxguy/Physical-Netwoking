@@ -18,7 +18,7 @@ export default function Group() {
           </div>
           <div className="absolute h-[45px] left-[46px] top-[5.5px] w-[67px]">
             <div className="absolute content-stretch flex flex-col gap-[5px] items-start justify-center left-0 top-0">
-              <div className="font-['Helvetica_Neue:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[0px] text-black w-[67px]">
+              <div className="leading-[normal] not-italic relative shrink-0 text-[0px] text-black w-[67px]">
                 <p className="mb-0 text-[11px]">POP-1</p>
                 <p className="text-[#665f5b] text-[9px]">Some info. here</p>
               </div>

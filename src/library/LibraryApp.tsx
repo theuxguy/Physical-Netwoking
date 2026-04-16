@@ -61,7 +61,7 @@ export function LibraryApp() {
     <div className={cn(dark && "dark", "h-screen overflow-hidden flex flex-col bg-slate-50 dark:bg-slate-950")}>
       {/* Top bar */}
       <header className="h-12 shrink-0 flex items-center justify-between px-5 bg-white dark:bg-slate-950 border-b border-slate-200 dark:border-slate-800 z-10">
-        <div className="flex items-center gap-2.5">
+        <div className="flex items-center gap-3">
           <Layers className="w-4 h-4 text-slate-500 dark:text-slate-400" />
           <span className="text-sm font-semibold text-slate-900 dark:text-slate-100">
             Component Library
@@ -71,7 +71,7 @@ export function LibraryApp() {
         </div>
         <button
           onClick={toggleDark}
-          className="p-1.5 rounded-md text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+          className="p-2 rounded-md text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
           aria-label="Toggle dark mode"
         >
           {dark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}

@@ -56,7 +56,7 @@ function Wrapper1({ children }: React.PropsWithChildren<{}>) {
             <Text text="08/06" />
             <Text text="08/11" />
           </div>
-          <div className="col-1 content-stretch flex flex-col font-['Inter:Regular',sans-serif] font-normal gap-[8px] h-[50px] items-end leading-[normal] ml-0 mt-0 not-italic relative row-1 text-[8px] text-black w-[34px] whitespace-nowrap">
+          <div className="col-1 content-stretch flex flex-col font-normal gap-[8px] h-[50px] items-end leading-[normal] ml-0 mt-0 not-italic relative row-1 text-[8px] text-black w-[34px] whitespace-nowrap">
             <p className="relative shrink-0">{"100 pps"}</p>
             <p className="relative shrink-0">{"50 pps"}</p>
             <p className="relative shrink-0">{"0 pps"}</p>
@@ -105,14 +105,14 @@ function Text2({ text, children }: React.PropsWithChildren<Text2Props>) {
               </svg>
             </div>
           </div>
-          <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[11px] text-black whitespace-nowrap">{text}</p>
+          <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[11px] text-black whitespace-nowrap">{text}</p>
         </div>
         <div className="content-stretch flex flex-col gap-[6px] h-[32px] items-start leading-[normal] not-italic relative shrink-0 text-[11px] text-black w-[120px]">
-          <div className="content-stretch flex font-['Inter:Semi_Bold',sans-serif] font-semibold gap-[10px] items-start relative shrink-0 w-full">
+          <div className="content-stretch flex font-semibold gap-[10px] items-start relative shrink-0 w-full">
             <p className="flex-[1_0_0] min-h-px min-w-px relative">{"min"}</p>
             <p className="relative shrink-0 w-[57px]">{"max"}</p>
           </div>
-          <div className="content-stretch flex flex-[1_0_0] font-['Inter:Regular',sans-serif] font-normal gap-[18px] items-start min-h-px min-w-px relative w-full whitespace-nowrap">
+          <div className="content-stretch flex flex-[1_0_0] font-normal gap-[18px] items-start min-h-px min-w-px relative w-full whitespace-nowrap">
             <p className="relative shrink-0">{"0.157pps"}</p>
             <p className="relative shrink-0">{"0.0679pps"}</p>
           </div>
@@ -157,7 +157,7 @@ type TableSummaryIssuesText10Props = {
 function TableSummaryIssuesText10({ text, additionalClassNames = "" }: TableSummaryIssuesText10Props) {
   return (
     <div className={clsx("content-stretch flex px-[10px] relative size-full", additionalClassNames)}>
-      <p className="font-['Inter:Regular',sans-serif] font-normal leading-[16px] not-italic relative shrink-0 text-[#161513] text-[14px] w-[165px]">{text}</p>
+      <p className="font-normal leading-[16px] not-italic relative shrink-0 text-[#161513] text-[14px] w-[165px]">{text}</p>
     </div>
   );
 }
@@ -169,7 +169,7 @@ type TableSummaryIssuesText9Props = {
 function TableSummaryIssuesText9({ text, additionalClassNames = "" }: TableSummaryIssuesText9Props) {
   return (
     <div className={clsx("content-stretch flex px-[10px] relative size-full", additionalClassNames)}>
-      <p className="flex-[1_0_0] font-['Inter:Regular',sans-serif] font-normal leading-[16px] min-h-px min-w-px not-italic relative text-[#161513] text-[14px]">{text}</p>
+      <p className="flex-[1_0_0] font-normal leading-[16px] min-h-px min-w-px not-italic relative text-[#161513] text-[14px]">{text}</p>
     </div>
   );
 }
@@ -181,7 +181,7 @@ type Text1Props = {
 function Text1({ text, additionalClassNames = "" }: Text1Props) {
   return (
     <div className={clsx("content-stretch flex items-center px-[10px] relative size-full", additionalClassNames)}>
-      <p className="flex-[1_0_0] font-['Inter:Regular',sans-serif] font-normal leading-[normal] min-h-px min-w-px not-italic relative text-[#161513] text-[14px]">{text}</p>
+      <p className="flex-[1_0_0] font-normal leading-[normal] min-h-px min-w-px not-italic relative text-[#161513] text-[14px]">{text}</p>
     </div>
   );
 }
@@ -220,7 +220,7 @@ type TableSummaryIssuesText7Props = {
 function TableSummaryIssuesText7({ text, additionalClassNames = "" }: TableSummaryIssuesText7Props) {
   return (
     <div className={clsx("content-stretch flex items-center px-[10px] relative size-full", additionalClassNames)}>
-      <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[#161513] text-[14px] w-[52px]">{text}</p>
+      <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[#161513] text-[14px] w-[52px]">{text}</p>
     </div>
   );
 }
@@ -232,7 +232,7 @@ type TableSummaryIssuesText6Props = {
 function TableSummaryIssuesText6({ text, additionalClassNames = "" }: TableSummaryIssuesText6Props) {
   return (
     <Wrapper additionalClassNames={additionalClassNames}>
-      <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[#161513] text-[14px] w-[104px]">{text}</p>
+      <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[#161513] text-[14px] w-[104px]">{text}</p>
     </Wrapper>
   );
 }
@@ -244,7 +244,7 @@ type TableSummaryIssuesText5Props = {
 function TableSummaryIssuesText5({ text, additionalClassNames = "" }: TableSummaryIssuesText5Props) {
   return (
     <div className={clsx("content-stretch flex px-[10px] py-[7px] relative size-full", additionalClassNames)}>
-      <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[#161513] text-[14px] w-[109px]">{text}</p>
+      <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[#161513] text-[14px] w-[109px]">{text}</p>
     </div>
   );
 }
@@ -256,7 +256,7 @@ type TableSummaryIssuesText4Props = {
 function TableSummaryIssuesText4({ text, additionalClassNames = "" }: TableSummaryIssuesText4Props) {
   return (
     <Wrapper additionalClassNames={additionalClassNames}>
-      <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[#161513] text-[14px] whitespace-nowrap">{text}</p>
+      <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[#161513] text-[14px] whitespace-nowrap">{text}</p>
     </Wrapper>
   );
 }
@@ -269,7 +269,7 @@ function TableSummaryIssuesText3({ text }: TableSummaryIssuesText3Props) {
     <div className="bg-[#f8f8f8] relative shrink-0 w-full">
       <div className="flex flex-row items-center size-full">
         <div className="content-stretch flex items-center p-[10px] relative w-full">
-          <p className="font-['Inter:Medium',sans-serif] font-medium leading-[normal] not-italic relative shrink-0 text-[14px] text-black whitespace-nowrap">{text}</p>
+          <p className="font-medium font-medium leading-[normal] not-italic relative shrink-0 text-[14px] text-black whitespace-nowrap">{text}</p>
         </div>
       </div>
     </div>
@@ -298,7 +298,7 @@ function TableSummaryIssuesText2({ text, additionalClassNames = "" }: TableSumma
     <div className={clsx("content-stretch flex justify-center px-[10px] relative size-full", additionalClassNames)}>
       <div className="bg-[rgba(214,59,37,0.2)] content-stretch flex items-center justify-center p-[4px] relative rounded-[3px] shrink-0">
         <div aria-hidden="true" className="absolute border border-[#d63b25] border-solid inset-0 pointer-events-none rounded-[3px]" />
-        <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[#d63b25] text-[11px] whitespace-nowrap">{text}</p>
+        <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[#d63b25] text-[11px] whitespace-nowrap">{text}</p>
       </div>
     </div>
   );
@@ -311,7 +311,7 @@ type TableSummaryIssuesText1Props = {
 function TableSummaryIssuesText1({ text, additionalClassNames = "" }: TableSummaryIssuesText1Props) {
   return (
     <div className={clsx("content-stretch flex gap-[5px] items-center p-[10px] relative w-full", additionalClassNames)}>
-      <p className="font-['Inter:Medium',sans-serif] font-medium leading-[normal] not-italic relative shrink-0 text-[14px] text-black whitespace-nowrap">{text}</p>
+      <p className="font-medium font-medium leading-[normal] not-italic relative shrink-0 text-[14px] text-black whitespace-nowrap">{text}</p>
       <div className="relative shrink-0 size-[14px]" data-name="filter-alt">
         <div className="absolute inset-[8.33%_3.99%_9.92%_3.97%]" data-name="vector">
           <svg className="absolute block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 12.8854 11.4439">
@@ -332,7 +332,7 @@ function TableSummaryIssuesHelper({ text, text1 }: TableSummaryIssuesHelperProps
     <div className="grid-cols-[max-content] grid-rows-[max-content] inline-grid leading-[0] place-items-start relative shrink-0">
       <div className="bg-white col-1 content-stretch flex gap-[10px] h-[36px] items-center ml-0 mt-0 p-[5px] relative row-1 w-[1363px]">
         <div aria-hidden="true" className="absolute border border-[#d7d7d7] border-solid inset-0 pointer-events-none" />
-        <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[#665f5b] text-[12px] w-[175px]">{text}</p>
+        <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[#665f5b] text-[12px] w-[175px]">{text}</p>
         <div className="flex-[1_0_0] grid-cols-[max-content] grid-rows-[max-content] inline-grid leading-[0] min-h-px min-w-px place-items-start relative">
           <div className="col-1 content-stretch flex items-center justify-end ml-0 mt-0 relative row-1 w-[1168px]">
             <div className="overflow-clip relative shrink-0 size-[20px]" data-name="arrows/caret left">
@@ -340,7 +340,7 @@ function TableSummaryIssuesHelper({ text, text1 }: TableSummaryIssuesHelperProps
                 <path d="M5 0V10L0 5L5 0Z" fill="var(--fill-0, #AEA8A2)" id="Vector" />
               </Vector1>
             </div>
-            <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[12px] text-black whitespace-nowrap">{text1}</p>
+            <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[12px] text-black whitespace-nowrap">{text1}</p>
             <div className="overflow-clip relative shrink-0 size-[20px]" data-name="arrows/caret right">
               <Vector1>
                 <path d={svgPaths.p3a389f00} fill="var(--fill-0, #161513)" id="Vector" />
@@ -368,7 +368,7 @@ function TableSummaryIssuesText({ text }: TableSummaryIssuesTextProps) {
               </svg>
             </div>
           </div>
-          <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[#222] text-[14px] whitespace-nowrap">{text}</p>
+          <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[#222] text-[14px] whitespace-nowrap">{text}</p>
         </div>
       </div>
     </div>
@@ -405,7 +405,7 @@ function Text({ text, additionalClassNames = "" }: TextProps) {
           </div>
         </div>
       </div>
-      <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[11px] text-black whitespace-nowrap">{text}</p>
+      <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[11px] text-black whitespace-nowrap">{text}</p>
     </div>
   );
 }
@@ -467,15 +467,15 @@ function SearchInput({ className, state = "Default", text = "Hint" }: SearchInpu
             </div>
           )}
         </div>
-        {(isDefaultAndHint || isSearchingAndHint || isFocusedAndHint || isDisabledAndHint || isDiabledWhileSearchingAndHint || isDefaultAndYes || isSearchingAndYes || isDisabledAndYes || isDiabledWhileSearchingAndYes) && <p className={`font-["Helvetica_Neue:Regular",sans-serif] leading-[normal] not-italic relative shrink-0 text-[14px] whitespace-nowrap ${text === "Yes" && ["Default", "Searching", "Diabled while searching"].includes(state) ? "text-[#161513]" : state === "Disabled" && ["Hint", "Yes"].includes(text) ? "text-[#aea8a2]" : "text-[#665f5b]"}`}>{text === "Yes" && ["Default", "Searching", "Disabled", "Diabled while searching"].includes(state) ? "Field text" : text === "Hint" && ["Searching", "Focused", "Disabled", "Diabled while searching"].includes(state) ? "Search" : "Search"}</p>}
+        {(isDefaultAndHint || isSearchingAndHint || isFocusedAndHint || isDisabledAndHint || isDiabledWhileSearchingAndHint || isDefaultAndYes || isSearchingAndYes || isDisabledAndYes || isDiabledWhileSearchingAndYes) && <p className={`leading-[normal] not-italic relative shrink-0 text-[14px] whitespace-nowrap ${text === "Yes" && ["Default", "Searching", "Diabled while searching"].includes(state) ? "text-[#161513]" : state === "Disabled" && ["Hint", "Yes"].includes(text) ? "text-[#aea8a2]" : "text-[#665f5b]"}`}>{text === "Yes" && ["Default", "Searching", "Disabled", "Diabled while searching"].includes(state) ? "Field text" : text === "Hint" && ["Searching", "Focused", "Disabled", "Diabled while searching"].includes(state) ? "Search" : "Search"}</p>}
         {isFocusedAndYes && (
-          <div className="content-stretch flex font-['Helvetica_Neue:Regular',sans-serif] items-start leading-[normal] not-italic relative shrink-0 text-[#161513] text-[14px] whitespace-nowrap">
+          <div className="content-stretch flex items-start leading-[normal] not-italic relative shrink-0 text-[#161513] text-[14px] whitespace-nowrap">
             <p className="relative shrink-0">Field text</p>
             <p className="relative shrink-0">|</p>
           </div>
         )}
       </div>
-      {isFocusedAndHint && <p className="absolute font-['Helvetica_Neue:Regular',sans-serif] leading-[normal] left-[33px] not-italic text-[#161513] text-[14px] top-[8px] whitespace-nowrap">|</p>}
+      {isFocusedAndHint && <p className="absolute leading-[normal] left-[33px] not-italic text-[#161513] text-[14px] top-[8px] whitespace-nowrap">|</p>}
     </div>
   );
 }
@@ -492,7 +492,7 @@ export default function TableSummaryIssues() {
                 <div className="absolute bg-white content-stretch flex gap-[68px] items-center left-0 px-[20px] top-[9px] w-[1360px]">
                   <div className="flex-[1_0_0] grid-cols-[max-content] grid-rows-[max-content] inline-grid leading-[0] min-h-px min-w-px place-items-start relative">
                     <div className="col-1 content-stretch flex gap-[9px] items-center ml-0 mt-0 relative row-1 w-[999px]">
-                      <p className="font-['Inter:Semi_Bold',sans-serif] font-semibold leading-[normal] not-italic relative shrink-0 text-[#222] text-[14px] whitespace-nowrap">Filters applied:</p>
+                      <p className="font-semibold leading-[normal] not-italic relative shrink-0 text-[#222] text-[14px] whitespace-nowrap">Filters applied:</p>
                       <TableSummaryIssuesText text="JFAB" />
                       <TableSummaryIssuesText text="Performance" />
                     </div>
@@ -529,12 +529,12 @@ export default function TableSummaryIssues() {
                   <div aria-hidden="true" className="absolute border-[#d5d5d5] border-b border-solid border-t inset-[-1px_0] pointer-events-none" />
                   <TableSummaryIssuesText3 text="Description" />
                   <TableSummaryIssuesHelper2>
-                    <div className="flex flex-col font-['Inter:Regular',sans-serif] font-normal justify-center leading-[0] not-italic relative shrink-0 text-[#161513] text-[14px] whitespace-nowrap">
+                    <div className="flex flex-col font-normal justify-center leading-[0] not-italic relative shrink-0 text-[#161513] text-[14px] whitespace-nowrap">
                       <p className="leading-[normal]">JFAB-JFAB links in Metro network between IAD11</p>
                     </div>
                   </TableSummaryIssuesHelper2>
                   <Wrapper additionalClassNames="h-[54px]">
-                    <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[#161513] text-[14px] whitespace-nowrap">{`CFAB-CFAB links in Metro network between IAD11 `}</p>
+                    <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[#161513] text-[14px] whitespace-nowrap">{`CFAB-CFAB links in Metro network between IAD11 `}</p>
                   </Wrapper>
                   <TableSummaryIssuesText4 text="CFAB-CFAB links in Metro network between IAD11" additionalClassNames="h-[38px]" />
                   <TableSummaryIssuesText4 text="CFAB-CFAB links in Metro network between IAD11 and IAD12..." additionalClassNames="h-[61px]" />
@@ -553,15 +553,15 @@ export default function TableSummaryIssues() {
                   <div className="bg-white h-[55px] relative shrink-0 w-full">
                     <div className="flex flex-row items-center size-full">
                       <div className="content-stretch flex items-center px-[5px] py-[7px] relative size-full">
-                        <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[#161513] text-[14px] w-[114px]">DXB/AD2/AD33</p>
+                        <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[#161513] text-[14px] w-[114px]">DXB/AD2/AD33</p>
                       </div>
                     </div>
                   </div>
                   <Wrapper additionalClassNames="h-[42px]">
-                    <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[#161513] text-[14px] w-[113px]">DXB/AD2/AD31</p>
+                    <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[#161513] text-[14px] w-[113px]">DXB/AD2/AD31</p>
                   </Wrapper>
                   <Wrapper additionalClassNames="h-[59px]">
-                    <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[#161513] text-[14px] w-[103px]">DXB/AD2/AD23</p>
+                    <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[#161513] text-[14px] w-[103px]">DXB/AD2/AD23</p>
                   </Wrapper>
                   <div className="bg-white h-[44px] relative shrink-0 w-full">
                     <div className="flex flex-row items-center size-full">
@@ -577,7 +577,7 @@ export default function TableSummaryIssues() {
                     </div>
                   </div>
                   <TableSummaryIssuesHelper2>
-                    <p className="font-['Inter:Regular',sans-serif] font-normal h-[25px] leading-[normal] not-italic relative shrink-0 text-[#161513] text-[14px] w-[104px]">DXB/AD2/AD21</p>
+                    <p className="font-normal h-[25px] leading-[normal] not-italic relative shrink-0 text-[#161513] text-[14px] w-[104px]">DXB/AD2/AD21</p>
                   </TableSummaryIssuesHelper2>
                   <TableSummaryIssuesText6 text="DXB/AD2/AD11" additionalClassNames="h-[56px]" />
                   <TableSummaryIssuesText6 text="DXB/AD2/AD21" additionalClassNames="h-[33px]" />
@@ -592,12 +592,12 @@ export default function TableSummaryIssues() {
                     </div>
                   </div>
                   <TableSummaryIssuesHelper3 additionalClassNames="h-[280px]">
-                    <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[#161513] text-[14px] w-[57px]">JFAB</p>
+                    <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[#161513] text-[14px] w-[57px]">JFAB</p>
                   </TableSummaryIssuesHelper3>
                   <div className="bg-white h-[52px] relative shrink-0 w-full">
                     <div className="flex flex-row items-center size-full">
                       <div className="content-stretch flex items-center px-[10px] py-[8px] relative size-full">
-                        <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[#161513] text-[14px] w-[53px]">JFAB</p>
+                        <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[#161513] text-[14px] w-[53px]">JFAB</p>
                       </div>
                     </div>
                   </div>
@@ -617,7 +617,7 @@ export default function TableSummaryIssues() {
                     </div>
                   </div>
                   <TableSummaryIssuesHelper3 additionalClassNames="h-[281px]">
-                    <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[#161513] text-[14px] w-[100px]">Performance</p>
+                    <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[#161513] text-[14px] w-[100px]">Performance</p>
                   </TableSummaryIssuesHelper3>
                   <TableSummaryIssuesText8 text="Performance" additionalClassNames="h-[50px]" />
                   <TableSummaryIssuesText8 text="Performance" additionalClassNames="h-[41px]" />
@@ -685,7 +685,7 @@ export default function TableSummaryIssues() {
                             <div className="grid-cols-[max-content] grid-rows-[max-content] inline-grid leading-[0] place-items-start relative shrink-0">
                               <div className="bg-[#1397c3] col-1 content-stretch flex h-[36px] items-center justify-center ml-0 mt-0 overflow-clip p-[10px] relative rounded-[3px] row-1 w-[135.5px]">
                                 <div className="content-stretch flex gap-[2px] items-center justify-center relative shrink-0">
-                                  <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[14px] text-white whitespace-nowrap">View incidents</p>
+                                  <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[14px] text-white whitespace-nowrap">View incidents</p>
                                   <div className="overflow-clip relative shrink-0 size-[20px]" data-name="external link">
                                     <div className="absolute inset-[12.5%]" data-name="icon external link">
                                       <svg className="absolute block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 15 15">
@@ -765,7 +765,7 @@ export default function TableSummaryIssues() {
                 {"Spike chart" === "Spike chart" && (
                   <div className="-translate-x-1/2 -translate-y-1/2 absolute bg-white content-stretch flex flex-col gap-[6px] h-[165px] items-center left-[calc(50%+0.5px)] p-[10px] rounded-[3px] top-[calc(50%+11px)] w-[354px]">
                     <div aria-hidden="true" className="absolute border border-[#d5d5d5] border-solid inset-0 pointer-events-none rounded-[3px]" />
-                    <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[11px] text-black whitespace-nowrap">JFAB Client - Input Interface Errors</p>
+                    <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[11px] text-black whitespace-nowrap">JFAB Client - Input Interface Errors</p>
                     <Wrapper1>
                       <div className="absolute flex inset-0 items-center justify-center">
                         <div className="flex-none h-[20.082px] rotate-[-0.06deg] w-[255.002px]">
@@ -787,7 +787,7 @@ export default function TableSummaryIssues() {
               </div>
               <Graphs additionalClassNames="ml-[360px]">
                 <div aria-hidden="true" className="absolute border border-[#d5d5d5] border-solid inset-0 pointer-events-none rounded-[3px]" />
-                <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[11px] text-black whitespace-nowrap">JFAB Client - Input Interface Errors</p>
+                <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[11px] text-black whitespace-nowrap">JFAB Client - Input Interface Errors</p>
                 <Wrapper1>
                   <div className="absolute flex inset-[19.11%_0_-0.77%_0] items-center justify-center">
                     <div className="flex-none h-[16.349px] rotate-[-0.06deg] w-[255.002px]">
@@ -807,7 +807,7 @@ export default function TableSummaryIssues() {
               </Graphs>
               <Graphs additionalClassNames="ml-[720px]">
                 <div aria-hidden="true" className="absolute border border-[#d5d5d5] border-solid inset-0 pointer-events-none rounded-[3px]" />
-                <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[11px] text-black whitespace-nowrap">JFAB Client - Input Interface Errors</p>
+                <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[11px] text-black whitespace-nowrap">JFAB Client - Input Interface Errors</p>
                 <Wrapper1>
                   <div className="absolute flex inset-[97.83%_0_-0.06%_0.01%] items-center justify-center">
                     <div className="flex-none h-[0.18px] rotate-[-0.06deg] w-[255.002px]">

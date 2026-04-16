@@ -65,7 +65,7 @@ export function Elevation() {
                   >
                     <span className="text-xs text-slate-400 dark:text-slate-500">{level.name}</span>
                   </div>
-                  <div className="text-center space-y-0.5">
+                  <div className="text-center space-y-1">
                     <code className="text-xs font-mono text-violet-600 dark:text-violet-400 block">{level.tailwind}</code>
                     <p className="text-xs text-slate-400 dark:text-slate-500 max-w-[100px] text-center">{level.usage}</p>
                   </div>

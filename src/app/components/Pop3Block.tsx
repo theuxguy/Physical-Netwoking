@@ -32,12 +32,12 @@ export default function Pop3Block() {
           </div>
           <div className="absolute content-stretch flex items-center left-[46px] top-[8px]">
             <div className="content-stretch flex flex-col gap-[5px] items-start justify-center relative shrink-0">
-              <p className="font-['Helvetica_Neue:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[11px] text-black dark:text-white w-[67px]">POP-3</p>
+              <p className="leading-[normal] not-italic relative shrink-0 text-[11px] text-black dark:text-white w-[67px]">POP-3</p>
               <AlertsErrorS />
             </div>
           </div>
           <div className="absolute content-stretch flex flex-col items-center left-[6px] top-[8px]">
-            <p className="font-['Helvetica_Neue:Regular',sans-serif] h-[25px] leading-[normal] not-italic relative shrink-0 text-[9px] text-black dark:text-white text-center w-[24px]">BLD 23</p>
+            <p className="h-[25px] leading-[normal] not-italic relative shrink-0 text-[9px] text-black dark:text-white text-center w-[24px]">BLD 23</p>
             <AlertsErrorS />
           </div>
         </div>

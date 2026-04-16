@@ -32,7 +32,7 @@ export function Spacing() {
       <div className="space-y-8">
         <Group title="4px Spacing Scale">
           <div className="rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden">
-            <div className="px-5 py-2.5 border-b border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50">
+            <div className="px-5 py-3 border-b border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50">
               <span className="text-xs font-medium text-slate-500 dark:text-slate-400">Only these steps are permitted in the dashboard</span>
             </div>
             <div className="px-6 py-6 bg-white dark:bg-slate-950 space-y-3">

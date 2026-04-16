@@ -1,16 +1,40 @@
 import { Moon, Sun } from "lucide-react";
 import { useDarkMode } from "../contexts/DarkModeContext";
+import { Link, useLocation } from "react-router";
 
 export function Header() {
   const { isDarkMode, toggleDarkMode } = useDarkMode();
-  
+  const location = useLocation();
+
   return (
     <div className="bg-[#0f1729] dark:bg-[#0a0a0a] h-[44px] flex items-center justify-between px-4">
-      {/* Left: Logo */}
-      <div className="text-white font-semibold">
-        iNsight
+      {/* Left: Logo + nav */}
+      <div className="flex items-center gap-6">
+        <div className="text-white font-semibold">iNsight</div>
+        <nav className="flex items-center gap-1">
+          <Link
+            to="/"
+            className={`px-3 py-1 rounded text-sm transition-colors ${
+              location.pathname === "/" || location.pathname.startsWith("/region")
+                ? "text-white bg-white/15"
+                : "text-white/60 hover:text-white hover:bg-white/10"
+            }`}
+          >
+            Realm View
+          </Link>
+          <Link
+            to="/dashboard"
+            className={`px-3 py-1 rounded text-sm transition-colors ${
+              location.pathname === "/dashboard"
+                ? "text-white bg-white/15"
+                : "text-white/60 hover:text-white hover:bg-white/10"
+            }`}
+          >
+            Dashboard
+          </Link>
+        </nav>
       </div>
-      
+
       {/* Right: Actions */}
       <div className="flex items-center gap-6 text-white text-sm">
         

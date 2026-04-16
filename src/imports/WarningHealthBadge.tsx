@@ -13,7 +13,7 @@ export default function Health() {
               </g>
             </svg>
           </div>
-          <p className="font-['Inter:Regular',sans-serif] font-normal leading-[12px] not-italic relative shrink-0 text-[9px] text-center text-white whitespace-nowrap">NRT</p>
+          <p className="font-normal leading-[12px] not-italic relative shrink-0 text-[9px] text-center text-white whitespace-nowrap">NRT</p>
         </div>
       </div>
     </div>

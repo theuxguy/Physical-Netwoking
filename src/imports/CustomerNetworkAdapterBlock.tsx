@@ -15,8 +15,8 @@ export default function Group() {
               </div>
             </div>
             <div className="content-stretch flex flex-col gap-[5px] items-start justify-center relative shrink-0">
-              <div className="font-['Helvetica_Neue:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[0px] text-black w-[112px]">
-                <p className="font-['Inter:Regular',sans-serif] font-normal mb-0 text-[11px]">Customer Network (VPN/FastConnect)</p>
+              <div className="leading-[normal] not-italic relative shrink-0 text-[0px] text-black w-[112px]">
+                <p className="font-normal mb-0 text-[11px]">Customer Network (VPN/FastConnect)</p>
                 <p className="text-[#665f5b] text-[9px]">Some info. here</p>
               </div>
               <div className="relative shrink-0 size-[14px]" data-name="success">

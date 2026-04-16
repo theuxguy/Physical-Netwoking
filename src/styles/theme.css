@@ -188,3 +188,271 @@
     }
   }
 }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   TIER 1 — PRIMITIVE VALUES
+   Raw hex constants. Named by scale, not meaning.
+   Never reference these directly in components.
+═══════════════════════════════════════════════════════════════════════════ */
+:root {
+  /* Neutral — Light surfaces */
+  --primitive-neutral-000:        #ffffff;
+  --primitive-neutral-025:        #f8f8f8;
+  --primitive-neutral-050:        #f5f5f5;
+  --primitive-neutral-075:        #eeeeee;
+  --primitive-neutral-100:        #f0f0f0;
+  --primitive-neutral-300:        #d8d8d8;
+  --primitive-neutral-350:        #d5d5d5;
+  --primitive-neutral-400:        #b9b9b9;
+  --primitive-neutral-450:        #b6b2ad;
+  --primitive-neutral-600:        #665f5b;
+  --primitive-neutral-800:        #222222;
+  --primitive-neutral-900:        #161513;
+
+  /* Neutral — Dark surfaces */
+  --primitive-neutral-d000:       #0a0a0a;
+  --primitive-neutral-d025:       #0f0f0f;
+  --primitive-neutral-d100:       #1a1a1a;
+  --primitive-neutral-d200:       #252525;
+  --primitive-neutral-d300:       #2a2a2a;
+  --primitive-neutral-d400:       #333333;
+  --primitive-neutral-d500:       #404040;
+  --primitive-neutral-d600:       #505050;
+  --primitive-neutral-d700:       #999999;
+  --primitive-neutral-d800:       #a0a0a0;
+  --primitive-neutral-d900:       #e0e0e0;
+
+  /* Green */
+  --primitive-green-700:          #508223;
+  --primitive-green-800:          #3a5e18;
+  --primitive-green-dark-500:     #6ba32e;
+  --primitive-green-network:      #7fb83e;
+
+  /* Amber */
+  --primitive-amber-600:          #ac630c;
+  --primitive-amber-700:          #de8011;
+  --primitive-amber-800:          #7a4400;
+  --primitive-amber-warning-dark: #ff981e;
+  --primitive-amber-insight:      #9a5800;
+
+  /* Red */
+  --primitive-red-600:            #d63b25;
+  --primitive-red-700:            #e85540;
+  --primitive-red-800:            #8b1a0a;
+
+  /* Shared */
+  --primitive-on-status-dark:     #e4e4e4;
+
+  /* Brand */
+  --primitive-navy-900:           #0f1729;
+  --primitive-cyan-800:           #00688c;
+  --primitive-cyan-700:           #006080;
+  --primitive-cyan-500:           #227e9e;
+  --primitive-cyan-350:           #4da6c7;
+  --primitive-cyan-300:           #4db8e8;
+
+  /* Interaction */
+  --primitive-info-bg-light:      #e8f4f8;
+  --primitive-info-bg-dark:       #1a3a44;
+  --primitive-selected-bg-light:  #e4f1f7;
+  --primitive-selected-bg-dark:   #1e3a4a;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   TIER 2 — SEMANTIC TOKENS
+   Named by meaning. Reference primitives. Vary by mode.
+   Prefer these over primitives when writing component styles.
+═══════════════════════════════════════════════════════════════════════════ */
+:root {
+  /* Shell */
+  --shell-header-bg:          var(--primitive-navy-900);
+  --shell-page-bg:            var(--primitive-neutral-000);
+  --shell-surface-bg:         var(--primitive-neutral-000);
+  --shell-sidebar-bg:         var(--primitive-neutral-050);
+
+  /* Text */
+  --content-text-primary:     var(--primitive-neutral-900);
+  --content-text-body:        var(--primitive-neutral-800);
+  --content-text-muted:       var(--primitive-neutral-600);
+  --content-icon:             var(--primitive-neutral-600);
+
+  /* Borders */
+  --ui-border-default:        var(--primitive-neutral-300);
+  --ui-border-subtle:         var(--primitive-neutral-350);
+  --ui-border-strong:         var(--primitive-neutral-400);
+  --ui-border-muted:          var(--primitive-neutral-450);
+
+  /* Tables */
+  --ui-table-header-surface:  var(--primitive-neutral-025);
+  --ui-table-header-alt:      var(--primitive-neutral-075);
+  --ui-table-row-hover:       var(--primitive-neutral-100);
+
+  /* Charts */
+  --chart-grid:               var(--primitive-neutral-100);
+  --chart-axis:               var(--primitive-neutral-350);
+  --chart-axis-strong:        var(--primitive-neutral-400);
+  --chart-surface-border:     var(--primitive-neutral-450);
+  --chart-window:             var(--primitive-cyan-500);
+  --chart-comparison:         var(--primitive-amber-700);
+  --status-healthy-chart:     var(--primitive-green-700);
+  --status-warning-chart:     var(--primitive-amber-700);
+  --status-critical-chart:    var(--primitive-red-600);
+  --status-healthy-bg:        rgba(80, 130, 35, 0.15);
+  --status-warning-bg:        rgba(222, 128, 17, 0.15);
+  --status-critical-bg:       rgba(214, 59, 37, 0.15);
+  --status-warning-insight:   var(--primitive-amber-insight);
+
+  /* Map */
+  --map-info-surface:         var(--primitive-info-bg-light);
+  --map-info-outline:         var(--primitive-cyan-300);
+
+  /* Network */
+  --network-healthy-stroke:   var(--primitive-green-700);
+
+  /* Interaction */
+  --interaction-link:         var(--primitive-cyan-800);
+  --interaction-link-alt:     var(--primitive-cyan-800);
+  --interaction-selected-bg:  var(--primitive-selected-bg-light);
+  --interaction-spinner:      var(--primitive-cyan-500);
+
+  /* Status: Healthy */
+  --status-healthy-border:    var(--primitive-green-700);
+  --status-healthy-text:      var(--primitive-green-800);
+  --status-healthy-dot:       var(--primitive-green-700);
+
+  /* Status: Warning */
+  --status-warning-border:    var(--primitive-amber-600);
+  --status-warning-text:      var(--primitive-amber-800);
+  --status-warning-dot:       var(--primitive-amber-700);
+
+  /* Status: Critical */
+  --status-critical-border:   var(--primitive-red-600);
+  --status-critical-text:     var(--primitive-red-800);
+  --status-critical-dot:      var(--primitive-red-600);
+
+  /* Brand */
+  --brand-accent:             var(--primitive-cyan-500);
+  --brand-text:               var(--primitive-cyan-700);
+  --brand-header:             var(--primitive-navy-900);
+}
+
+.dark {
+  --shell-header-bg:          var(--primitive-neutral-d000);
+  --shell-page-bg:            var(--primitive-neutral-d025);
+  --shell-surface-bg:         var(--primitive-neutral-d100);
+  --shell-sidebar-bg:         var(--primitive-neutral-d100);
+
+  --content-text-primary:     var(--primitive-neutral-000);
+  --content-text-body:        var(--primitive-neutral-d900);
+  --content-text-muted:       var(--primitive-neutral-d700);
+  --content-icon:             var(--primitive-neutral-d800);
+
+  --ui-border-default:        var(--primitive-neutral-d500);
+  --ui-border-subtle:         var(--primitive-neutral-d500);
+  --ui-border-strong:         var(--primitive-neutral-d500);
+  --ui-border-muted:          var(--primitive-neutral-d600);
+
+  --ui-table-header-surface:  var(--primitive-neutral-d200);
+  --ui-table-header-alt:      var(--primitive-neutral-d200);
+  --ui-table-row-hover:       var(--primitive-neutral-d400);
+
+  --chart-grid:               var(--primitive-neutral-d300);
+  --chart-axis:               var(--primitive-neutral-d500);
+  --chart-axis-strong:        var(--primitive-neutral-d600);
+  --chart-surface-border:     var(--primitive-neutral-d500);
+  --status-warning-chart:     var(--primitive-amber-warning-dark);
+  --status-critical-chart:    var(--primitive-red-700);
+  --status-warning-insight:   var(--primitive-amber-warning-dark);
+
+  --map-info-surface:         var(--primitive-info-bg-dark);
+
+  --network-healthy-stroke:   var(--primitive-green-network);
+
+  --interaction-link:         var(--primitive-cyan-300);
+  --interaction-link-alt:     var(--primitive-cyan-350);
+  --interaction-selected-bg:  var(--primitive-selected-bg-dark);
+
+  --status-healthy-border:    var(--primitive-green-dark-500);
+  --status-healthy-text:      var(--primitive-on-status-dark);
+  --status-healthy-dot:       var(--primitive-green-dark-500);
+
+  --status-warning-border:    var(--primitive-amber-700);
+  --status-warning-text:      var(--primitive-on-status-dark);
+  --status-warning-dot:       var(--primitive-amber-700);
+
+  --status-critical-border:   var(--primitive-red-700);
+  --status-critical-text:     var(--primitive-on-status-dark);
+  --status-critical-dot:      var(--primitive-red-600);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   TIER 3 — COMPONENT TOKENS
+   Named by component and role. Alias semantic tokens.
+   Components should reference these — never primitives or raw hex.
+═══════════════════════════════════════════════════════════════════════════ */
+:root {
+  /* Shell */
+  --header-bg:                var(--shell-header-bg);
+  --page-bg:                  var(--shell-page-bg);
+  --surface-bg:               var(--shell-surface-bg);
+  --sidebar-bg:               var(--shell-sidebar-bg);
+
+  /* Text */
+  --text-primary:             var(--content-text-primary);
+  --text-body:                var(--content-text-body);
+  --text-muted:               var(--content-text-muted);
+  --icon-fill:                var(--content-icon);
+
+  /* Borders */
+  --border-default:           var(--ui-border-default);
+  --border-subtle:            var(--ui-border-subtle);
+  --border-strong:            var(--ui-border-strong);
+  --border-muted:             var(--ui-border-muted);
+
+  /* Tables */
+  --table-header-bg:          var(--ui-table-header-surface);
+  --table-header-alt-bg:      var(--ui-table-header-alt);
+  --table-row-hover:          var(--ui-table-row-hover);
+
+  /* Charts */
+  --chart-container-border:   var(--chart-surface-border);
+  --chart-grid-line:          var(--chart-grid);
+  --chart-axis-line:          var(--chart-axis);
+  --chart-axis-line-strong:   var(--chart-axis-strong);
+  --chart-window-stroke:      var(--chart-window);
+  --chart-comparison-stroke:  var(--chart-comparison);
+  --chart-bar-healthy:        var(--status-healthy-chart);
+  --chart-bar-warning:        var(--status-warning-chart);
+  --chart-bar-critical:       var(--status-critical-chart);
+
+  /* Map */
+  --map-info-bg:              var(--map-info-surface);
+  --map-info-border:          var(--map-info-outline);
+  --map-label-text:           var(--brand-text);
+  --map-marker-healthy:       var(--status-healthy-dot);
+  --map-marker-warning:       var(--status-warning-dot);
+  --map-marker-critical:      var(--status-critical-dot);
+
+  /* Network */
+  --network-line-healthy:     var(--network-healthy-stroke);
+
+  /* Interaction */
+  --action-link:              var(--interaction-link);
+  --action-link-alt:          var(--interaction-link-alt);
+  --selected-bg:              var(--interaction-selected-bg);
+  --spinner-stroke:           var(--interaction-spinner);
+
+  /* Badge / Status Pill */
+  --badge-healthy-bg:         var(--status-healthy-bg);
+  --badge-healthy-border:     var(--status-healthy-border);
+  --badge-healthy-text:       var(--status-healthy-text);
+  --badge-warning-bg:         var(--status-warning-bg);
+  --badge-warning-border:     var(--status-warning-border);
+  --badge-warning-text:       var(--status-warning-text);
+  --badge-critical-bg:        var(--status-critical-bg);
+  --badge-critical-border:    var(--status-critical-border);
+  --badge-critical-text:      var(--status-critical-text);
+
+  /* Insight text */
+  --text-warning-insight:     var(--status-warning-insight);
+}

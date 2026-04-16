@@ -42,10 +42,10 @@ export function GeneralHealthTooltip({ component, healthStatus, reasons, positio
       <div className="bg-white dark:bg-[#2a2a2a] content-stretch flex items-start p-[10px] rounded-[3px]">
         <div aria-hidden="true" className="absolute border border-[#bcb6b1] dark:border-[#505050] border-solid inset-0 pointer-events-none rounded-[3px] shadow-[0px_2px_4px_0px_rgba(0,0,0,0.15)] dark:shadow-[0px_2px_4px_0px_rgba(0,0,0,0.4)]" />
         <div className="content-stretch flex flex-col items-start min-h-px min-w-px relative">
-          <div className="font-['Inter:Regular',sans-serif] font-normal leading-[0] not-italic relative shrink-0 text-[#161513] dark:text-white text-[11px] w-full" style={{ fontFeatureSettings: "'lnum', 'tnum'" }}>
+          <div className="font-normal leading-[0] not-italic relative shrink-0 text-[#161513] dark:text-white text-[11px] w-full" style={{ fontFeatureSettings: "'lnum', 'tnum'" }}>
             <p className="mb-0">
               <span className="leading-[18px]">{`${component} is `}</span>
-              <span className="font-['Inter:Semi_Bold',sans-serif] font-semibold leading-[18px] not-italic" style={{ color: statusColor }}>{healthStatus}</span>
+              <span className="font-semibold leading-[18px] not-italic" style={{ color: statusColor }}>{healthStatus}</span>
               <span className="leading-[18px]">{` ${reasonText}`}</span>
             </p>
             <p className="leading-[18px] mb-0">&nbsp;</p>
@@ -71,14 +71,14 @@ export function GeneralHealthTooltip({ component, healthStatus, reasons, positio
                   }
                 }}
               >
-                <div className="content-stretch flex items-center justify-center overflow-clip p-[4px] relative rounded-[inherit] gap-[2px]">
-                  <div className="relative shrink-0 size-[12px]">
+                <div className="content-stretch flex items-center justify-center overflow-clip p-[6px] relative rounded-[inherit] gap-[4px]">
+                  <div className="relative shrink-0 size-[14px]">
                     <svg className="absolute block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 10 10">
                       <path clipRule="evenodd" d={buttonSvgPaths.p2f8eab00} className="fill-[#161513] dark:fill-white" fillRule="evenodd" />
                     </svg>
                   </div>
                   {expandedButton && (
-                    <span className="font-['Inter',sans-serif] font-normal text-[9px] text-[#161513] dark:text-white whitespace-nowrap">
+                    <span className="font-normal text-[11px] text-[#161513] dark:text-white whitespace-nowrap">
                       Check
                     </span>
                   )}

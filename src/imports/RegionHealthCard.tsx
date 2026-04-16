@@ -40,7 +40,7 @@ export default function Frame() {
           </div>
         </div>
       </div>
-      <p className="font-['Inter:Medium',sans-serif] font-medium leading-[21px] min-w-full not-italic relative shrink-0 text-[#161513] text-[16px] w-[min-content]" style={{ fontFeatureSettings: "'lnum', 'tnum'" }}>
+      <p className="font-medium font-medium leading-[21px] min-w-full not-italic relative shrink-0 text-[#161513] text-[16px] w-[min-content]" style={{ fontFeatureSettings: "'lnum', 'tnum'" }}>
         Region: Dubai
       </p>
       <div className="content-stretch flex gap-[12px] items-center relative shrink-0">

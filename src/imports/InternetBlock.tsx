@@ -15,7 +15,7 @@ export default function Group() {
               </div>
             </div>
             <div className="content-stretch flex gap-[5px] items-center relative shrink-0">
-              <p className="font-['Helvetica_Neue:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[11px] text-black dark:text-white whitespace-nowrap">Internet</p>
+              <p className="leading-[normal] not-italic relative shrink-0 text-[11px] text-black dark:text-white whitespace-nowrap">Internet</p>
               <div className="relative shrink-0 size-[14px]" data-name="success">
                 <div className="absolute inset-[8.33%]" data-name="Vector">
                   <svg className="absolute block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 16.6667 16.6667">

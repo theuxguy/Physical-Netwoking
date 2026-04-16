@@ -1,6 +1,59 @@
 import { createContext, useContext, useState, ReactNode } from "react";
 import { toast } from "sonner";
 
+// Mirror of the airports list in WorldMapDashboard — used to pick the default critical DC
+const AIRPORTS = [
+  { code: "JFK", name: "New York" },
+  { code: "LAX", name: "Los Angeles" },
+  { code: "ORD", name: "Chicago" },
+  { code: "DFW", name: "Dallas" },
+  { code: "DEN", name: "Denver" },
+  { code: "SFO", name: "San Francisco" },
+  { code: "SEA", name: "Seattle" },
+  { code: "MIA", name: "Miami" },
+  { code: "LHR", name: "London" },
+  { code: "CDG", name: "Paris" },
+  { code: "FRA", name: "Frankfurt" },
+  { code: "AMS", name: "Amsterdam" },
+  { code: "MAD", name: "Madrid" },
+  { code: "FCO", name: "Rome" },
+  { code: "IST", name: "Istanbul" },
+  { code: "DXB", name: "Dubai" },
+  { code: "DOH", name: "Doha" },
+  { code: "SIN", name: "Singapore" },
+  { code: "HKG", name: "Hong Kong" },
+  { code: "NRT", name: "Tokyo" },
+  { code: "ICN", name: "Seoul" },
+  { code: "PEK", name: "Beijing" },
+  { code: "PVG", name: "Shanghai" },
+  { code: "BKK", name: "Bangkok" },
+  { code: "SYD", name: "Sydney" },
+  { code: "MEL", name: "Melbourne" },
+  { code: "GRU", name: "São Paulo" },
+  { code: "GIG", name: "Rio de Janeiro" },
+  { code: "MEX", name: "Mexico City" },
+  { code: "YYZ", name: "Toronto" },
+  { code: "YVR", name: "Vancouver" },
+  { code: "JNB", name: "Johannesburg" },
+  { code: "CAI", name: "Cairo" },
+  { code: "DEL", name: "Delhi" },
+  { code: "BOM", name: "Mumbai" },
+];
+
+function mapSeededRandom(seed: number) {
+  const x = Math.sin(seed) * 10000;
+  return x - Math.floor(x);
+}
+
+// Pick first airport with "danger" (Critical) status using the same seed as the map
+const MAP_SEED = new Date("2023-08-18").getTime();
+const DEFAULT_CRITICAL_AIRPORT = (() => {
+  for (let i = 0; i < AIRPORTS.length; i++) {
+    if (mapSeededRandom(MAP_SEED + i) >= 0.7) return AIRPORTS[i];
+  }
+  return AIRPORTS[0]; // fallback
+})();
+
 export interface RegionMetrics {
   code: string;
   name: string;
@@ -55,8 +108,29 @@ const getRandomStatus = () => {
   return statuses[Math.floor(Math.random() * statuses.length)];
 };
 
+function buildRegionMetrics(code: string, name: string, healthStatus: "Healthy" | "Warning" | "Critical"): RegionMetrics {
+  return {
+    code,
+    name,
+    healthStatus,
+    ad1: { availability: getRandomStatus(), performance: getRandomStatus(), reliability: getRandomStatus() },
+    ad2: { availability: getRandomStatus(), performance: getRandomStatus(), reliability: getRandomStatus() },
+    ad3: { availability: getRandomStatus(), performance: getRandomStatus(), reliability: getRandomStatus() },
+    fastConnect: { availability: getRandomStatus(), performance: getRandomStatus(), reliability: getRandomStatus() },
+    internet: { availability: getRandomStatus(), performance: getRandomStatus(), reliability: getRandomStatus() },
+    vpn: { availability: getRandomStatus(), performance: getRandomStatus(), reliability: getRandomStatus() },
+    backbone: { availability: getRandomStatus(), performance: getRandomStatus(), reliability: getRandomStatus() },
+  };
+}
+
+const defaultRegion = buildRegionMetrics(
+  DEFAULT_CRITICAL_AIRPORT.code,
+  DEFAULT_CRITICAL_AIRPORT.name,
+  "Critical"
+);
+
 export function RegionProvider({ children }: { children: ReactNode }) {
-  const [expandedRegions, setExpandedRegions] = useState<RegionMetrics[]>([]);
+  const [expandedRegions, setExpandedRegions] = useState<RegionMetrics[]>([defaultRegion]);
 
   const addRegion = (code: string, name: string, healthStatus: "Healthy" | "Warning" | "Critical") => {
     console.log('addRegion called in context:', code, name);

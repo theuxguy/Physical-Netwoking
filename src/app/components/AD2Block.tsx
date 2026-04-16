@@ -49,7 +49,7 @@ export default function AD2Block({ onClick, isClickable = false, onBLDClick, isH
         <div className="content-stretch flex flex-col items-start justify-center relative shrink-0">
           <div className="content-stretch flex gap-[5px] items-center relative shrink-0">
             <Success className="relative shrink-0 size-[10px]" />
-            <p className="font-['Helvetica_Neue:Regular',sans-serif] leading-[normal] not-italic relative self-center shrink-0 text-black dark:text-white w-[65px] text-[14px] pl-[8px] pr-[0px] py-[0px]">AD-2</p>
+            <p className="leading-[normal] not-italic relative self-center shrink-0 text-black dark:text-white w-[65px] text-[14px] pl-[8px] pr-[0px] py-[0px]">AD-2</p>
           </div>
         </div>
       </div>
@@ -58,7 +58,7 @@ export default function AD2Block({ onClick, isClickable = false, onBLDClick, isH
           <div className="bg-[rgba(255,255,255,0.1)] col-1 h-[57.901px] ml-[90.18px] mt-0 relative rounded-[5px] row-1 w-[36.313px]">
             <div aria-hidden="true" className="absolute border border-[#508223] dark:border-[#6ba32e] border-solid inset-[-1px] pointer-events-none rounded-[6px]" />
             <div className="absolute content-stretch flex flex-col items-center left-[9px] top-[8px]">
-              <p className="font-['Helvetica_Neue:Regular',sans-serif] h-[23px] leading-[normal] not-italic relative shrink-0 text-[9px] text-black dark:text-white text-center w-[18px]">BLD 08</p>
+              <p className="h-[23px] leading-[normal] not-italic relative shrink-0 text-[9px] text-black dark:text-white text-center w-[18px]">BLD 08</p>
               <Success className="relative shrink-0 size-[14px]" />
             </div>
           </div>
@@ -77,7 +77,7 @@ export default function AD2Block({ onClick, isClickable = false, onBLDClick, isH
               <div className="absolute contents left-0 top-0">
                 <div className="absolute border border-[#508223] dark:border-[#6ba32e] border-solid h-[50px] left-0 rounded-[5px] top-0 w-[30px]">
                   <div className="absolute content-stretch flex flex-col items-center left-[6.18px] top-[5.61px]">
-                    <p className="font-['Helvetica_Neue:Regular',sans-serif] h-[23px] leading-[normal] not-italic relative shrink-0 text-[9px] text-black dark:text-white text-center w-[18px]">BLD 09</p>
+                    <p className="h-[23px] leading-[normal] not-italic relative shrink-0 text-[9px] text-black dark:text-white text-center w-[18px]">BLD 09</p>
                     <Success className="relative shrink-0 size-[14px]" />
                   </div>
                 </div>
@@ -85,7 +85,7 @@ export default function AD2Block({ onClick, isClickable = false, onBLDClick, isH
               <div className="absolute contents left-[37px] top-0">
                 <div className="absolute border border-[#508223] dark:border-[#6ba32e] border-solid h-[50px] left-[37px] rounded-[5px] top-0 w-[30px]">
                   <div className="absolute content-stretch flex flex-col items-center left-[6.18px] top-[5.61px]">
-                    <p className="font-['Helvetica_Neue:Regular',sans-serif] h-[23px] leading-[normal] not-italic relative shrink-0 text-[9px] text-black dark:text-white text-center w-[18px]">BLD 10</p>
+                    <p className="h-[23px] leading-[normal] not-italic relative shrink-0 text-[9px] text-black dark:text-white text-center w-[18px]">BLD 10</p>
                     <Success className="relative shrink-0 size-[14px]" />
                   </div>
                 </div>
@@ -93,7 +93,7 @@ export default function AD2Block({ onClick, isClickable = false, onBLDClick, isH
               <div className="absolute contents left-[74px] top-0">
                 <div className="absolute border border-[#508223] dark:border-[#6ba32e] border-solid h-[50px] left-[74px] rounded-[5px] top-0 w-[30px]">
                   <div className="absolute content-stretch flex flex-col items-center left-[6.18px] top-[5.61px]">
-                    <p className="font-['Helvetica_Neue:Regular',sans-serif] h-[23px] leading-[normal] not-italic relative shrink-0 text-[9px] text-black dark:text-white text-center w-[18px]">BLD 11</p>
+                    <p className="h-[23px] leading-[normal] not-italic relative shrink-0 text-[9px] text-black dark:text-white text-center w-[18px]">BLD 11</p>
                     <Success className="relative shrink-0 size-[14px]" />
                   </div>
                 </div>
@@ -101,7 +101,7 @@ export default function AD2Block({ onClick, isClickable = false, onBLDClick, isH
               <div className="absolute contents left-[111px] top-0">
                 <div className="absolute border border-[#508223] dark:border-[#6ba32e] border-solid h-[50px] left-[111px] rounded-[5px] top-0 w-[30px]">
                   <div className="absolute content-stretch flex flex-col items-center left-[6.18px] top-[5.61px]">
-                    <p className="font-['Helvetica_Neue:Regular',sans-serif] h-[23px] leading-[normal] not-italic relative shrink-0 text-[9px] text-black dark:text-white text-center w-[18px]">BLD 12</p>
+                    <p className="h-[23px] leading-[normal] not-italic relative shrink-0 text-[9px] text-black dark:text-white text-center w-[18px]">BLD 12</p>
                     <Success className="relative shrink-0 size-[14px]" />
                   </div>
                 </div>
@@ -109,7 +109,7 @@ export default function AD2Block({ onClick, isClickable = false, onBLDClick, isH
               <div className="absolute contents left-[148px] top-0">
                 <div className="absolute border border-[#508223] dark:border-[#6ba32e] border-solid h-[50px] left-[148px] rounded-[5px] top-0 w-[30px]">
                   <div className="absolute content-stretch flex flex-col items-center left-[6.18px] top-[5.61px]">
-                    <p className="font-['Helvetica_Neue:Regular',sans-serif] h-[23px] leading-[normal] not-italic relative shrink-0 text-[9px] text-black dark:text-white text-center w-[18px]">BLD 13</p>
+                    <p className="h-[23px] leading-[normal] not-italic relative shrink-0 text-[9px] text-black dark:text-white text-center w-[18px]">BLD 13</p>
                     <Success className="relative shrink-0 size-[14px]" />
                   </div>
                 </div>

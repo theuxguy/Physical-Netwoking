@@ -1,17 +1,34 @@
 import { SectionHeader, Group, Preview, TokenTable, TokenRow } from "../ui";
 import { Badge } from "../../app/components/ui/badge";
 
+// Hex tokens — no rgba. Canonical values matching StatusIndicators.
+const STATUS_HEX = {
+  healthy:  { bg: "#dce6d3", border: "#508223", text: "#3a5e18", dot: "#508223" },
+  warning:  { bg: "#f8e6cf", border: "#ac630c", text: "#7a4400", dot: "#de8011" },
+  critical: { bg: "#f7d8d3", border: "#d63b25", text: "#8b1a0a", dot: "#d63b25" },
+};
+
+const MAP_COLORS = { healthy: "#5f7d4f", warning: "#ac630c", critical: "#d63b25" };
+
 export function Badges() {
   return (
     <div className="space-y-10">
       <SectionHeader
         title="Badges"
-        description="Compact labels for status, categories, and counts. Import from src/app/components/ui/badge.tsx. For network health statuses, use the custom status pill pattern below."
+        description="Compact labels for status, categories, and counts. Import from src/app/components/ui/badge.tsx. For network health statuses use the custom status pill pattern — do not use shadcn Badge variant colors for health states."
       />
 
       <div className="space-y-8">
-        <Group title="Variants">
-          <Preview label="shadcn/ui badge variants" code={`<Badge variant="default">Label</Badge>`}>
+        <Group title="shadcn/ui Badge Variants">
+          <Preview
+            label="Four built-in variants — use for categories, tags, and generic labels."
+            code={`import { Badge } from "@/components/ui/badge";
+
+<Badge variant="default">Default</Badge>
+<Badge variant="secondary">Secondary</Badge>
+<Badge variant="outline">Outline</Badge>
+<Badge variant="destructive">Destructive</Badge>`}
+          >
             <div className="flex flex-wrap gap-3 items-center">
               <Badge variant="default">Default</Badge>
               <Badge variant="secondary">Secondary</Badge>
@@ -21,59 +38,107 @@ export function Badges() {
           </Preview>
         </Group>
 
-        <Group title="App Status Badges">
-          <Preview label="Health status pills — used in RegionHealthTable and MetricsSection">
+        <Group title="App Status Pills">
+          <Preview
+            label="Health status pills — RegionHealthTable.tsx and MetricsSection.tsx. Hex only; text colors are AA-safe (min 4.5:1)."
+            code={`// Hex tokens — no rgba
+const STATUS = {
+  healthy:  { bg: "#dce6d3", border: "#508223", text: "#3a5e18", dot: "#508223" },
+  warning:  { bg: "#f8e6cf", border: "#ac630c", text: "#7a4400", dot: "#de8011" },
+  critical: { bg: "#f7d8d3", border: "#d63b25", text: "#8b1a0a", dot: "#d63b25" },
+};
+
+function StatusPill({ status }: { status: keyof typeof STATUS }) {
+  const s = STATUS[status];
+  return (
+    <span
+      className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium"
+      style={{ backgroundColor: s.bg, color: s.text, border: \`1px solid \${s.border}\` }}
+    >
+      <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: s.dot }} />
+      {status.charAt(0).toUpperCase() + status.slice(1)}
+    </span>
+  );
+}`}
+          >
             <div className="flex flex-wrap gap-3 items-center">
-              {/* Healthy */}
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-[rgba(80,130,35,0.12)] text-[#508223] border border-[#508223]">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#508223]" />
-                Healthy
-              </span>
-              {/* Warning */}
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-[rgba(222,128,17,0.12)] text-[#de8011] border border-[#de8011]">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#de8011]" />
-                Warning
-              </span>
-              {/* Critical */}
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-[rgba(214,59,37,0.12)] text-[#d63b25] border border-[#d63b25]">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#d63b25]" />
-                Critical
-              </span>
+              {(["healthy", "warning", "critical"] as const).map((key) => {
+                const s = STATUS_HEX[key];
+                return (
+                  <span
+                    key={key}
+                    className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium"
+                    style={{ backgroundColor: s.bg, color: s.text, border: `1px solid ${s.border}` }}
+                  >
+                    <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: s.dot }} />
+                    {key.charAt(0).toUpperCase() + key.slice(1)}
+                  </span>
+                );
+              })}
             </div>
           </Preview>
 
-          <Preview label="Map label style — compact pill as rendered on WorldMapDashboard markers">
-            <div className="flex flex-wrap gap-3 items-center">
-              <div className="bg-[#5f7d4f] rounded-[2px] px-1.5 py-0.5 flex items-center gap-1">
-                <span className="text-white text-xs font-normal">IAD</span>
-              </div>
-              <div className="bg-[#ac630c] rounded-[2px] px-1.5 py-0.5 flex items-center gap-1">
-                <span className="text-white text-xs font-normal">LHR</span>
-              </div>
-              <div className="bg-[#d63b25] rounded-[2px] px-1.5 py-0.5 flex items-center gap-1">
-                <span className="text-white text-xs font-normal">NRT</span>
-              </div>
-              {/* Selected (added to table) — inverted */}
-              <div className="bg-white rounded-[2px] px-1.5 py-0.5 flex items-center gap-1 border border-[#5f7d4f]">
-                <span className="text-[#5f7d4f] text-xs font-normal">SIN</span>
-              </div>
-              <div className="bg-white rounded-[2px] px-1.5 py-0.5 flex items-center gap-1 border border-[#d63b25]">
-                <span className="text-[#d63b25] text-xs font-normal">DXB</span>
-              </div>
+          <Preview
+            label="Map label style — compact pill on WorldMapDashboard.tsx markers. Normal and selected (inverted) states."
+            code={`const MAP_COLORS = {
+  healthy:  "#5f7d4f",   // muted green
+  warning:  "#ac630c",   // amber
+  critical: "#d63b25",   // red
+};
+
+// Normal state
+<div style={{ backgroundColor: MAP_COLORS[status] }} className="rounded-[2px] px-1.5 py-0.5">
+  <span className="text-white text-xs">{code}</span>
+</div>
+
+// Selected state — visual complement (inverted)
+<div style={{ border: \`1px solid \${MAP_COLORS[status]}\` }} className="rounded-[2px] px-1.5 py-0.5 bg-white">
+  <span style={{ color: MAP_COLORS[status] }} className="text-xs">{code}</span>
+</div>`}
+          >
+            <div className="flex flex-wrap gap-4 items-end">
+              {(["healthy", "warning", "critical"] as const).map((key) => (
+                <div key={key} className="flex flex-col items-center gap-1.5">
+                  <div className="rounded-[2px] px-1.5 py-0.5" style={{ backgroundColor: MAP_COLORS[key] }}>
+                    <span className="text-white text-xs font-normal">
+                      {key === "healthy" ? "IAD" : key === "warning" ? "LHR" : "NRT"}
+                    </span>
+                  </div>
+                  <div className="rounded-[2px] px-1.5 py-0.5 bg-white" style={{ border: `1px solid ${MAP_COLORS[key]}` }}>
+                    <span className="text-xs font-normal" style={{ color: MAP_COLORS[key] }}>
+                      {key === "healthy" ? "IAD" : key === "warning" ? "LHR" : "NRT"}
+                    </span>
+                  </div>
+                  <span className="text-[10px] text-slate-400">{key.charAt(0).toUpperCase() + key.slice(1)}</span>
+                </div>
+              ))}
             </div>
           </Preview>
 
-          <Preview label="Selected state note" className="bg-slate-50 dark:bg-slate-900/50 py-4">
+          <Preview label="Selected-state behaviour" className="bg-slate-50 dark:bg-slate-900/50 py-4">
             <p className="text-xs text-slate-500 dark:text-slate-400 max-w-lg">
-              Map marker labels invert when the region is added to the table: background becomes white,
-              text and border take on the status color. This is the visual complement pattern requested
-              for selection feedback.
+              Map labels invert when the region is added to the comparison table: background becomes
+              white and text/border take the status color. This is the visual complement pattern —
+              triggered in <code className="font-mono text-violet-600 dark:text-violet-400">WorldMapDashboard.tsx</code> via the <code className="font-mono text-violet-600 dark:text-violet-400">expandedRegions</code> context.
             </p>
           </Preview>
         </Group>
 
         <Group title="Count Badges">
-          <Preview label="Numeric count / notification badge">
+          <Preview
+            label="Numeric count / notification badge — two patterns: absolute-positioned dot and inline Badge."
+            code={`// Absolute-positioned dot counter
+<div className="relative inline-flex">
+  <span>Alerts</span>
+  <span className="absolute -top-2 -right-4 bg-[#d63b25] text-white text-[10px] font-bold rounded-full w-4 h-4 flex items-center justify-center">
+    3
+  </span>
+</div>
+
+// Inline using shadcn Badge
+<Badge variant="destructive" className="text-[10px] px-1.5 py-0 h-4 rounded-full">12</Badge>
+<Badge variant="secondary"   className="text-[10px] px-1.5 py-0 h-4 rounded-full">34</Badge>`}
+          >
             <div className="flex flex-wrap gap-6 items-center">
               <div className="relative inline-flex">
                 <span className="text-sm text-slate-700 dark:text-slate-300">Alerts</span>

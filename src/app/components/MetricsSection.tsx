@@ -49,7 +49,7 @@ function StatusBadge({ status, onMouseEnter, onMouseLeave }: StatusBadgeProps) {
       >
         <div className="bg-[rgba(80,130,35,0.1)] content-stretch flex items-center justify-center p-[4px] relative rounded-[3px] shrink-0">
           <div aria-hidden="true" className="absolute border border-[#508223] border-solid inset-0 pointer-events-none rounded-[3px]" />
-          <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[#E4E4E4] text-[11px] whitespace-nowrap">{status}</p>
+          <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[#E4E4E4] text-[11px] whitespace-nowrap">{status}</p>
         </div>
       </div>
     );
@@ -64,7 +64,7 @@ function StatusBadge({ status, onMouseEnter, onMouseLeave }: StatusBadgeProps) {
       >
         <div className="bg-[rgba(222,128,17,0.15)] content-stretch flex items-center justify-center p-[4px] relative rounded-[3px] shrink-0">
           <div aria-hidden="true" className="absolute border border-[#ac630c] border-solid inset-0 pointer-events-none rounded-[3px]" />
-          <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[#E4E4E4] text-[11px] whitespace-nowrap">{status}</p>
+          <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[#E4E4E4] text-[11px] whitespace-nowrap">{status}</p>
         </div>
       </div>
     );
@@ -79,7 +79,7 @@ function StatusBadge({ status, onMouseEnter, onMouseLeave }: StatusBadgeProps) {
     >
       <div className="bg-[rgba(214,59,37,0.2)] content-stretch flex items-center justify-center p-[4px] relative rounded-[3px] shrink-0">
         <div aria-hidden="true" className="absolute border border-[#d63b25] border-solid inset-0 pointer-events-none rounded-[3px]" />
-        <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[#E4E4E4] text-[11px] whitespace-nowrap">{status}</p>
+        <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[#E4E4E4] text-[11px] whitespace-nowrap">{status}</p>
       </div>
     </div>
   );
@@ -161,11 +161,9 @@ export function MetricsSection() {
 
   return (
     <div className="px-6 pb-6">
-      <div className="bg-white dark:bg-[#1a1a1a] content-stretch flex items-start relative shrink-0 w-full border border-[#d8d8d8] dark:border-[#404040] rounded-lg overflow-hidden">
-        <div className="content-stretch flex flex-col items-start relative shrink-0 w-full">
-          <div className="bg-white dark:bg-[#1a1a1a] content-stretch flex items-start relative shrink-0 w-full">
+      <div className="bg-white dark:bg-[#1a1a1a] flex items-stretch w-full min-w-[400px] border border-[#d8d8d8] dark:border-[#404040] rounded-lg overflow-x-auto">
             {/* Metrics Column */}
-            <div className="content-stretch flex items-start relative shrink-0 w-[119px] self-stretch">
+            <div className="content-stretch flex items-start relative shrink-0 w-[110px] self-stretch">
               <div aria-hidden="true" className="absolute border border-[#d8d8d8] dark:border-[#404040] border-solid inset-[-1px] pointer-events-none" />
               <div className="content-stretch flex flex-[1_0_0] flex-col items-start min-h-px min-w-px relative h-full">
                 {/* Empty header cell */}
@@ -178,7 +176,7 @@ export function MetricsSection() {
                 <div className="bg-[#f8f8f8] dark:bg-[#252525] relative shrink-0 w-full">
                   <div className="flex flex-row items-center justify-center size-full">
                     <div className="content-stretch flex gap-[10px] items-center justify-center p-[10px] relative w-full">
-                      <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[14px] text-black dark:text-white whitespace-nowrap">Metrics</p>
+                      <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[14px] text-black dark:text-white whitespace-nowrap">Metrics</p>
                       <div className="relative shrink-0 size-[16px]">
                         <div className="absolute inset-[16.67%]">
                           <svg className="absolute block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 10.6667 10.6667">
@@ -193,21 +191,21 @@ export function MetricsSection() {
                 <div className="bg-[#f8f8f8] dark:bg-[#252525] relative flex-1 w-full">
                   <div className="flex flex-row items-center justify-center size-full">
                     <div className="content-stretch flex items-center justify-center p-[10px] relative w-full">
-                      <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[#222] dark:text-[#e0e0e0] text-[14px] whitespace-nowrap">Availability</p>
+                      <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[#222] dark:text-[#e0e0e0] text-[14px] whitespace-nowrap">Availability</p>
                     </div>
                   </div>
                 </div>
                 <div className="bg-[#f8f8f8] dark:bg-[#252525] relative flex-1 w-full">
                   <div className="flex flex-row items-center justify-center size-full">
                     <div className="content-stretch flex items-center justify-center p-[10px] relative w-full">
-                      <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[#222] dark:text-[#e0e0e0] text-[14px] whitespace-nowrap">Performance</p>
+                      <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[#222] dark:text-[#e0e0e0] text-[14px] whitespace-nowrap">Performance</p>
                     </div>
                   </div>
                 </div>
                 <div className="bg-[#f8f8f8] dark:bg-[#252525] relative flex-1 w-full">
                   <div className="flex flex-row items-center justify-center size-full">
                     <div className="content-stretch flex items-center justify-center p-[10px] relative w-full">
-                      <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[#222] dark:text-[#e0e0e0] text-[14px] whitespace-nowrap">Reliability</p>
+                      <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[#222] dark:text-[#e0e0e0] text-[14px] whitespace-nowrap">Reliability</p>
                     </div>
                   </div>
                 </div>
@@ -216,9 +214,9 @@ export function MetricsSection() {
 
             {/* Region columns */}
             {expandedRegions.map((region, regionIndex) => (
-              <div key={region.code} className={`content-stretch flex items-start relative shrink-0 ${regionIndex > 0 ? 'border-l border-[#e0e0e0] dark:border-[#404040]' : ''}`}>
+              <div key={region.code} className={`flex flex-1 items-stretch relative min-w-[420px] overflow-hidden border-r border-[#e0e0e0] dark:border-[#404040] ${regionIndex > 0 ? 'border-l' : ''}`}>
                 {/* AD-1 */}
-                <div className="content-stretch flex flex-col items-start relative shrink-0 w-[96px]">
+                <div className="content-stretch flex flex-col items-start relative flex-1 min-w-[80px]">
                   <div aria-hidden="true" className="absolute border-[#d8d8d8] dark:border-[#404040] border-b border-solid border-t inset-[-1px_0] pointer-events-none" />
                   <div className="h-[37px] relative shrink-0 w-full" style={{ backgroundColor: getHealthBackgroundColor(region.healthStatus) }}>
                     <div className="flex flex-row items-center justify-center size-full">
@@ -228,7 +226,7 @@ export function MetricsSection() {
                   <div className="bg-[#f8f8f8] dark:bg-[#252525] relative shrink-0 w-full">
                     <div className="flex flex-row items-center justify-center size-full">
                       <div className="content-stretch flex items-center justify-center p-[10px] relative w-full">
-                        <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[14px] text-black dark:text-white whitespace-nowrap">AD-1</p>
+                        <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[14px] text-black dark:text-white whitespace-nowrap">AD-1</p>
                       </div>
                     </div>
                   </div>
@@ -262,7 +260,7 @@ export function MetricsSection() {
                 </div>
 
                 {/* AD-2 */}
-                <div className="content-stretch flex flex-col items-start relative shrink-0 w-[96px]">
+                <div className="content-stretch flex flex-col items-start relative flex-1 min-w-[80px]">
                   <div aria-hidden="true" className="absolute border-[#d8d8d8] dark:border-[#404040] border-b border-solid border-t inset-[-1px_0] pointer-events-none" />
                   <div className="h-[37px] relative shrink-0 w-full" style={{ backgroundColor: getHealthBackgroundColor(region.healthStatus) }}>
                     <div className="flex flex-row items-center justify-center size-full">
@@ -272,7 +270,7 @@ export function MetricsSection() {
                   <div className="bg-[#f8f8f8] dark:bg-[#252525] relative shrink-0 w-full">
                     <div className="flex flex-row items-center justify-center size-full">
                       <div className="content-stretch flex items-center justify-center p-[10px] relative w-full">
-                        <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[14px] text-black dark:text-white whitespace-nowrap">AD-2</p>
+                        <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[14px] text-black dark:text-white whitespace-nowrap">AD-2</p>
                       </div>
                     </div>
                   </div>
@@ -306,7 +304,7 @@ export function MetricsSection() {
                 </div>
 
                 {/* AD-3 */}
-                <div className="content-stretch flex flex-col items-start relative shrink-0 w-[96px]">
+                <div className="content-stretch flex flex-col items-start relative flex-1 min-w-[80px]">
                   <div aria-hidden="true" className="absolute border-[#d8d8d8] dark:border-[#404040] border-b border-solid border-t inset-[-1px_0] pointer-events-none" />
                   <div className="h-[37px] relative shrink-0 w-full" style={{ backgroundColor: getHealthBackgroundColor(region.healthStatus) }}>
                     <div className="flex flex-row items-center justify-center size-full">
@@ -316,7 +314,7 @@ export function MetricsSection() {
                   <div className="bg-[#f8f8f8] dark:bg-[#252525] relative shrink-0 w-full">
                     <div className="flex flex-row items-center justify-center size-full">
                       <div className="content-stretch flex items-center justify-center p-[10px] relative w-full">
-                        <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[14px] text-black dark:text-white whitespace-nowrap">AD-3</p>
+                        <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[14px] text-black dark:text-white whitespace-nowrap">AD-3</p>
                       </div>
                     </div>
                   </div>
@@ -350,19 +348,19 @@ export function MetricsSection() {
                 </div>
 
                 {/* Region Name & FastConnect */}
-                <div className="content-stretch flex flex-col items-start relative shrink-0 w-[105.304px]">
+                <div className="content-stretch flex flex-col items-start relative flex-1 min-w-[90px]">
                   <div aria-hidden="true" className="absolute border-[#d8d8d8] dark:border-[#404040] border-b border-solid border-t inset-[-1px_0] pointer-events-none" />
                   <div className="relative shrink-0 w-full" style={{ backgroundColor: getHealthBackgroundColor(region.healthStatus) }}>
                     <div className="flex flex-row items-center justify-center size-full">
                       <div className="content-stretch flex items-center justify-center p-[10px] relative w-full">
-                        <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[14px] text-black dark:text-white whitespace-nowrap">{region.code} ({region.name})</p>
+                        <p className="font-normal leading-[normal] not-italic relative text-[14px] text-black dark:text-white truncate min-w-0">{region.code} ({region.name})</p>
                       </div>
                     </div>
                   </div>
                   <div className="bg-[#f8f8f8] dark:bg-[#252525] relative shrink-0 w-full">
                     <div className="flex flex-row items-center justify-center size-full">
                       <div className="content-stretch flex items-center justify-center p-[10px] relative w-full">
-                        <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[14px] text-black dark:text-white whitespace-nowrap">FastConnect</p>
+                        <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[14px] text-black dark:text-white whitespace-nowrap">FastConnect</p>
                       </div>
                     </div>
                   </div>
@@ -396,7 +394,7 @@ export function MetricsSection() {
                 </div>
 
                 {/* Internet */}
-                <div className="content-stretch flex flex-col items-start relative shrink-0 w-[95px]">
+                <div className="content-stretch flex flex-col items-start relative flex-1 min-w-[80px]">
                   <div aria-hidden="true" className="absolute border-[#d8d8d8] dark:border-[#404040] border-b border-solid border-t inset-[-1px_0] pointer-events-none" />
                   <div className="h-[37px] relative shrink-0 w-full" style={{ backgroundColor: getHealthBackgroundColor(region.healthStatus) }}>
                     <div className="flex flex-row items-center justify-center size-full">
@@ -406,7 +404,7 @@ export function MetricsSection() {
                   <div className="bg-[#f8f8f8] dark:bg-[#252525] relative shrink-0 w-full">
                     <div className="flex flex-row items-center justify-center size-full">
                       <div className="content-stretch flex items-center justify-center p-[10px] relative w-full">
-                        <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[14px] text-black dark:text-white whitespace-nowrap">Internet</p>
+                        <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[14px] text-black dark:text-white whitespace-nowrap">Internet</p>
                       </div>
                     </div>
                   </div>
@@ -440,7 +438,7 @@ export function MetricsSection() {
                 </div>
 
                 {/* VPN */}
-                <div className="content-stretch flex flex-col items-start relative shrink-0 w-[104px]">
+                <div className="content-stretch flex flex-col items-start relative flex-1 min-w-[80px]">
                   <div aria-hidden="true" className="absolute border-[#d8d8d8] dark:border-[#404040] border-b border-solid border-t inset-[-1px_0] pointer-events-none" />
                   <div className="h-[37px] relative shrink-0 w-full" style={{ backgroundColor: getHealthBackgroundColor(region.healthStatus) }}>
                     <div className="flex flex-row items-center justify-end size-full">
@@ -450,7 +448,7 @@ export function MetricsSection() {
                   <div className="bg-[#f8f8f8] dark:bg-[#252525] relative shrink-0 w-full">
                     <div className="flex flex-row items-center justify-center size-full">
                       <div className="content-stretch flex items-center justify-center p-[10px] relative w-full">
-                        <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[14px] text-black dark:text-white whitespace-nowrap">VPN</p>
+                        <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[14px] text-black dark:text-white whitespace-nowrap">VPN</p>
                       </div>
                     </div>
                   </div>
@@ -484,13 +482,12 @@ export function MetricsSection() {
                 </div>
 
                 {/* Backbone */}
-                <div className="content-stretch flex flex-col items-start relative shrink-0 w-[128px]">
+                <div className="content-stretch flex flex-col items-start relative flex-1 min-w-[90px]">
                   <div aria-hidden="true" className="absolute border-[#d8d8d8] dark:border-[#404040] border-b border-solid border-t inset-[-1px_0] pointer-events-none" />
                   <div className="h-[37px] relative shrink-0 w-full" style={{ backgroundColor: getHealthBackgroundColor(region.healthStatus) }}>
                     <div className="flex flex-row items-center justify-end size-full">
                       <div className="content-stretch flex gap-[10px] items-center justify-end pr-[10px] py-[10px] relative size-full">
-                        <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[12px] w-[92px] text-[#69acc0]">View all issues</p>
-                        <div 
+                        <div
                           className="overflow-clip relative shrink-0 size-[16px] cursor-pointer"
                           onClick={() => removeRegion(region.code)}
                         >
@@ -506,7 +503,7 @@ export function MetricsSection() {
                   <div className="bg-[#f8f8f8] dark:bg-[#252525] relative shrink-0 w-full">
                     <div className="flex flex-row items-center justify-center size-full">
                       <div className="content-stretch flex items-center justify-center p-[10px] relative w-full">
-                        <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[14px] text-black dark:text-white whitespace-nowrap">Backbone</p>
+                        <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[14px] text-black dark:text-white whitespace-nowrap">Backbone</p>
                       </div>
                     </div>
                   </div>
@@ -547,17 +544,15 @@ export function MetricsSection() {
                 <div aria-hidden="true" className="absolute border border-[#dcdcdc] dark:border-[#505050] border-dashed inset-0 pointer-events-none" />
                 <div className="flex flex-row items-center justify-center h-full">
                   <div className="content-stretch flex items-center justify-center p-[10px] relative size-full">
-                    <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative text-[14px] text-black dark:text-white text-center max-w-full break-words px-4">
+                    <p className="font-normal leading-[normal] not-italic relative text-[14px] text-black dark:text-white text-center max-w-full break-words px-4">
                       Add up to {remainingSlots} more region{remainingSlots > 1 ? 's' : ''}
                     </p>
                   </div>
                 </div>
               </div>
             )}
-          </div>
-        </div>
       </div>
-      
+
       {/* Tooltip */}
       {hoverInfo && (
         <GeneralHealthTooltip

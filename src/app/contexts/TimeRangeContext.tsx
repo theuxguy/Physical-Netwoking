@@ -15,6 +15,8 @@ type TimeRangeContextType = {
   setShowComparison: (show: boolean) => void;
   currentWindowDate: Date;
   setCurrentWindowDate: (date: Date) => void;
+  comparisonWindowDate: Date;
+  setComparisonWindowDate: (date: Date) => void;
   initialEndDate: Date;
 };
 
@@ -31,6 +33,7 @@ export function TimeRangeProvider({ children }: { children: ReactNode }) {
   const [hasMovedWindow, setHasMovedWindowInternal] = useState(false);
   const [showComparison, setShowComparisonInternal] = useState(false);
   const [currentWindowDate, setCurrentWindowDateInternal] = useState(defaultEndDate);
+  const [comparisonWindowDate, setComparisonWindowDateInternal] = useState(defaultEndDate);
 
   const setStartDate = useCallback((date: Date) => {
     setStartDateInternal(date);
@@ -61,6 +64,10 @@ export function TimeRangeProvider({ children }: { children: ReactNode }) {
     setCurrentWindowDateInternal(date);
   }, []);
 
+  const setComparisonWindowDate = useCallback((date: Date) => {
+    setComparisonWindowDateInternal(date);
+  }, []);
+
   return (
     <TimeRangeContext.Provider 
       value={{ 
@@ -77,6 +84,8 @@ export function TimeRangeProvider({ children }: { children: ReactNode }) {
         setShowComparison,
         currentWindowDate,
         setCurrentWindowDate,
+        comparisonWindowDate,
+        setComparisonWindowDate,
         initialEndDate: defaultEndDate
       }}
     >
@@ -107,6 +116,8 @@ export function useTimeRange() {
       setShowComparison: () => {},
       currentWindowDate: defaultEndDate,
       setCurrentWindowDate: () => {},
+      comparisonWindowDate: defaultEndDate,
+      setComparisonWindowDate: () => {},
       initialEndDate: defaultEndDate
     };
   }

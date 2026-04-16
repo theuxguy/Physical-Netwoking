@@ -1,142 +1,105 @@
-import { useState } from "react";
-import { SectionHeader, Group, Swatch, TokenTable, TokenRow } from "../ui";
+import { useState, Fragment } from "react";
+import { SectionHeader } from "../ui";
 import { cn } from "../../app/components/ui/utils";
-
-// ── Light mode ───────────────────────────────────────────────────────────────
-const SURFACES_LIGHT = [
-  { color: "#ffffff",  label: "background",      value: "#ffffff",  note: "Page background", border: true },
-  { color: "#ffffff",  label: "card",             value: "#ffffff",  note: "Card surface", border: true },
-  { color: "#fafafa",  label: "sidebar",          value: "#fafafa",  note: "Sidebar surface", border: true },
-  { color: "#f3f3f5",  label: "input-background", value: "#f3f3f5",  note: "Input fill" },
-  { color: "#ececf0",  label: "muted",            value: "#ececf0",  note: "Muted background" },
-  { color: "#e9ebef",  label: "accent",           value: "#e9ebef",  note: "Accent / hover fill" },
-];
-
-const TEXT_LIGHT = [
-  { color: "#0a0a0b",  label: "foreground",         value: "#0a0a0b",  note: "Primary text" },
-  { color: "#717182",  label: "muted-foreground",    value: "#717182",  note: "Subtle / secondary text" },
-  { color: "#030213",  label: "primary",             value: "#030213",  note: "Primary interactive" },
-  { color: "#ffffff",  label: "primary-foreground",  value: "#ffffff",  note: "On primary", border: true },
-  { color: "#d4183d",  label: "destructive",         value: "#d4183d",  note: "Errors / danger" },
-];
-
-const STATUS_LIGHT = [
-  { color: "#508223",               label: "Healthy border", value: "#508223",               note: "Status: healthy" },
-  { color: "rgba(80,130,35,0.12)",  label: "Healthy fill",   value: "rgba(80,130,35,0.12)",  note: "Status: healthy bg", border: true },
-  { color: "#de8011",               label: "Warning border", value: "#de8011",               note: "Status: warning" },
-  { color: "rgba(222,128,17,0.15)", label: "Warning fill",   value: "rgba(222,128,17,0.15)", note: "Status: warning bg", border: true },
-  { color: "#d63b25",               label: "Critical border",value: "#d63b25",               note: "Status: critical" },
-  { color: "rgba(214,59,37,0.15)",  label: "Critical fill",  value: "rgba(214,59,37,0.15)",  note: "Status: critical bg", border: true },
-];
-
-const CHARTS_LIGHT = [
-  { color: "oklch(0.646 0.222 41.116)", label: "chart-1", value: "oklch(0.646 0.222 41)", note: "Orange" },
-  { color: "oklch(0.6 0.118 184.704)",  label: "chart-2", value: "oklch(0.6 0.118 185)",  note: "Teal" },
-  { color: "oklch(0.398 0.07 227.392)", label: "chart-3", value: "oklch(0.398 0.07 227)", note: "Navy" },
-  { color: "oklch(0.828 0.189 84.429)", label: "chart-4", value: "oklch(0.828 0.189 84)", note: "Yellow" },
-  { color: "oklch(0.769 0.188 70.08)",  label: "chart-5", value: "oklch(0.769 0.188 70)", note: "Warm orange" },
-];
-
-// ── Dark mode ────────────────────────────────────────────────────────────────
-const SURFACES_DARK = [
-  { color: "#0f0f0f",  label: "background",      value: "oklch(0.145 0 0) ≈ #0f0f0f", note: "Page background" },
-  { color: "#0f0f0f",  label: "card",             value: "oklch(0.145 0 0) ≈ #0f0f0f", note: "Card / panel" },
-  { color: "#1a1a1a",  label: "dark surface",     value: "#1a1a1a",  note: "Panels, map overlay, inputs" },
-  { color: "#2a2a2a",  label: "dark surface 2",   value: "#2a2a2a",  note: "Hover fill on dark surfaces" },
-  { color: "#333333",  label: "muted / secondary",value: "oklch(0.269 0 0) ≈ #333333", note: "Muted / secondary bg" },
-  { color: "#404040",  label: "dark border",      value: "#404040",  note: "Component borders" },
-];
-
-const TEXT_DARK = [
-  { color: "#fafafa",  label: "foreground",         value: "oklch(0.985 0 0) ≈ #fafafa", note: "Primary text" },
-  { color: "#b3b3b3",  label: "muted-foreground",   value: "oklch(0.708 0 0) ≈ #b3b3b3", note: "Subtle / secondary text" },
-  { color: "#fafafa",  label: "primary",            value: "oklch(0.985 0 0) ≈ #fafafa", note: "Primary interactive", border: true },
-  { color: "#343434",  label: "primary-foreground", value: "oklch(0.205 0 0) ≈ #343434", note: "On primary fill" },
-  { color: "#7a2020",  label: "destructive",        value: "oklch(0.396 0.141 25.723)",  note: "Errors / danger" },
-];
-
-const STATUS_DARK = [
-  { color: "#6ba32e",               label: "Healthy border", value: "#6ba32e",               note: "Status: healthy" },
-  { color: "rgba(80,130,35,0.12)",  label: "Healthy fill",   value: "rgba(80,130,35,0.12)",  note: "Status: healthy bg", border: true },
-  { color: "#de8011",               label: "Warning border", value: "#de8011",               note: "Status: warning" },
-  { color: "rgba(222,128,17,0.15)", label: "Warning fill",   value: "rgba(222,128,17,0.15)", note: "Status: warning bg", border: true },
-  { color: "#e85540",               label: "Critical border",value: "#e85540",               note: "Status: critical" },
-  { color: "rgba(214,59,37,0.15)",  label: "Critical fill",  value: "rgba(214,59,37,0.15)",  note: "Status: critical bg", border: true },
-];
-
-const CHARTS_DARK = [
-  { color: "oklch(0.488 0.243 264.376)", label: "chart-1", value: "oklch(0.488 0.243 264)", note: "Blue-violet" },
-  { color: "oklch(0.696 0.17 162.48)",   label: "chart-2", value: "oklch(0.696 0.17 162)",  note: "Green" },
-  { color: "oklch(0.769 0.188 70.08)",   label: "chart-3", value: "oklch(0.769 0.188 70)",  note: "Warm orange" },
-  { color: "oklch(0.627 0.265 303.9)",   label: "chart-4", value: "oklch(0.627 0.265 304)", note: "Purple" },
-  { color: "oklch(0.645 0.246 16.439)",  label: "chart-5", value: "oklch(0.645 0.246 16)",  note: "Red-orange" },
-];
-
-const APP_COLORS = [
-  { color: "#227e9e", label: "Brand cyan",      value: "#227e9e", note: "Loading spinners, highlights" },
-  { color: "#5ba8d0", label: "Comparison blue", value: "#5ba8d0", note: "Map comparison mode label" },
-  { color: "#0f1729", label: "Header (light)",  value: "#0f1729", note: "Main header background" },
-  { color: "#0a0a0a", label: "Header (dark)",   value: "#0a0a0a", note: "Main header background dark" },
-];
-
-function SwatchGrid({ swatches, cols = 6 }: {
-  swatches: { color: string; label: string; value: string; note?: string; border?: boolean }[];
-  cols?: number;
-}) {
-  return (
-    <div
-      className="grid gap-4 p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950"
-      style={{ gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))` }}
-    >
-      {swatches.map((s) => (
-        <Swatch key={s.label + s.value} color={s.color} label={s.label} value={s.value} note={s.note} border={s.border} />
-      ))}
-    </div>
-  );
-}
 
 type Mode = "light" | "dark";
 
-const TOKEN_ROWS: [string, string, string, string][] = [
-  ["--background",         "#ffffff",                    "oklch(0.145 0 0) ≈ #0f0f0f",  "Page background"],
-  ["--foreground",         "oklch(0.145 0 0) ≈ #0a0a0b","oklch(0.985 0 0) ≈ #fafafa",  "Primary text"],
-  ["--card",               "#ffffff",                    "oklch(0.145 0 0) ≈ #0f0f0f",  "Card surface"],
-  ["--primary",            "#030213",                    "oklch(0.985 0 0) ≈ #fafafa",  "Primary action fill"],
-  ["--primary-foreground", "#ffffff",                    "oklch(0.205 0 0) ≈ #343434",  "Text on primary"],
-  ["--secondary",          "oklch(0.95 0.0058 264.53)", "oklch(0.269 0 0) ≈ #333333",  "Secondary button fill"],
-  ["--muted",              "#ececf0",                    "oklch(0.269 0 0) ≈ #333333",  "Muted surface"],
-  ["--muted-foreground",   "#717182",                    "oklch(0.708 0 0) ≈ #b3b3b3",  "Placeholder, captions"],
-  ["--accent",             "#e9ebef",                    "oklch(0.269 0 0) ≈ #333333",  "Hover fill"],
-  ["--destructive",        "#d4183d",                    "oklch(0.396 0.141 25.723)",   "Errors / danger"],
-  ["--border",             "rgba(0,0,0,0.1)",           "oklch(0.269 0 0) ≈ #333333",  "Default border"],
-  ["--input",              "transparent",                "oklch(0.269 0 0) ≈ #333333",  "Input border/bg"],
-  ["--input-background",   "#f3f3f5",                    "— (not overridden)",           "Input field fill"],
-  ["--ring",               "oklch(0.708 0 0)",          "oklch(0.439 0 0) ≈ #6b6b6b",  "Focus ring"],
-  ["--sidebar",            "oklch(0.985 0 0) ≈ #fafafa","oklch(0.205 0 0) ≈ #343434",  "Sidebar background"],
-  ["--chart-1",            "oklch(0.646 0.222 41)",     "oklch(0.488 0.243 264)",       "Chart series 1"],
-  ["--chart-2",            "oklch(0.6 0.118 185)",      "oklch(0.696 0.17 162)",        "Chart series 2"],
-  ["--chart-3",            "oklch(0.398 0.07 227)",     "oklch(0.769 0.188 70)",        "Chart series 3"],
-  ["--chart-4",            "oklch(0.828 0.189 84)",     "oklch(0.627 0.265 304)",       "Chart series 4"],
-  ["--chart-5",            "oklch(0.769 0.188 70)",     "oklch(0.645 0.246 16)",        "Chart series 5"],
+// ── Consolidated mapping table ────────────────────────────────────────────────
+// component token (or "—") → semantic token → primitive → hex per mode
+const TOKEN_MAP: {
+  component: string;
+  semantic: string;
+  primitive: string;
+  light: string;
+  dark: string;
+  border?: boolean;
+  group?: string;
+}[] = [
+  // ── Shell / Layout ────────────────────────────────────────────────────────
+  { group: "Shell", component: "--header-bg",              semantic: "--shell-header-bg",        primitive: "--primitive-navy-900",           light: "#0f1729", dark: "#0a0a0a" },
+  { component: "--page-bg",                                semantic: "--shell-page-bg",          primitive: "--primitive-neutral-000",        light: "#ffffff", dark: "#0f0f0f", border: true },
+  { component: "--surface-bg",                             semantic: "--shell-surface-bg",       primitive: "--primitive-neutral-000",        light: "#ffffff", dark: "#1a1a1a", border: true },
+  { component: "--sidebar-bg",                             semantic: "--shell-sidebar-bg",       primitive: "--primitive-neutral-050",        light: "#f5f5f5", dark: "#1a1a1a", border: true },
+
+  // ── Text ─────────────────────────────────────────────────────────────────
+  { group: "Text", component: "--text-primary",            semantic: "--content-text-primary",   primitive: "--primitive-neutral-900",        light: "#161513", dark: "#ffffff", border: true },
+  { component: "--text-body",                              semantic: "--content-text-body",      primitive: "--primitive-neutral-800",        light: "#222222", dark: "#e0e0e0", border: true },
+  { component: "--text-muted",                             semantic: "--content-text-muted",     primitive: "--primitive-neutral-600",        light: "#665f5b", dark: "#999999" },
+  { component: "--icon-fill",                              semantic: "--content-icon",           primitive: "--primitive-neutral-600",        light: "#665f5b", dark: "#a0a0a0" },
+
+  // ── Borders ───────────────────────────────────────────────────────────────
+  { group: "Borders", component: "--border-default",       semantic: "--ui-border-default",      primitive: "--primitive-neutral-300",        light: "#d8d8d8", dark: "#404040" },
+  { component: "--border-subtle",                          semantic: "--ui-border-subtle",       primitive: "--primitive-neutral-350",        light: "#d5d5d5", dark: "#404040" },
+  { component: "--border-strong",                          semantic: "--ui-border-strong",       primitive: "--primitive-neutral-400",        light: "#b9b9b9", dark: "#404040" },
+  { component: "--border-muted",                           semantic: "--ui-border-muted",        primitive: "--primitive-neutral-450",        light: "#b6b2ad", dark: "#505050" },
+
+  // ── Tables ────────────────────────────────────────────────────────────────
+  { group: "Tables", component: "--table-header-bg",       semantic: "--ui-table-header-surface",primitive: "--primitive-neutral-025",        light: "#f8f8f8", dark: "#252525", border: true },
+  { component: "--table-header-alt-bg",                    semantic: "--ui-table-header-alt",    primitive: "--primitive-neutral-075",        light: "#eeeeee", dark: "#252525", border: true },
+  { component: "--table-row-hover",                        semantic: "--ui-table-row-hover",     primitive: "--primitive-neutral-100",        light: "#f0f0f0", dark: "#333333", border: true },
+
+  // ── Charts ────────────────────────────────────────────────────────────────
+  { group: "Charts", component: "--chart-container-border",semantic: "--chart-surface-border",   primitive: "--primitive-neutral-450",        light: "#b6b2ad", dark: "#404040" },
+  { component: "--chart-grid-line",                        semantic: "--chart-grid",             primitive: "--primitive-neutral-100",        light: "#f0f0f0", dark: "#2a2a2a", border: true },
+  { component: "--chart-axis-line",                        semantic: "--chart-axis",             primitive: "--primitive-neutral-350",        light: "#d5d5d5", dark: "#404040" },
+  { component: "--chart-axis-line-strong",                 semantic: "--chart-axis-strong",      primitive: "--primitive-neutral-400",        light: "#b9b9b9", dark: "#505050" },
+  { component: "--chart-window-stroke",                    semantic: "--chart-window",           primitive: "--primitive-cyan-500",           light: "#227e9e", dark: "#227e9e" },
+  { component: "--chart-comparison-stroke",                semantic: "--chart-comparison",       primitive: "--primitive-amber-700",          light: "#de8011", dark: "#de8011" },
+  { component: "--chart-bar-healthy",                      semantic: "--status-healthy-chart",   primitive: "--primitive-green-700",          light: "#508223", dark: "#508223" },
+  { component: "--chart-bar-warning",                      semantic: "--status-warning-chart",   primitive: "--primitive-amber-700",          light: "#de8011", dark: "#ff981e" },
+  { component: "--chart-bar-critical",                     semantic: "--status-critical-chart",  primitive: "--primitive-red-600",            light: "#d63b25", dark: "#e85540" },
+
+  // ── Map ───────────────────────────────────────────────────────────────────
+  { group: "Map", component: "--map-label-text",           semantic: "--brand-text",             primitive: "--primitive-cyan-700",           light: "#006080", dark: "#006080" },
+  { component: "--map-info-bg",                            semantic: "--map-info-surface",       primitive: "--primitive-info-bg-light",      light: "#e8f4f8", dark: "#1a3a44", border: true },
+  { component: "--map-info-border",                        semantic: "--map-info-outline",       primitive: "--primitive-cyan-300",           light: "#4db8e8", dark: "#4db8e8" },
+  { component: "--map-marker-healthy",                     semantic: "--status-healthy-dot",     primitive: "--primitive-green-700",          light: "#508223", dark: "#6ba32e" },
+  { component: "--map-marker-warning",                     semantic: "--status-warning-dot",     primitive: "--primitive-amber-700",          light: "#de8011", dark: "#de8011" },
+  { component: "--map-marker-critical",                    semantic: "--status-critical-dot",    primitive: "--primitive-red-600",            light: "#d63b25", dark: "#d63b25" },
+
+  // ── Network Diagram ───────────────────────────────────────────────────────
+  { group: "Network", component: "--network-line-healthy", semantic: "--network-healthy-stroke", primitive: "--primitive-green-700",          light: "#508223", dark: "#7fb83e" },
+
+  // ── Interaction ───────────────────────────────────────────────────────────
+  { group: "Interaction", component: "--action-link",      semantic: "--interaction-link",       primitive: "--primitive-cyan-800",           light: "#00688c", dark: "#4db8e8" },
+  { component: "--action-link-alt",                        semantic: "--interaction-link-alt",   primitive: "--primitive-cyan-800",           light: "#00688c", dark: "#4da6c7" },
+  { component: "--selected-bg",                            semantic: "--interaction-selected-bg",primitive: "--primitive-selected-bg-light",  light: "#e4f1f7", dark: "#1e3a4a", border: true },
+  { component: "--spinner-stroke",                         semantic: "--interaction-spinner",    primitive: "--primitive-cyan-500",           light: "#227e9e", dark: "#227e9e" },
+
+  // ── Status: Healthy ───────────────────────────────────────────────────────
+  { group: "Status: Healthy", component: "--badge-healthy-bg",     semantic: "--status-healthy-bg",      primitive: "--primitive-green-700 / 15%",    light: "#e4f3de", dark: "#22291b", border: true },
+  { component: "--badge-healthy-border",                           semantic: "--status-healthy-border",  primitive: "--primitive-green-700",          light: "#508223", dark: "#6ba32e" },
+  { component: "--badge-healthy-text",                             semantic: "--status-healthy-text",    primitive: "--primitive-green-800",          light: "#3a5e18", dark: "#e4e4e4", border: true },
+
+  // ── Status: Warning ───────────────────────────────────────────────────────
+  { group: "Status: Warning", component: "--badge-warning-bg",     semantic: "--status-warning-bg",      primitive: "--primitive-amber-700 / 15%",    light: "#faeedd", dark: "#37230e", border: true },
+  { component: "--badge-warning-border",                           semantic: "--status-warning-border",  primitive: "--primitive-amber-600",          light: "#ac630c", dark: "#de8011" },
+  { component: "--badge-warning-text",                             semantic: "--status-warning-text",    primitive: "--primitive-amber-800",          light: "#7a4400", dark: "#e4e4e4", border: true },
+  { component: "--text-warning-insight",                           semantic: "--status-warning-insight", primitive: "--primitive-amber-insight",      light: "#9a5800", dark: "#ff981e" },
+
+  // ── Status: Critical ──────────────────────────────────────────────────────
+  { group: "Status: Critical", component: "--badge-critical-bg",   semantic: "--status-critical-bg",     primitive: "--primitive-red-600 / 15%",      light: "#f9e1dd", dark: "#36201d", border: true },
+  { component: "--badge-critical-border",                          semantic: "--status-critical-border", primitive: "--primitive-red-600",            light: "#d63b25", dark: "#e85540" },
+  { component: "--badge-critical-text",                            semantic: "--status-critical-text",   primitive: "--primitive-red-800",            light: "#8b1a0a", dark: "#e4e4e4", border: true },
+
+  // ── Brand ─────────────────────────────────────────────────────────────────
+  { group: "Brand", component: "—",                                semantic: "--brand-accent",           primitive: "--primitive-cyan-500",           light: "#227e9e", dark: "#227e9e" },
+  { component: "—",                                                 semantic: "--brand-header",           primitive: "--primitive-navy-900",           light: "#0f1729", dark: "#0f1729" },
 ];
+
 
 export function Colors() {
   const [mode, setMode] = useState<Mode>("light");
   const isDark = mode === "dark";
 
-  const surfaces = isDark ? SURFACES_DARK : SURFACES_LIGHT;
-  const text     = isDark ? TEXT_DARK     : TEXT_LIGHT;
-  const status   = isDark ? STATUS_DARK   : STATUS_LIGHT;
-  const charts   = isDark ? CHARTS_DARK   : CHARTS_LIGHT;
-
   return (
     <div className="space-y-10">
       <SectionHeader
         title="Color Tokens"
-        description="All color values are defined as CSS custom properties in theme.css. Light mode values live in :root, dark mode values in .dark. Use the variable names when writing components — never hardcode values directly."
+        description="Three-tier system: component tokens alias semantic tokens which resolve primitive values. Every color used in the dashboard prototype is documented here."
       />
 
-      {/* ── Mode tabs ── */}
+      {/* Mode tab */}
       <div className="flex items-center gap-0 rounded-lg border border-slate-200 dark:border-slate-700 w-fit overflow-hidden">
         {(["light", "dark"] as Mode[]).map((m) => (
           <button
@@ -154,65 +117,70 @@ export function Colors() {
         ))}
       </div>
 
-      {/* ── Content ── */}
-      <div className="space-y-8">
+      <div className="space-y-12">
 
-        <Group title="Surfaces & Backgrounds">
-          <SwatchGrid swatches={surfaces} cols={6} />
-        </Group>
-
-        <Group title="Text & Foreground">
-          <SwatchGrid swatches={text} cols={5} />
-        </Group>
-
-        <Group title="Status Colors">
+        {/* ── Consolidated mapping table ── */}
+        <div className="space-y-4">
           <p className="text-xs text-slate-500 dark:text-slate-400">
-            Always pair border + fill together.{isDark && " In dark mode, border colors are slightly brighter to maintain contrast against dark surfaces."}
+            Full chain for <strong className="font-semibold">{mode}</strong> mode. Rows marked <span className="font-mono">—</span> in the component column are semantic tokens used directly. Badge bg values marked <span className="font-mono">/ 15%</span> are alpha-composited on the surface color.
           </p>
-          <SwatchGrid swatches={status} cols={6} />
-        </Group>
-
-        <Group title="App-Specific Colors">
-          <p className="text-xs text-slate-500 dark:text-slate-400">
-            Hardcoded values outside the CSS variable system. Avoid using in new components unless necessary.
-          </p>
-          <SwatchGrid swatches={APP_COLORS} cols={4} />
-        </Group>
-
-        <Group title="Chart Palette">
-          <p className="text-xs text-slate-500 dark:text-slate-400">
-            Used by Recharts via <code className="font-mono">--chart-1</code> through <code className="font-mono">--chart-5</code>.{" "}
-            {isDark ? "Dark palette uses cooler, more vibrant hues." : "Light palette uses warm, earthy tones."}
-          </p>
-          <SwatchGrid swatches={charts} cols={5} />
-        </Group>
-
-        <Group title="CSS Variable Reference">
           <div className="rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden">
             <table className="w-full">
               <thead>
-                <tr className="bg-slate-50 dark:bg-slate-900/50 border-b border-slate-200 dark:border-slate-800">
-                  <th className="text-left text-xs font-semibold text-slate-500 px-5 py-3 w-44">Token</th>
-                  <th className="text-left text-xs font-semibold text-slate-500 px-0 py-3">Value ({mode} mode)</th>
-                  <th className="text-left text-xs font-semibold text-slate-500 px-4 py-3">Usage</th>
+                <tr className="bg-slate-50 dark:bg-slate-900/50 border-b border-slate-200 dark:border-slate-800 text-xs font-semibold text-slate-500">
+                  <th className="text-left px-5 py-3">Component token</th>
+                  <th className="text-left px-4 py-3">Semantic token</th>
+                  <th className="text-left px-4 py-3">Primitive</th>
+                  <th className="text-left px-4 py-3">Value</th>
                 </tr>
               </thead>
-              <tbody className="bg-white dark:bg-slate-950 divide-y divide-slate-100 dark:divide-slate-800 text-xs">
-                {TOKEN_ROWS.map(([token, light, dark, usage]) => (
-                  <tr key={token}>
-                    <td className="py-2.5 px-5">
-                      <code className="font-mono text-violet-600 dark:text-violet-400">{token}</code>
-                    </td>
-                    <td className="py-2.5 pr-4">
-                      <code className="font-mono text-slate-600 dark:text-slate-400">{isDark ? dark : light}</code>
-                    </td>
-                    <td className="py-2.5 px-4 text-slate-500 dark:text-slate-400">{usage}</td>
-                  </tr>
-                ))}
+              <tbody className="bg-white dark:bg-slate-950 text-xs">
+                {TOKEN_MAP.map((row) => {
+                  const hex = isDark ? row.dark : row.light;
+                  const isPlaceholder = row.component === "—";
+                  const isGroupStart = row.group !== undefined;
+                  return (
+                    <Fragment key={row.component + row.semantic}>
+                      {isGroupStart && (
+                        <tr className="border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50">
+                          <td colSpan={4} className="px-5 py-2">
+                            <span className="text-[10px] font-bold uppercase tracking-widest text-slate-400 dark:text-slate-500">{row.group}</span>
+                          </td>
+                        </tr>
+                      )}
+                      <tr className="border-t border-slate-100 dark:border-slate-800/60">
+                        <td className="py-3 px-5">
+                          {isPlaceholder
+                            ? <span className="text-slate-300 dark:text-slate-600 font-mono">—</span>
+                            : <code className="font-mono text-blue-600 dark:text-blue-400">{row.component}</code>
+                          }
+                        </td>
+                        <td className="py-3 px-4">
+                          <code className="font-mono text-violet-600 dark:text-violet-400">{row.semantic}</code>
+                        </td>
+                        <td className="py-3 px-4">
+                          <code className="font-mono text-slate-400 dark:text-slate-500 text-[11px]">{row.primitive}</code>
+                        </td>
+                        <td className="py-3 px-4">
+                          <div className="flex items-center gap-2">
+                            <div
+                              className="w-4 h-4 rounded shrink-0"
+                              style={{
+                                backgroundColor: hex,
+                                border: row.border ? "1px solid #cbd5e1" : "1px solid transparent",
+                              }}
+                            />
+                            <code className="font-mono text-slate-600 dark:text-slate-400">{hex}</code>
+                          </div>
+                        </td>
+                      </tr>
+                    </Fragment>
+                  );
+                })}
               </tbody>
             </table>
           </div>
-        </Group>
+        </div>
 
       </div>
     </div>

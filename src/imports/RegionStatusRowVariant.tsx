@@ -23,7 +23,7 @@ function Text2({ text, additionalClassNames = "" }: Text2Props) {
     <div className={clsx("content-stretch flex items-center justify-center p-[10px] relative", additionalClassNames)}>
       <div className="bg-[rgba(80,130,35,0.2)] content-stretch flex items-center justify-center p-[4px] relative rounded-[3px] shrink-0">
         <div aria-hidden="true" className="absolute border border-[#508223] border-solid inset-0 pointer-events-none rounded-[3px]" />
-        <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[#508223] text-[11px] whitespace-nowrap">{text}</p>
+        <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[#508223] text-[11px] whitespace-nowrap">{text}</p>
       </div>
     </div>
   );
@@ -52,7 +52,7 @@ function Text1({ text, additionalClassNames = "" }: Text1Props) {
     <div className={clsx("content-stretch flex items-center justify-center p-[10px] relative", additionalClassNames)}>
       <div className="bg-[rgba(214,59,37,0.2)] content-stretch flex items-center justify-center p-[4px] relative rounded-[3px] shrink-0">
         <div aria-hidden="true" className="absolute border border-[#d63b25] border-solid inset-0 pointer-events-none rounded-[3px]" />
-        <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[#d63b25] text-[11px] whitespace-nowrap">{text}</p>
+        <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[#d63b25] text-[11px] whitespace-nowrap">{text}</p>
       </div>
     </div>
   );
@@ -81,7 +81,7 @@ function TableRealmOneRegionText2({ text, additionalClassNames = "" }: TableReal
     <div className={clsx("content-stretch flex items-center justify-center p-[10px] relative", additionalClassNames)}>
       <div className="bg-[rgba(222,128,17,0.2)] content-stretch flex items-center justify-center p-[4px] relative rounded-[3px] shrink-0">
         <div aria-hidden="true" className="absolute border border-[#ac630c] border-solid inset-0 pointer-events-none rounded-[3px]" />
-        <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[#ac630c] text-[11px] whitespace-nowrap">{text}</p>
+        <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[#ac630c] text-[11px] whitespace-nowrap">{text}</p>
       </div>
     </div>
   );
@@ -94,7 +94,7 @@ type TextProps = {
 function Text({ text, additionalClassNames = "" }: TextProps) {
   return (
     <div className={clsx("content-stretch flex items-center justify-center p-[10px] relative", additionalClassNames)}>
-      <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[14px] text-black whitespace-nowrap">{text}</p>
+      <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[14px] text-black whitespace-nowrap">{text}</p>
     </div>
   );
 }
@@ -121,7 +121,7 @@ function TableRealmOneRegionText({ text }: TableRealmOneRegionTextProps) {
     <div className="bg-[#f8f8f8] relative shrink-0 w-full">
       <div className="flex flex-row items-center justify-center size-full">
         <div className="content-stretch flex items-center justify-center p-[10px] relative w-full">
-          <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[#222] text-[14px] whitespace-nowrap">{text}</p>
+          <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[#222] text-[14px] whitespace-nowrap">{text}</p>
         </div>
       </div>
     </div>
@@ -154,7 +154,7 @@ export default function Frame() {
                 <div className="bg-[#f8f8f8] relative shrink-0 w-full">
                   <div className="flex flex-row items-center justify-center size-full">
                     <div className="content-stretch flex gap-[10px] items-center justify-center p-[10px] relative w-full">
-                      <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[14px] text-black whitespace-nowrap">Metrics</p>
+                      <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[14px] text-black whitespace-nowrap">Metrics</p>
                       <div className="relative shrink-0 size-[16px]" data-name="SORT">
                         <div className="absolute inset-[16.67%]" data-name="Vector">
                           <svg className="absolute block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 10.6667 10.6667">
@@ -243,7 +243,7 @@ export default function Frame() {
               <div className="bg-[rgba(214,59,37,0.2)] h-[37px] relative shrink-0 w-full">
                 <div className="flex flex-row items-center justify-end size-full">
                   <div className="content-stretch flex gap-[10px] items-center justify-end pr-[10px] py-[10px] relative size-full">
-                    <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[#00688c] text-[12px] w-[92px]">View all issues</p>
+                    <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[#00688c] text-[12px] w-[92px]">View all issues</p>
                     <div className="overflow-clip relative shrink-0 size-[16px]" data-name="PSFT/Icons/24/RW CrossRed">
                       <div className="absolute inset-[20.83%]" data-name="Vector">
                         <svg className="absolute block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 9.33333 9.33333">

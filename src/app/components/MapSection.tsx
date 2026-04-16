@@ -1,11 +1,11 @@
 import WorldMapDashboard from "../../imports/WorldMapDashboard";
 import { useTimeRange } from "../contexts/TimeRangeContext";
-import { ChevronDown, RefreshCw } from "lucide-react";
+import { RefreshCw } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import { useState } from "react";
 
 export function MapSection() {
-  const { startDate, endDate, isLoading, hasMovedWindow, setHasMovedWindow, setTimeRange, showComparison, setShowComparison, currentWindowDate, setCurrentWindowDate, initialEndDate } = useTimeRange();
+  const { startDate, endDate, isLoading, hasMovedWindow, setHasMovedWindow, setTimeRange, showComparison, setShowComparison, currentWindowDate, setCurrentWindowDate, comparisonWindowDate, initialEndDate } = useTimeRange();
 
   // Format date for display
   const formatMapDate = (date: Date) => {
@@ -45,25 +45,24 @@ export function MapSection() {
               animate={{ x: 0, opacity: 1 }}
               exit={{ x: "-100%", opacity: 0 }}
               transition={{ duration: 0.4, ease: "easeOut" }}
-              className="relative bg-gray-100 dark:bg-[#1a1a1a] border-r border-gray-300 dark:border-[#404040] flex-1"
+              className="relative bg-gray-100 dark:bg-[#1a1a1a] border-r border-gray-300 dark:border-[#404040] flex-1 pointer-events-none"
             >
-              {/* Timestamp display - Current */}
-              <div className="absolute top-4 right-4 z-10 bg-white dark:bg-[#1a1a1a] border border-gray-300 dark:border-[#404040] rounded px-3 py-2 text-xs dark:text-white">
-                <div className="text-[#de8011] font-bold">Showing live data for: Current</div>
-                <div className="text-gray-500 dark:text-gray-400 text-sm mt-1">Read-only</div>
+              {/* Timestamp display - Comparison */}
+              <div className="absolute top-4 right-4 z-10 bg-white dark:bg-[#1a1a1a] border border-gray-300 dark:border-[#404040] rounded px-3 py-2 text-xs dark:text-white pointer-events-auto">
+                <div className="text-[#de8011] font-bold">Showing data for {formatMapDate(comparisonWindowDate)}</div>
               </div>
-              
+
               {/* Close comparison button */}
               <button
                 onClick={() => setShowComparison(false)}
-                className="absolute top-4 left-4 z-10 bg-white dark:bg-[#1a1a1a] border border-gray-300 dark:border-[#404040] rounded px-3 py-2 text-sm dark:text-white hover:bg-gray-50 dark:hover:bg-[#2a2a2a] transition-colors"
+                className="absolute top-4 left-4 z-10 bg-white dark:bg-[#1a1a1a] border border-gray-300 dark:border-[#404040] rounded px-3 py-2 text-sm dark:text-white hover:bg-gray-50 dark:hover:bg-[#2a2a2a] transition-colors pointer-events-auto"
               >
                 ✕ Close comparison
               </button>
               
-              {/* Current map */}
-              <div className="w-full h-full absolute inset-0">
-                <WorldMapDashboard overrideEndDate={initialEndDate} />
+              {/* Comparison map — read-only, no interaction */}
+              <div className="w-full h-full absolute inset-0 pointer-events-none">
+                <WorldMapDashboard overrideEndDate={comparisonWindowDate} readOnly />
               </div>
             </motion.div>
           )}
@@ -133,14 +132,12 @@ export function MapSection() {
             
           </div>
           
-          {/* Legend button */}
+          {/* Legend */}
           {!showComparison && (
-            <div className="absolute bottom-4 right-20 z-10">
-              <button className="bg-white dark:bg-[#1a1a1a] border border-gray-300 dark:border-[#404040] rounded px-3 py-2 text-sm dark:text-white flex items-center gap-2">
-                <span>☰</span>
-                <span>Legend</span>
-                <ChevronDown />
-              </button>
+            <div className="absolute bottom-4 right-4 z-10 bg-white dark:bg-[#1a1a1a] border border-gray-300 dark:border-[#404040] rounded px-3 py-2 flex items-center gap-4">
+              <span className="flex items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400"><span className="w-3 h-3 rounded-sm bg-[#508223] inline-block shrink-0" />Healthy</span>
+              <span className="flex items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400"><span className="w-3 h-3 rounded-sm bg-[#de8011] inline-block shrink-0" />Warning</span>
+              <span className="flex items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400"><span className="w-3 h-3 rounded-sm bg-[#d63b25] inline-block shrink-0" />Critical</span>
             </div>
           )}
         </div>

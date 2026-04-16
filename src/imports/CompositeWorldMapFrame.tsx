@@ -22,7 +22,7 @@ function Health1({ children, additionalClassNames = "", text }: React.PropsWithC
       <Wrapper1>
         <div className="content-stretch flex gap-[5px] items-center justify-center relative shrink-0">
           <Vector />
-          <p className="font-['Inter:Regular',sans-serif] font-normal leading-[12px] not-italic relative shrink-0 text-[9px] text-center text-white whitespace-nowrap">{text}</p>
+          <p className="font-normal leading-[12px] not-italic relative shrink-0 text-[9px] text-center text-white whitespace-nowrap">{text}</p>
         </div>
       </Wrapper1>
     </div>
@@ -42,9 +42,9 @@ function Health({ children, additionalClassNames = "", text }: React.PropsWithCh
           <div className="content-stretch flex gap-[5px] items-center justify-center relative shrink-0">
             <Vector />
             <div className="bg-white content-stretch flex h-[8px] items-center justify-center p-[2px] relative rounded-[5px] shrink-0">
-              <p className="font-['Inter:Medium',sans-serif] font-medium leading-[12px] not-italic relative shrink-0 text-[#508223] text-[7px] text-center whitespace-nowrap">{"ePOP"}</p>
+              <p className="font-medium font-medium leading-[12px] not-italic relative shrink-0 text-[#508223] text-[7px] text-center whitespace-nowrap">{"ePOP"}</p>
             </div>
-            <p className="font-['Inter:Regular',sans-serif] font-normal leading-[12px] not-italic relative shrink-0 text-[9px] text-center text-white whitespace-nowrap">{text}</p>
+            <p className="font-normal leading-[12px] not-italic relative shrink-0 text-[9px] text-center text-white whitespace-nowrap">{text}</p>
           </div>
         </div>
       </div>
@@ -80,7 +80,7 @@ function Text1({ text, children, additionalClassNames = "" }: React.PropsWithChi
           <div className="content-stretch flex flex-col gap-[15px] items-end pr-[10px] relative w-full">{children}</div>
         </div>
       </div>
-      <p className="[text-decoration-skip-ink:none] decoration-solid font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[#00688c] text-[11px] text-right underline w-full">{text}</p>
+      <p className="[text-decoration-skip-ink:none] decoration-solid font-normal leading-[normal] not-italic relative shrink-0 text-[#00688c] text-[11px] text-right underline w-full">{text}</p>
     </div>
   );
 }
@@ -193,7 +193,7 @@ function Text({ text }: TextProps) {
               </div>
             </div>
           </div>
-          <p className="absolute font-['Inter:Regular',sans-serif] font-normal inset-[0_84.24%_87.84%_0.86%] leading-[normal] not-italic text-[#161513] text-[11px]">{text}</p>
+          <p className="absolute font-normal inset-[0_84.24%_87.84%_0.86%] leading-[normal] not-italic text-[#161513] text-[11px]">{text}</p>
           <HeaderHelper text="07/09" text1="07/10" text2="07/11" text3="07/12" text4="07/13" text5="07/14" text6="07/15" text7="07/16" text8="07/17" text9="07/18" text10="07/19" text11="07/20" text12="07/21" text13="07/22" text14="07/23" text15="07/24" text16="07/25" text17="07/26" text18="07/27" text19="07/28" text20="07/29" text21="07/30" text22="07/31" text23="08/01" text24="08/02" text25="08/03" text26="08/04" text27="08/05" text28="08/06" text29="08/07" text30="08/08" text31="08/09" text32="08/10" text33="08/11" text34="08/12" text35="08/13" text36="08/14" text37="08/15" text38="08/16" text39="08/17" />
           <HeaderHelper1 text="20" text1="15" text2="10" text3="5" />
           <HeaderHelper2 />
@@ -757,7 +757,7 @@ type HeaderHelper1Props = {
 function HeaderHelper1({ text, text1, text2, text3 }: HeaderHelper1Props) {
   return (
     <div className="absolute contents inset-[16.22%_99.11%_19.99%_0.09%]">
-      <div className="absolute content-stretch flex flex-col font-['Inter:Regular',sans-serif] font-normal gap-px inset-[16.22%_99.11%_19.99%_0.09%] items-center leading-[normal] not-italic text-[#161513] text-[8px] text-center whitespace-nowrap">
+      <div className="absolute content-stretch flex flex-col font-normal gap-px inset-[16.22%_99.11%_19.99%_0.09%] items-center leading-[normal] not-italic text-[#161513] text-[8px] text-center whitespace-nowrap">
         <p className="relative shrink-0">{text}</p>
         <p className="relative shrink-0">{text1}</p>
         <p className="relative shrink-0">{text2}</p>
@@ -812,7 +812,7 @@ type HeaderHelperProps = {
 function HeaderHelper({ text, text1, text2, text3, text4, text5, text6, text7, text8, text9, text10, text11, text12, text13, text14, text15, text16, text17, text18, text19, text20, text21, text22, text23, text24, text25, text26, text27, text28, text29, text30, text31, text32, text33, text34, text35, text36, text37, text38, text39 }: HeaderHelperProps) {
   return (
     <div className="absolute contents inset-[83.78%_-0.43%_4.15%_1.03%]">
-      <div className="absolute content-stretch flex font-['Inter:Regular',sans-serif] font-normal gap-[4px] inset-[83.78%_-0.43%_4.15%_1.03%] items-start leading-[normal] not-italic text-[#161513] text-[8px] text-center whitespace-nowrap">
+      <div className="absolute content-stretch flex font-normal gap-[4px] inset-[83.78%_-0.43%_4.15%_1.03%] items-start leading-[normal] not-italic text-[#161513] text-[8px] text-center whitespace-nowrap">
         <p className="relative shrink-0">{`07/06 `}</p>
         <p className="relative shrink-0">{`07/07 `}</p>
         <p className="relative shrink-0">{`07/08 `}</p>
@@ -885,7 +885,7 @@ function LeftText({ text, additionalClassNames = "" }: LeftTextProps) {
           </svg>
         </div>
       </div>
-      <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[#665f5b] text-[14px] whitespace-nowrap">{text}</p>
+      <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[#665f5b] text-[14px] whitespace-nowrap">{text}</p>
     </div>
   );
 }
@@ -912,7 +912,7 @@ function TableRealmEmptyText({ text }: TableRealmEmptyTextProps) {
     <div className="bg-[#f8f8f8] relative shrink-0 w-full">
       <div className="flex flex-row items-center justify-center size-full">
         <div className="content-stretch flex items-center justify-center p-[10px] relative w-full">
-          <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[#222] text-[14px] whitespace-nowrap">{text}</p>
+          <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[#222] text-[14px] whitespace-nowrap">{text}</p>
         </div>
       </div>
     </div>
@@ -967,15 +967,15 @@ function Legend({ className, state = "Expanded" }: LegendProps) {
           <Text1 text="How is this calculated?" additionalClassNames="opacity-0">
             <div className="content-stretch flex gap-[5px] items-end relative shrink-0">
               <Error className="relative shrink-0 size-[16px]" />
-              <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[#222] text-[14px] whitespace-nowrap">Critical</p>
+              <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[#222] text-[14px] whitespace-nowrap">Critical</p>
             </div>
             <div className="content-stretch flex gap-[5px] items-end relative shrink-0">
               <LegendFutureTrailingIcon02Warning />
-              <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[#222] text-[14px] whitespace-nowrap">Warning</p>
+              <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[#222] text-[14px] whitespace-nowrap">Warning</p>
             </div>
             <div className="content-stretch flex gap-[5px] items-end relative shrink-0">
               <Success className="relative shrink-0 size-[16px]" />
-              <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[#222] text-[14px] whitespace-nowrap">Healthy</p>
+              <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[#222] text-[14px] whitespace-nowrap">Healthy</p>
             </div>
           </Text1>
         </div>
@@ -990,7 +990,7 @@ function Legend({ className, state = "Expanded" }: LegendProps) {
                   </svg>
                 </div>
               </div>
-              <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[#222] text-[14px] text-left whitespace-nowrap">Legend</p>
+              <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[#222] text-[14px] text-left whitespace-nowrap">Legend</p>
               <div className="flex items-center justify-center relative shrink-0">
                 <div className="flex-none rotate-180">
                   <ArrowsCaretDown className="overflow-clip relative size-[20px]" />
@@ -1008,15 +1008,15 @@ function Legend({ className, state = "Expanded" }: LegendProps) {
         <Text1 text="How is this calculated?">
           <div className="content-stretch flex gap-[5px] items-end relative shrink-0">
             <Error className="relative shrink-0 size-[16px]" />
-            <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[#222] text-[14px] text-left whitespace-nowrap">Critical</p>
+            <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[#222] text-[14px] text-left whitespace-nowrap">Critical</p>
           </div>
           <div className="content-stretch flex gap-[5px] items-end relative shrink-0">
             <LegendFutureTrailingIcon02Warning />
-            <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[#222] text-[14px] text-left whitespace-nowrap">Warning</p>
+            <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[#222] text-[14px] text-left whitespace-nowrap">Warning</p>
           </div>
           <div className="content-stretch flex gap-[5px] items-end relative shrink-0">
             <Success className="relative shrink-0 size-[16px]" />
-            <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[#222] text-[14px] text-left whitespace-nowrap">Healthy</p>
+            <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[#222] text-[14px] text-left whitespace-nowrap">Healthy</p>
           </div>
         </Text1>
       </div>
@@ -1031,7 +1031,7 @@ function Legend({ className, state = "Expanded" }: LegendProps) {
                 </svg>
               </div>
             </div>
-            <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[#222] text-[14px] text-left whitespace-nowrap">Legend</p>
+            <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[#222] text-[14px] text-left whitespace-nowrap">Legend</p>
             <ArrowsCaretDown className="overflow-clip relative shrink-0 size-[20px]" />
           </div>
         </div>
@@ -1073,7 +1073,7 @@ function Search({ className, state = "Default" }: SearchProps) {
             <div aria-hidden="true" className="absolute border border-[#bcb6b1] border-solid inset-[-1px] pointer-events-none rounded-[4px]" />
             <div className="content-stretch flex gap-[7px] items-start relative shrink-0">
               <Health additionalClassNames="relative shrink-0" text="DXB" />
-              <p className="font-['Inter:Regular',sans-serif] font-normal leading-[12px] not-italic relative shrink-0 text-[14px] text-black whitespace-nowrap">New York (LGA)</p>
+              <p className="font-normal leading-[12px] not-italic relative shrink-0 text-[14px] text-black whitespace-nowrap">New York (LGA)</p>
             </div>
             <div className="content-stretch flex gap-[7px] items-start relative shrink-0">
               <div className="bg-[#5f7d4f] relative rounded-[3px] shrink-0 w-[38px]" data-name="Health">
@@ -1081,11 +1081,11 @@ function Search({ className, state = "Default" }: SearchProps) {
                 <Wrapper1>
                   <div className="content-stretch flex gap-[5px] items-center justify-center relative shrink-0">
                     <Vector />
-                    <p className="font-['Inter:Regular',sans-serif] font-normal leading-[12px] not-italic relative shrink-0 text-[9px] text-center text-white whitespace-nowrap">{"DXB"}</p>
+                    <p className="font-normal leading-[12px] not-italic relative shrink-0 text-[9px] text-center text-white whitespace-nowrap">{"DXB"}</p>
                   </div>
                 </Wrapper1>
               </div>
-              <p className="font-['Inter:Regular',sans-serif] font-normal leading-[12px] not-italic relative shrink-0 text-[14px] text-black whitespace-nowrap">Newport (CWL)</p>
+              <p className="font-normal leading-[12px] not-italic relative shrink-0 text-[14px] text-black whitespace-nowrap">Newport (CWL)</p>
             </div>
           </div>
         </div>
@@ -1131,7 +1131,7 @@ function Header({ className, property1 = "Time series" }: HeaderProps) {
           </div>
           {isTimeSeries && (
             <>
-              <p className="absolute font-['Inter:Regular',sans-serif] font-normal inset-[0_84.24%_87.84%_0.86%] leading-[normal] not-italic text-[#161513] text-[8px]">Incident count (in thousands)</p>
+              <p className="absolute font-normal inset-[0_84.24%_87.84%_0.86%] leading-[normal] not-italic text-[#161513] text-[8px]">Incident count (in thousands)</p>
               <HeaderHelper text="07/09" text1="07/10" text2="07/11" text3="07/12" text4="07/13" text5="07/14" text6="07/15" text7="07/16" text8="07/17" text9="07/18" text10="07/19" text11="07/20" text12="07/21" text13="07/22" text14="07/23" text15="07/24" text16="07/25" text17="07/26" text18="07/27" text19="07/28" text20="07/29" text21="07/30" text22="07/31" text23="08/01" text24="08/02" text25="08/03" text26="08/04" text27="08/05" text28="08/06" text29="08/07" text30="08/08" text31="08/09" text32="08/10" text33="08/11" text34="08/12" text35="08/13" text36="08/14" text37="08/15" text38="08/16" text39="08/17" />
               <HeaderHelper1 text="20" text1="15" text2="10" text3="5" />
               <HeaderHelper2 />
@@ -1153,10 +1153,10 @@ export default function Frame() {
             <path d="M0 0H1440V39H0V0Z" fill="var(--fill-0, #011E39)" id="navbar-header" />
           </svg>
         </div>
-        <p className="absolute font-['Inter:Regular',sans-serif] font-normal inset-[15.38%_10.35%_58.46%_85.69%] leading-[normal] not-italic text-[14px] text-white whitespace-nowrap">Email Us</p>
-        <p className="absolute font-['Inter:Regular',sans-serif] font-normal inset-[15.38%_3.26%_58.46%_92.71%] leading-[normal] not-italic text-[14px] text-white whitespace-nowrap">Slack Us</p>
-        <p className="absolute font-['Inter:Semi_Bold',sans-serif] font-semibold inset-[15.38%_94.58%_55.38%_1.18%] leading-[normal] not-italic text-[16px] text-white tracking-[1px] whitespace-nowrap">iNsight</p>
-        <p className="absolute font-['Inter:Semi_Bold',sans-serif] font-semibold inset-[15.38%_17.57%_58.46%_77.01%] leading-[normal] not-italic text-[14px] text-shadow-[0px_4px_4px_rgba(0,0,0,0.25)] text-white whitespace-nowrap">Realm: OC1</p>
+        <p className="absolute font-normal inset-[15.38%_10.35%_58.46%_85.69%] leading-[normal] not-italic text-[14px] text-white whitespace-nowrap">Email Us</p>
+        <p className="absolute font-normal inset-[15.38%_3.26%_58.46%_92.71%] leading-[normal] not-italic text-[14px] text-white whitespace-nowrap">Slack Us</p>
+        <p className="absolute font-semibold inset-[15.38%_94.58%_55.38%_1.18%] leading-[normal] not-italic text-[16px] text-white tracking-[1px] whitespace-nowrap">iNsight</p>
+        <p className="absolute font-semibold inset-[15.38%_17.57%_58.46%_77.01%] leading-[normal] not-italic text-[14px] text-shadow-[0px_4px_4px_rgba(0,0,0,0.25)] text-white whitespace-nowrap">Realm: OC1</p>
       </div>
       <div className="absolute contents left-[264px] top-[39px]">
         <div className="absolute contents left-[264px] top-[150px]">
@@ -1165,8 +1165,8 @@ export default function Frame() {
             <div className="flex-[1_0_0] min-h-px min-w-px relative">
               <div className="flex flex-row items-center size-full">
                 <div className="content-stretch flex gap-[10px] items-center leading-[normal] not-italic px-[3px] relative text-[14px] text-black w-full whitespace-nowrap">
-                  <p className="font-['Inter:Regular',sans-serif] font-normal relative shrink-0">Map:</p>
-                  <p className="font-['Inter:Semi_Bold',sans-serif] font-semibold relative shrink-0">World map (Region health)</p>
+                  <p className="font-normal relative shrink-0">Map:</p>
+                  <p className="font-semibold relative shrink-0">World map (Region health)</p>
                 </div>
               </div>
             </div>
@@ -1186,7 +1186,7 @@ export default function Frame() {
                                 </svg>
                               </div>
                             </div>
-                            <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[#161513] text-[13.75px] whitespace-nowrap">Mon, Jul 06, 2023</p>
+                            <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[#161513] text-[13.75px] whitespace-nowrap">Mon, Jul 06, 2023</p>
                           </div>
                         </div>
                         <div className="grid-cols-[max-content] grid-rows-[max-content] inline-grid place-items-start relative shrink-0">
@@ -1201,7 +1201,7 @@ export default function Frame() {
                                 </div>
                               </div>
                             </div>
-                            <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[#161513] text-[13.75px] whitespace-nowrap">Mon, Aug 18, 2023</p>
+                            <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[#161513] text-[13.75px] whitespace-nowrap">Mon, Aug 18, 2023</p>
                           </div>
                         </div>
                       </div>
@@ -1211,7 +1211,7 @@ export default function Frame() {
                     <div className="col-1 content-stretch flex h-[36px] items-start ml-0 mt-0 relative row-1">
                       <div className="grid-cols-[max-content] grid-rows-[max-content] inline-grid leading-[0] place-items-start relative shrink-0">
                         <div className="bg-[#1397c3] col-1 content-stretch flex h-[36px] items-center justify-center ml-0 mt-0 overflow-clip p-[10px] relative rounded-[3px] row-1 w-[112px]">
-                          <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[14px] text-white whitespace-nowrap">Set timeline</p>
+                          <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[14px] text-white whitespace-nowrap">Set timeline</p>
                         </div>
                       </div>
                     </div>
@@ -1236,7 +1236,7 @@ export default function Frame() {
                             </svg>
                           </div>
                         </div>
-                        <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[14px] text-black whitespace-nowrap">Help</p>
+                        <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[14px] text-black whitespace-nowrap">Help</p>
                       </div>
                     </div>
                   </div>
@@ -1252,7 +1252,7 @@ export default function Frame() {
                 <div className="relative shrink-0" data-name="Breadcrumbs">
                   <div className="flex flex-row items-end size-full">
                     <div className="content-stretch flex gap-[4px] items-end relative">
-                      <p className="font-['Helvetica_Neue:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#665f5b] text-[16px] whitespace-nowrap">Realm view</p>
+                      <p className="leading-[normal] not-italic relative shrink-0 text-[#665f5b] text-[16px] whitespace-nowrap">Realm view</p>
                       <div className="overflow-clip relative shrink-0 size-[20px]" data-name="arrows/chevron right">
                         <div className="absolute inset-[20%_35%]" data-name="Vector">
                           <div className="absolute inset-[-3.03%_-12.14%_-3.03%_-6.07%]">
@@ -1265,7 +1265,7 @@ export default function Frame() {
                     </div>
                   </div>
                 </div>
-                <div className="content-stretch flex flex-col font-['Inter:Regular',sans-serif] font-normal items-start justify-end leading-[normal] not-italic relative shrink-0 w-full">
+                <div className="content-stretch flex flex-col font-normal items-start justify-end leading-[normal] not-italic relative shrink-0 w-full">
                   <p className="h-[32px] relative shrink-0 text-[#161513] text-[24px] w-full">Realm View</p>
                   <p className="relative shrink-0 text-[#665f5b] text-[11px] w-[1137px]">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                 </div>
@@ -1317,7 +1317,7 @@ export default function Frame() {
                                   <div className="content-stretch flex gap-[10px] items-center relative shrink-0">
                                     <div className="grid-cols-[max-content] grid-rows-[max-content] inline-grid leading-[0] place-items-start relative shrink-0">
                                       <div className="col-1 content-stretch flex items-center ml-0 mt-0 relative row-1">
-                                        <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[#312d2a] text-[14px] whitespace-nowrap">Showing data for Aug 18, 2023 23:55pm UTC (Latest)</p>
+                                        <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[#312d2a] text-[14px] whitespace-nowrap">Showing data for Aug 18, 2023 23:55pm UTC (Latest)</p>
                                       </div>
                                     </div>
                                     <div className="relative shrink-0 size-[16px]" data-name="refresh">
@@ -1352,7 +1352,7 @@ export default function Frame() {
                                     </g>
                                   </svg>
                                 </div>
-                                <p className="font-['Inter:Regular',sans-serif] font-normal leading-[12px] not-italic relative shrink-0 text-[9px] text-center text-white whitespace-nowrap">NRT</p>
+                                <p className="font-normal leading-[12px] not-italic relative shrink-0 text-[9px] text-center text-white whitespace-nowrap">NRT</p>
                               </div>
                             </div>
                           </div>
@@ -1368,7 +1368,7 @@ export default function Frame() {
                                       </g>
                                     </svg>
                                   </div>
-                                  <p className="font-['Inter:Regular',sans-serif] font-normal leading-[12px] not-italic relative shrink-0 text-[9px] text-center text-white whitespace-nowrap">DXB</p>
+                                  <p className="font-normal leading-[12px] not-italic relative shrink-0 text-[9px] text-center text-white whitespace-nowrap">DXB</p>
                                 </div>
                               </div>
                             </div>
@@ -1426,7 +1426,7 @@ export default function Frame() {
                                     <path d={svgPaths.p4322c00} fill="var(--fill-0, black)" id="Vector" />
                                   </svg>
                                 </div>
-                                <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[13px] text-black whitespace-nowrap">General health</p>
+                                <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[13px] text-black whitespace-nowrap">General health</p>
                               </div>
                               <div aria-hidden="true" className="absolute border border-[#b9b9b9] border-solid inset-0 pointer-events-none rounded-tl-[3px] rounded-tr-[3px]" />
                             </div>
@@ -1441,7 +1441,7 @@ export default function Frame() {
                                         </svg>
                                       </div>
                                     </div>
-                                    <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[13px] text-black whitespace-nowrap">Backbone health</p>
+                                    <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[13px] text-black whitespace-nowrap">Backbone health</p>
                                   </div>
                                 </div>
                                 <div className="overflow-clip relative shrink-0 size-[18px]" data-name="information">
@@ -1472,7 +1472,7 @@ export default function Frame() {
                                       </svg>
                                     </div>
                                   </div>
-                                  <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[13px] text-black whitespace-nowrap">Export</p>
+                                  <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[13px] text-black whitespace-nowrap">Export</p>
                                 </div>
                               </div>
                             </div>
@@ -1493,7 +1493,7 @@ export default function Frame() {
                                       </svg>
                                     </div>
                                   </div>
-                                  <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[13px] text-black whitespace-nowrap">Filters</p>
+                                  <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[13px] text-black whitespace-nowrap">Filters</p>
                                 </div>
                               </div>
                             </div>
@@ -1518,7 +1518,7 @@ export default function Frame() {
                       <div className="bg-[#f8f8f8] relative shrink-0 w-full">
                         <div className="flex flex-row items-center justify-center size-full">
                           <div className="content-stretch flex gap-[10px] items-center justify-center p-[10px] relative w-full">
-                            <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[14px] text-black whitespace-nowrap">Metrics</p>
+                            <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[14px] text-black whitespace-nowrap">Metrics</p>
                             <div className="relative shrink-0 size-[16px]" data-name="SORT">
                               <div className="absolute inset-[16.67%]" data-name="Vector">
                                 <svg className="absolute block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 10.6667 10.6667">
@@ -1538,7 +1538,7 @@ export default function Frame() {
                     <div aria-hidden="true" className="absolute border border-[#dcdcdc] border-dashed inset-0 pointer-events-none" />
                     <div className="flex flex-row items-center justify-center size-full">
                       <div className="content-stretch flex items-center justify-center p-[10px] relative size-full">
-                        <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[14px] text-black whitespace-nowrap">Add up to 3 regions</p>
+                        <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[14px] text-black whitespace-nowrap">Add up to 3 regions</p>
                       </div>
                     </div>
                   </div>

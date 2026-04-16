@@ -29,6 +29,8 @@ interface NetworkDiagramProps {
   onADClick: (adName: string) => void;
   expandedAD: string | null;
   expandedBlocks: string[];
+  readOnly?: boolean;
+  onCompareClick?: () => void;
 }
 
 const BLOCK_SIZES = {
@@ -51,8 +53,8 @@ const formatDate = (date: Date) => {
   return `${month} ${day}, ${year} ${hours}:${minutes} UTC`;
 };
 
-export function NetworkDiagram({ onADClick, expandedAD, expandedBlocks }: NetworkDiagramProps) {
-  const { currentWindowDate, initialEndDate, setCurrentWindowDate, setHasMovedWindow, setShowComparison } = useTimeRange();
+export function NetworkDiagram({ onADClick, expandedAD, expandedBlocks, readOnly = false, onCompareClick }: NetworkDiagramProps) {
+  const { currentWindowDate, initialEndDate, setCurrentWindowDate, setHasMovedWindow, setShowComparison, hasMovedWindow, showComparison } = useTimeRange();
   const containerRef = useRef<HTMLDivElement>(null);
   const internetRef = useRef<HTMLDivElement>(null);
   const backboneRef = useRef<HTMLDivElement>(null);
@@ -350,28 +352,35 @@ export function NetworkDiagram({ onADClick, expandedAD, expandedBlocks }: Networ
       <div 
         className="relative w-full h-[500px] bg-white dark:bg-[#0f0f0f] border border-[#d8d8d8] dark:border-[#404040] rounded-lg overflow-hidden"
       >
-        {/* Message Banner */}
-        {!hasAddedAD && (
-          <div className="absolute left-4 top-4 z-30 bg-[#e8f4f8] dark:bg-[#1a3a44] border border-[#4db8e8] dark:border-[#4db8e8] rounded-lg px-4 py-3 max-w-md">
-            <p className="text-sm text-[#00688c] dark:text-[#4db8e8] font-['Inter:Regular',sans-serif]">
-              Click to add an Activity Domain (AD) to the table to see a further breakdown of its health metrics.
-            </p>
+        {/* Compare with historical button — top left */}
+        {!readOnly && onCompareClick && !showComparison && (
+          <div className="absolute left-4 top-4 z-30">
+            <button
+              onClick={onCompareClick}
+              className="bg-white dark:bg-[#1a1a1a] border border-gray-300 dark:border-[#404040] rounded px-3 py-2 text-sm dark:text-white hover:bg-gray-50 dark:hover:bg-[#2a2a2a] transition-colors"
+            >
+              {hasMovedWindow ? 'Compare with current' : 'Compare with historical'}
+            </button>
           </div>
         )}
-        
-        {/* Refresh + live data label */}
-        <div className="absolute right-4 top-4 z-30 flex items-center gap-2">
-          <button
-            onClick={() => { setCurrentWindowDate(initialEndDate); setHasMovedWindow(false); setShowComparison(false); }}
-            className="flex items-center gap-2 bg-white dark:bg-[#1a1a1a] border border-gray-300 dark:border-[#404040] rounded px-3 py-2 text-xs dark:text-white hover:bg-gray-50 dark:hover:bg-[#2a2a2a] transition-colors"
-          >
-            <RefreshCw className="w-3 h-3" />
-            <span>Refresh</span>
-          </button>
-          <div className="bg-white dark:bg-[#1a1a1a] border border-gray-300 dark:border-[#404040] rounded px-3 py-2 text-xs font-bold dark:text-white">
-            Showing live data for {formatDate(currentWindowDate)}
+
+        {/* Refresh + live data label (hidden when readOnly — parent provides its own overlay) */}
+        {!readOnly && (
+          <div className="absolute right-4 top-4 z-30 flex items-center gap-2">
+            <button
+              onClick={() => { setCurrentWindowDate(initialEndDate); setHasMovedWindow(false); setShowComparison(false); }}
+              className="flex items-center gap-2 bg-white dark:bg-[#1a1a1a] border border-gray-300 dark:border-[#404040] rounded px-3 py-2 text-xs dark:text-white hover:bg-gray-50 dark:hover:bg-[#2a2a2a] transition-colors"
+            >
+              <RefreshCw className="w-3 h-3" />
+              <span>Refresh</span>
+            </button>
+            <div className="bg-white dark:bg-[#1a1a1a] border border-gray-300 dark:border-[#404040] rounded px-3 py-2 text-xs dark:text-white">
+              <span className={showComparison ? "text-[#5ba8d0] font-bold" : "font-bold"}>
+                Showing live data for {formatDate(currentWindowDate)}
+              </span>
+            </div>
           </div>
-        </div>
+        )}
         
         {/* Availability Domain Blocks - positioned at bottom of map area */}
         <div className="absolute top-6 bottom-6 left-6 right-6 z-20">
@@ -417,172 +426,157 @@ export function NetworkDiagram({ onADClick, expandedAD, expandedBlocks }: Networ
                     </svg>
                     
                     {/* Internet Block */}
-                    <div 
-                      ref={internetRef} 
+                    <div
+                      ref={internetRef}
                       className="absolute"
                       style={{
                         left: `${internetPos.x}px`,
                         top: `${internetPos.y}px`,
                         width: `${BLOCK_SIZES.internet.width}px`,
                         height: `${BLOCK_SIZES.internet.height}px`,
-                        cursor: 'grab',
+                        cursor: readOnly ? 'default' : 'grab',
                         userSelect: 'none',
                         zIndex: 1,
                       }}
-                      onMouseDown={(e) => handleMouseDown('internet', e)}
-                      onMouseEnter={() => setHoveredBlock('internet')}
-                      onMouseLeave={() => setHoveredBlock(null)}
+                      onMouseDown={readOnly ? undefined : (e) => handleMouseDown('internet', e)}
+                      onMouseEnter={readOnly ? undefined : () => setHoveredBlock('internet')}
+                      onMouseLeave={readOnly ? undefined : () => setHoveredBlock(null)}
                     >
-                      {hoveredBlock === 'internet' && (
-                        <div 
+                      {!readOnly && hoveredBlock === 'internet' && (
+                        <div
                           className="absolute inset-0 pointer-events-none rounded"
-                          style={{
-                            backgroundColor: getHoverColor('internet'),
-                            zIndex: 10,
-                          }}
+                          style={{ backgroundColor: getHoverColor('internet'), zIndex: 10 }}
                         />
                       )}
                       <InternetBlock />
                     </div>
-                    
+
                     {/* Backbone Block */}
-                    <div 
-                      ref={backboneRef} 
+                    <div
+                      ref={backboneRef}
                       className="absolute"
                       style={{
                         left: `${backbonePos.x}px`,
                         top: `${backbonePos.y}px`,
                         width: `${BLOCK_SIZES.backbone.width}px`,
                         height: `${BLOCK_SIZES.backbone.height}px`,
-                        cursor: 'grab',
+                        cursor: readOnly ? 'default' : 'grab',
                         userSelect: 'none',
                         zIndex: 1,
                       }}
-                      onMouseDown={(e) => handleMouseDown('backbone', e)}
-                      onMouseEnter={() => setHoveredBlock('backbone')}
-                      onMouseLeave={() => setHoveredBlock(null)}
+                      onMouseDown={readOnly ? undefined : (e) => handleMouseDown('backbone', e)}
+                      onMouseEnter={readOnly ? undefined : () => setHoveredBlock('backbone')}
+                      onMouseLeave={readOnly ? undefined : () => setHoveredBlock(null)}
                     >
-                      {hoveredBlock === 'backbone' && (
-                        <div 
+                      {!readOnly && hoveredBlock === 'backbone' && (
+                        <div
                           className="absolute inset-0 pointer-events-none rounded"
-                          style={{
-                            backgroundColor: getHoverColor('backbone'),
-                            zIndex: 10,
-                          }}
+                          style={{ backgroundColor: getHoverColor('backbone'), zIndex: 10 }}
                         />
                       )}
                       <BackboneBlock />
                     </div>
-                    
+
                     {/* Customer Network Block */}
-                    <div 
-                      ref={customerNetworkRef} 
+                    <div
+                      ref={customerNetworkRef}
                       className="absolute"
                       style={{
                         left: `${customerNetworkPos.x}px`,
                         top: `${customerNetworkPos.y}px`,
                         width: `${BLOCK_SIZES.customerNetwork.width}px`,
                         height: `${BLOCK_SIZES.customerNetwork.height}px`,
-                        cursor: 'grab',
+                        cursor: readOnly ? 'default' : 'grab',
                         userSelect: 'none',
                         zIndex: 1,
                       }}
-                      onMouseDown={(e) => handleMouseDown('customerNetwork', e)}
-                      onMouseEnter={() => setHoveredBlock('customerNetwork')}
-                      onMouseLeave={() => setHoveredBlock(null)}
+                      onMouseDown={readOnly ? undefined : (e) => handleMouseDown('customerNetwork', e)}
+                      onMouseEnter={readOnly ? undefined : () => setHoveredBlock('customerNetwork')}
+                      onMouseLeave={readOnly ? undefined : () => setHoveredBlock(null)}
                     >
-                      {hoveredBlock === 'customerNetwork' && (
-                        <div 
+                      {!readOnly && hoveredBlock === 'customerNetwork' && (
+                        <div
                           className="absolute inset-0 pointer-events-none rounded"
-                          style={{
-                            backgroundColor: getHoverColor('customerNetwork'),
-                            zIndex: 10,
-                          }}
+                          style={{ backgroundColor: getHoverColor('customerNetwork'), zIndex: 10 }}
                         />
                       )}
                       <CustomerNetworkBlock />
                     </div>
-                    
+
                     {/* POP-2 Block */}
-                    <div 
-                      ref={pop2Ref} 
+                    <div
+                      ref={pop2Ref}
                       className="absolute"
                       style={{
                         left: `${pop2Pos.x}px`,
                         top: `${pop2Pos.y}px`,
                         width: `${BLOCK_SIZES.pop2.width}px`,
                         height: `${BLOCK_SIZES.pop2.height}px`,
-                        cursor: 'grab',
+                        cursor: readOnly ? 'default' : 'grab',
                         userSelect: 'none',
                         zIndex: 1,
                       }}
-                      onMouseDown={(e) => handleMouseDown('pop2', e)}
-                      onMouseEnter={() => setHoveredBlock('pop2')}
-                      onMouseLeave={() => setHoveredBlock(null)}
+                      onMouseDown={readOnly ? undefined : (e) => handleMouseDown('pop2', e)}
+                      onMouseEnter={readOnly ? undefined : () => setHoveredBlock('pop2')}
+                      onMouseLeave={readOnly ? undefined : () => setHoveredBlock(null)}
                     >
-                      {hoveredBlock === 'pop2' && (
-                        <div 
+                      {!readOnly && hoveredBlock === 'pop2' && (
+                        <div
                           className="absolute inset-0 pointer-events-none rounded"
-                          style={{
-                            backgroundColor: getHoverColor('pop2'),
-                            zIndex: 10,
-                          }}
+                          style={{ backgroundColor: getHoverColor('pop2'), zIndex: 10 }}
                         />
                       )}
                       <Pop2Block />
                     </div>
-                    
+
                     {/* POP-3 Block */}
-                    <div 
-                      ref={pop3Ref} 
+                    <div
+                      ref={pop3Ref}
                       className="absolute"
                       style={{
                         left: `${pop3Pos.x}px`,
                         top: `${pop3Pos.y}px`,
                         width: `${BLOCK_SIZES.pop3.width}px`,
                         height: `${BLOCK_SIZES.pop3.height}px`,
-                        cursor: 'grab',
+                        cursor: readOnly ? 'default' : 'grab',
                         userSelect: 'none',
                         zIndex: 1,
                       }}
-                      onMouseDown={(e) => handleMouseDown('pop3', e)}
-                      onMouseEnter={() => setHoveredBlock('pop3')}
-                      onMouseLeave={() => setHoveredBlock(null)}
+                      onMouseDown={readOnly ? undefined : (e) => handleMouseDown('pop3', e)}
+                      onMouseEnter={readOnly ? undefined : () => setHoveredBlock('pop3')}
+                      onMouseLeave={readOnly ? undefined : () => setHoveredBlock(null)}
                     >
-                      {hoveredBlock === 'pop3' && (
-                        <div 
+                      {!readOnly && hoveredBlock === 'pop3' && (
+                        <div
                           className="absolute inset-0 pointer-events-none rounded"
-                          style={{
-                            backgroundColor: getHoverColor('pop3'),
-                            zIndex: 10,
-                          }}
+                          style={{ backgroundColor: getHoverColor('pop3'), zIndex: 10 }}
                         />
                       )}
                       <Pop3Block />
                     </div>
-                    
+
                     {/* AD Blocks */}
-                    <div 
-                      ref={ad1Ref} 
+                    <div
+                      ref={ad1Ref}
                       className="absolute overflow-hidden"
                       style={{
                         left: `${ad1Pos.x}px`,
                         top: `${ad1Pos.y}px`,
                         width: `${BLOCK_SIZES.ad1.width}px`,
                         height: `${BLOCK_SIZES.ad1.height}px`,
-                        cursor: 'grab',
+                        cursor: readOnly ? 'default' : 'grab',
                         userSelect: 'none',
                         zIndex: 1,
                       }}
-                      onMouseDown={(e) => handleMouseDown('ad1', e)}
-                      onMouseEnter={() => setHoveredBlock('ad1')}
-                      onMouseLeave={() => setHoveredBlock(null)}
-                      onClick={() => handleADClick('ad1')}
+                      onMouseDown={readOnly ? undefined : (e) => handleMouseDown('ad1', e)}
+                      onMouseEnter={readOnly ? undefined : () => setHoveredBlock('ad1')}
+                      onMouseLeave={readOnly ? undefined : () => setHoveredBlock(null)}
+                      onClick={readOnly ? undefined : () => handleADClick('ad1')}
                     >
-                      <AD1Block onClick={() => handleADClick('ad1')} isClickable={true} onBLDClick={onADClick} isHovered={hoveredBlock === 'ad1' || expandedBlocks.includes('ad1')} expandedBlocks={expandedBlocks} />
+                      <AD1Block onClick={readOnly ? undefined : () => handleADClick('ad1')} isClickable={!readOnly} onBLDClick={readOnly ? () => {} : onADClick} isHovered={!readOnly && (hoveredBlock === 'ad1' || expandedBlocks.includes('ad1'))} expandedBlocks={expandedBlocks} />
                     </div>
-                    
-                    <div 
+
+                    <div
                       ref={ad2Ref}
                       className="absolute overflow-hidden"
                       style={{
@@ -590,19 +584,19 @@ export function NetworkDiagram({ onADClick, expandedAD, expandedBlocks }: Networ
                         top: `${ad2Pos.y}px`,
                         width: `${BLOCK_SIZES.ad2.width}px`,
                         height: `${BLOCK_SIZES.ad2.height}px`,
-                        cursor: 'grab',
+                        cursor: readOnly ? 'default' : 'grab',
                         userSelect: 'none',
                         zIndex: 1,
                       }}
-                      onMouseDown={(e) => handleMouseDown('ad2', e)}
-                      onMouseEnter={() => setHoveredBlock('ad2')}
-                      onMouseLeave={() => setHoveredBlock(null)}
-                      onClick={() => handleADClick('ad2')}
+                      onMouseDown={readOnly ? undefined : (e) => handleMouseDown('ad2', e)}
+                      onMouseEnter={readOnly ? undefined : () => setHoveredBlock('ad2')}
+                      onMouseLeave={readOnly ? undefined : () => setHoveredBlock(null)}
+                      onClick={readOnly ? undefined : () => handleADClick('ad2')}
                     >
-                      <AD2Block onClick={() => handleADClick('ad2')} isClickable={true} onBLDClick={onADClick} isHovered={hoveredBlock === 'ad2' || expandedBlocks.includes('ad2')} />
+                      <AD2Block onClick={readOnly ? undefined : () => handleADClick('ad2')} isClickable={!readOnly} onBLDClick={readOnly ? () => {} : onADClick} isHovered={!readOnly && (hoveredBlock === 'ad2' || expandedBlocks.includes('ad2'))} />
                     </div>
-                    
-                    <div 
+
+                    <div
                       ref={ad3Ref}
                       className="absolute overflow-hidden"
                       style={{
@@ -610,16 +604,16 @@ export function NetworkDiagram({ onADClick, expandedAD, expandedBlocks }: Networ
                         top: `${ad3Pos.y}px`,
                         width: `${BLOCK_SIZES.ad3.width}px`,
                         height: `${BLOCK_SIZES.ad3.height}px`,
-                        cursor: 'grab',
+                        cursor: readOnly ? 'default' : 'grab',
                         userSelect: 'none',
                         zIndex: 1,
                       }}
-                      onMouseDown={(e) => handleMouseDown('ad3', e)}
-                      onMouseEnter={() => setHoveredBlock('ad3')}
-                      onMouseLeave={() => setHoveredBlock(null)}
-                      onClick={() => handleADClick('ad3')}
+                      onMouseDown={readOnly ? undefined : (e) => handleMouseDown('ad3', e)}
+                      onMouseEnter={readOnly ? undefined : () => setHoveredBlock('ad3')}
+                      onMouseLeave={readOnly ? undefined : () => setHoveredBlock(null)}
+                      onClick={readOnly ? undefined : () => handleADClick('ad3')}
                     >
-                      <AD3Block onClick={() => handleADClick('ad3')} isClickable={true} onBLDClick={onADClick} isHovered={hoveredBlock === 'ad3' || expandedBlocks.includes('ad3')} />
+                      <AD3Block onClick={readOnly ? undefined : () => handleADClick('ad3')} isClickable={!readOnly} onBLDClick={readOnly ? () => {} : onADClick} isHovered={!readOnly && (hoveredBlock === 'ad3' || expandedBlocks.includes('ad3'))} />
                     </div>
                   </div>
                 </TransformComponent>
@@ -639,9 +633,16 @@ export function NetworkDiagram({ onADClick, expandedAD, expandedBlocks }: Networ
             <>
               {/* Zoom controls */}
               <div className="absolute right-4 top-4 z-10 flex flex-col gap-2">
-                
-                
-                
+
+
+
+              </div>
+
+              {/* Legend */}
+              <div className="absolute bottom-4 right-4 z-50 bg-white dark:bg-[#1a1a1a] border border-gray-300 dark:border-[#404040] rounded px-3 py-2 flex items-center gap-4">
+                <span className="flex items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400"><span className="w-3 h-3 rounded-sm bg-[#508223] inline-block shrink-0" />Healthy</span>
+                <span className="flex items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400"><span className="w-3 h-3 rounded-sm bg-[#de8011] inline-block shrink-0" />Warning</span>
+                <span className="flex items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400"><span className="w-3 h-3 rounded-sm bg-[#d63b25] inline-block shrink-0" />Critical</span>
               </div>
 
               <TransformComponent

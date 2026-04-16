@@ -300,9 +300,9 @@ export default function Header() {
                           </div>
                         </div>
                       </div>
-                      <p className="absolute font-['Inter:Regular',sans-serif] font-normal inset-[0_84.24%_87.84%_0.86%] leading-[normal] not-italic text-[#161513] text-[11px]">Incident count (in thousands)</p>
+                      <p className="absolute font-normal inset-[0_84.24%_87.84%_0.86%] leading-[normal] not-italic text-[#161513] text-[11px]">Incident count (in thousands)</p>
                       <div className="absolute contents inset-[83.78%_-0.43%_4.15%_1.03%]">
-                        <div className="absolute content-stretch flex font-['Inter:Regular',sans-serif] font-normal gap-[4px] inset-[83.78%_-0.43%_4.15%_1.03%] items-start leading-[normal] not-italic text-[#161513] text-[8px] text-center whitespace-nowrap">
+                        <div className="absolute content-stretch flex font-normal gap-[4px] inset-[83.78%_-0.43%_4.15%_1.03%] items-start leading-[normal] not-italic text-[#161513] text-[8px] text-center whitespace-nowrap">
                           <p className="relative shrink-0">{`07/06 `}</p>
                           <p className="relative shrink-0">{`07/07 `}</p>
                           <p className="relative shrink-0">{`07/08 `}</p>
@@ -349,7 +349,7 @@ export default function Header() {
                         </div>
                       </div>
                       <div className="absolute contents inset-[16.22%_99.11%_19.99%_0.09%]">
-                        <div className="absolute content-stretch flex flex-col font-['Inter:Regular',sans-serif] font-normal gap-px inset-[16.22%_99.11%_19.99%_0.09%] items-center leading-[normal] not-italic text-[#161513] text-[8px] text-center whitespace-nowrap">
+                        <div className="absolute content-stretch flex flex-col font-normal gap-px inset-[16.22%_99.11%_19.99%_0.09%] items-center leading-[normal] not-italic text-[#161513] text-[8px] text-center whitespace-nowrap">
                           <p className="relative shrink-0">20</p>
                           <p className="relative shrink-0">15</p>
                           <p className="relative shrink-0">10</p>

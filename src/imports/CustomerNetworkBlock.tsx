@@ -14,7 +14,7 @@ export default function Frame() {
             </div>
           </div>
           <div className="content-stretch flex gap-[5px] items-center relative shrink-0">
-            <p className="font-['Inter:Regular',sans-serif] font-normal leading-[normal] not-italic relative shrink-0 text-[11px] text-black dark:text-white w-[112px]">Customer Network (VPN/FastConnect)</p>
+            <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[11px] text-black dark:text-white w-[112px]">Customer Network (VPN/FastConnect)</p>
             <div className="relative shrink-0 size-[14px]" data-name="success">
               <div className="absolute inset-[8.33%]" data-name="Vector">
                 <svg className="absolute block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 16.6667 16.6667">

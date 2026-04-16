@@ -8,7 +8,7 @@ type Text1Props = {
 function Text1({ text, additionalClassNames = "" }: Text1Props) {
   return (
     <div className={clsx("absolute content-stretch flex flex-col gap-[10px] items-center top-[6.61px]", additionalClassNames)}>
-      <p className="font-['Helvetica_Neue:Regular',sans-serif] h-[14.103px] leading-[normal] not-italic relative shrink-0 text-[9px] text-black text-center w-[17.727px]">{text}</p>
+      <p className="h-[14.103px] leading-[normal] not-italic relative shrink-0 text-[9px] text-black text-center w-[17.727px]">{text}</p>
       <AlertsWarningS />
     </div>
   );
@@ -21,7 +21,7 @@ type TextProps = {
 function Text({ text, additionalClassNames = "" }: TextProps) {
   return (
     <div className={clsx("absolute content-stretch flex flex-col items-center", additionalClassNames)}>
-      <p className="font-['Helvetica_Neue:Regular',sans-serif] h-[23px] leading-[normal] not-italic relative shrink-0 text-[9px] text-black text-center w-[18px]">{text}</p>
+      <p className="h-[23px] leading-[normal] not-italic relative shrink-0 text-[9px] text-black text-center w-[18px]">{text}</p>
       <Success className="relative shrink-0 size-[14px]" />
     </div>
   );
@@ -63,7 +63,7 @@ export default function Frame() {
           <div className="content-stretch flex flex-col items-start justify-center relative shrink-0">
             <div className="content-stretch flex gap-[5px] items-center relative shrink-0">
               <AlertsWarningS />
-              <p className="font-['Helvetica_Neue:Regular',sans-serif] leading-[normal] not-italic relative self-center shrink-0 text-black w-[65px] text-[14px] pl-[8px] pr-[0px] py-[0px]">AD-1</p>
+              <p className="leading-[normal] not-italic relative self-center shrink-0 text-black w-[65px] text-[14px] pl-[8px] pr-[0px] py-[0px]">AD-1</p>
             </div>
           </div>
         </div>
@@ -72,7 +72,7 @@ export default function Frame() {
             <div className="bg-[rgba(255,255,255,0.1)] col-1 h-[57.901px] ml-[90.18px] mt-0 relative rounded-[5px] row-1 w-[36.313px]">
               <div aria-hidden="true" className="absolute border border-[#d63b25] border-solid inset-[-1px] pointer-events-none rounded-[6px]" />
               <div className="absolute content-stretch flex flex-col items-center left-[9px] top-[8px]">
-                <p className="font-['Helvetica_Neue:Regular',sans-serif] h-[23px] leading-[normal] not-italic relative shrink-0 text-[9px] text-black text-center w-[18px]">BLD 01</p>
+                <p className="h-[23px] leading-[normal] not-italic relative shrink-0 text-[9px] text-black text-center w-[18px]">BLD 01</p>
                 <div className="relative shrink-0 size-[14px]" data-name="Alerts / error-s-24">
                   <div className="absolute inset-[14.29%]" data-name="Vector">
                     <svg className="absolute block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 11.667 11.667">
@@ -97,7 +97,7 @@ export default function Frame() {
                 <div className="absolute contents left-0 top-0">
                   <div className="absolute border border-[#508223] border-solid h-[50px] left-0 rounded-[5px] top-0 w-[30px]">
                     <div className="absolute content-stretch flex flex-col items-center left-[6.18px] top-[5.61px]">
-                      <p className="font-['Helvetica_Neue:Regular',sans-serif] h-[23px] leading-[normal] not-italic relative shrink-0 text-[9px] text-black text-center w-[18px]">BLD 02</p>
+                      <p className="h-[23px] leading-[normal] not-italic relative shrink-0 text-[9px] text-black text-center w-[18px]">BLD 02</p>
                       <Success className="relative shrink-0 size-[14px]" />
                     </div>
                   </div>
@@ -105,7 +105,7 @@ export default function Frame() {
                 <div className="absolute contents left-[37px] top-0">
                   <div className="absolute border border-[#508223] border-solid h-[50px] left-[37px] rounded-[5px] top-0 w-[30px]">
                     <div className="absolute content-stretch flex flex-col items-center left-[6.18px] top-[5.61px]">
-                      <p className="font-['Helvetica_Neue:Regular',sans-serif] h-[23px] leading-[normal] not-italic relative shrink-0 text-[9px] text-black text-center w-[18px]">BLD 03</p>
+                      <p className="h-[23px] leading-[normal] not-italic relative shrink-0 text-[9px] text-black text-center w-[18px]">BLD 03</p>
                       <Success className="relative shrink-0 size-[14px]" />
                     </div>
                   </div>
@@ -114,7 +114,7 @@ export default function Frame() {
                   <div className="absolute contents left-[74px] top-0">
                     <div className="absolute border border-[rgba(222,128,17,0.6)] border-solid h-[50px] left-[74px] rounded-[5px] top-0 w-[30px]">
                       <div className="absolute content-stretch flex flex-col items-center left-[6.18px] top-[5.61px]">
-                        <p className="font-['Helvetica_Neue:Regular',sans-serif] h-[23px] leading-[normal] not-italic relative shrink-0 text-[9px] text-black text-center w-[18px]">BLD 04</p>
+                        <p className="h-[23px] leading-[normal] not-italic relative shrink-0 text-[9px] text-black text-center w-[18px]">BLD 04</p>
                         <AlertsWarningS />
                       </div>
                     </div>
@@ -124,7 +124,7 @@ export default function Frame() {
                   <div className="absolute contents left-[111px] top-0">
                     <div className="absolute border border-[rgba(222,128,17,0.6)] border-solid h-[50px] left-[111px] rounded-[5px] top-0 w-[30px]">
                       <div className="absolute content-stretch flex flex-col items-center left-[6.18px] top-[5.61px]">
-                        <p className="font-['Helvetica_Neue:Regular',sans-serif] h-[23px] leading-[normal] not-italic relative shrink-0 text-[9px] text-black text-center w-[18px]">BLD 05</p>
+                        <p className="h-[23px] leading-[normal] not-italic relative shrink-0 text-[9px] text-black text-center w-[18px]">BLD 05</p>
                         <AlertsWarningS />
                       </div>
                     </div>
@@ -133,7 +133,7 @@ export default function Frame() {
                 <div className="absolute contents left-[148px] top-0">
                   <div className="absolute border border-[#508223] border-solid h-[50px] left-[148px] rounded-[5px] top-0 w-[30px]">
                     <div className="absolute content-stretch flex flex-col items-center left-[6.18px] top-[5.61px]">
-                      <p className="font-['Helvetica_Neue:Regular',sans-serif] h-[23px] leading-[normal] not-italic relative shrink-0 text-[9px] text-black text-center w-[18px]">BLD 06</p>
+                      <p className="h-[23px] leading-[normal] not-italic relative shrink-0 text-[9px] text-black text-center w-[18px]">BLD 06</p>
                       <Success className="relative shrink-0 size-[14px]" />
                     </div>
                   </div>
@@ -141,7 +141,7 @@ export default function Frame() {
                 <div className="absolute contents left-[185px] top-0">
                   <div className="absolute border border-[#508223] border-solid h-[50px] left-[185px] rounded-[5px] top-0 w-[30px]">
                     <div className="absolute content-stretch flex flex-col items-center left-[6.18px] top-[5.61px]">
-                      <p className="font-['Helvetica_Neue:Regular',sans-serif] h-[23px] leading-[normal] not-italic relative shrink-0 text-[9px] text-black text-center w-[18px]">BLD 07</p>
+                      <p className="h-[23px] leading-[normal] not-italic relative shrink-0 text-[9px] text-black text-center w-[18px]">BLD 07</p>
                       <Success className="relative shrink-0 size-[14px]" />
                     </div>
                   </div>
@@ -226,7 +226,7 @@ export default function Frame() {
           <div className="content-stretch flex flex-col items-start justify-center relative shrink-0">
             <div className="content-stretch flex gap-[5px] items-center relative shrink-0">
               <Success className="relative shrink-0 size-[10px]" />
-              <p className="font-['Helvetica_Neue:Regular',sans-serif] leading-[normal] not-italic relative self-center shrink-0 text-black w-[65px] text-[14px] pl-[8px] pr-[0px] py-[0px]">AD-2</p>
+              <p className="leading-[normal] not-italic relative self-center shrink-0 text-black w-[65px] text-[14px] pl-[8px] pr-[0px] py-[0px]">AD-2</p>
             </div>
           </div>
         </div>
@@ -235,7 +235,7 @@ export default function Frame() {
             <div className="bg-[rgba(255,255,255,0.1)] col-1 h-[57.901px] ml-[90.18px] mt-0 relative rounded-[5px] row-1 w-[36.313px]">
               <div aria-hidden="true" className="absolute border border-[#508223] border-solid inset-[-1px] pointer-events-none rounded-[6px]" />
               <div className="absolute content-stretch flex flex-col items-center left-[9px] top-[8px]">
-                <p className="font-['Helvetica_Neue:Regular',sans-serif] h-[23px] leading-[normal] not-italic relative shrink-0 text-[9px] text-black text-center w-[18px]">BLD 08</p>
+                <p className="h-[23px] leading-[normal] not-italic relative shrink-0 text-[9px] text-black text-center w-[18px]">BLD 08</p>
                 <Success className="relative shrink-0 size-[14px]" />
               </div>
             </div>
@@ -254,7 +254,7 @@ export default function Frame() {
                 <div className="absolute contents left-0 top-0">
                   <div className="absolute border border-[#508223] border-solid h-[50px] left-0 rounded-[5px] top-0 w-[30px]">
                     <div className="absolute content-stretch flex flex-col items-center left-[6.18px] top-[5.61px]">
-                      <p className="font-['Helvetica_Neue:Regular',sans-serif] h-[23px] leading-[normal] not-italic relative shrink-0 text-[9px] text-black text-center w-[18px]">BLD 09</p>
+                      <p className="h-[23px] leading-[normal] not-italic relative shrink-0 text-[9px] text-black text-center w-[18px]">BLD 09</p>
                       <Success className="relative shrink-0 size-[14px]" />
                     </div>
                   </div>
@@ -262,7 +262,7 @@ export default function Frame() {
                 <div className="absolute contents left-[37px] top-0">
                   <div className="absolute border border-[#508223] border-solid h-[50px] left-[37px] rounded-[5px] top-0 w-[30px]">
                     <div className="absolute content-stretch flex flex-col items-center left-[6.18px] top-[5.61px]">
-                      <p className="font-['Helvetica_Neue:Regular',sans-serif] h-[23px] leading-[normal] not-italic relative shrink-0 text-[9px] text-black text-center w-[18px]">BLD 10</p>
+                      <p className="h-[23px] leading-[normal] not-italic relative shrink-0 text-[9px] text-black text-center w-[18px]">BLD 10</p>
                       <Success className="relative shrink-0 size-[14px]" />
                     </div>
                   </div>
@@ -270,7 +270,7 @@ export default function Frame() {
                 <div className="absolute contents left-[74px] top-0">
                   <div className="absolute border border-[#508223] border-solid h-[50px] left-[74px] rounded-[5px] top-0 w-[30px]">
                     <div className="absolute content-stretch flex flex-col items-center left-[6.18px] top-[5.61px]">
-                      <p className="font-['Helvetica_Neue:Regular',sans-serif] h-[23px] leading-[normal] not-italic relative shrink-0 text-[9px] text-black text-center w-[18px]">BLD 11</p>
+                      <p className="h-[23px] leading-[normal] not-italic relative shrink-0 text-[9px] text-black text-center w-[18px]">BLD 11</p>
                       <Success className="relative shrink-0 size-[14px]" />
                     </div>
                   </div>
@@ -278,7 +278,7 @@ export default function Frame() {
                 <div className="absolute contents left-[111px] top-0">
                   <div className="absolute border border-[#508223] border-solid h-[50px] left-[111px] rounded-[5px] top-0 w-[30px]">
                     <div className="absolute content-stretch flex flex-col items-center left-[6.18px] top-[5.61px]">
-                      <p className="font-['Helvetica_Neue:Regular',sans-serif] h-[23px] leading-[normal] not-italic relative shrink-0 text-[9px] text-black text-center w-[18px]">BLD 12</p>
+                      <p className="h-[23px] leading-[normal] not-italic relative shrink-0 text-[9px] text-black text-center w-[18px]">BLD 12</p>
                       <Success className="relative shrink-0 size-[14px]" />
                     </div>
                   </div>
@@ -286,7 +286,7 @@ export default function Frame() {
                 <div className="absolute contents left-[148px] top-0">
                   <div className="absolute border border-[#508223] border-solid h-[50px] left-[148px] rounded-[5px] top-0 w-[30px]">
                     <div className="absolute content-stretch flex flex-col items-center left-[6.18px] top-[5.61px]">
-                      <p className="font-['Helvetica_Neue:Regular',sans-serif] h-[23px] leading-[normal] not-italic relative shrink-0 text-[9px] text-black text-center w-[18px]">BLD 13</p>
+                      <p className="h-[23px] leading-[normal] not-italic relative shrink-0 text-[9px] text-black text-center w-[18px]">BLD 13</p>
                       <Success className="relative shrink-0 size-[14px]" />
                     </div>
                   </div>
@@ -360,7 +360,7 @@ export default function Frame() {
           <div className="content-stretch flex flex-col items-start justify-center relative shrink-0">
             <div className="content-stretch flex gap-[5px] items-center relative shrink-0">
               <AlertsWarningS />
-              <p className="font-['Helvetica_Neue:Regular',sans-serif] leading-[normal] not-italic relative self-center shrink-0 text-black w-[65px] text-[14px] pl-[8px] pr-[0px] py-[0px]">AD-3</p>
+              <p className="leading-[normal] not-italic relative self-center shrink-0 text-black w-[65px] text-[14px] pl-[8px] pr-[0px] py-[0px]">AD-3</p>
             </div>
           </div>
         </div>
@@ -369,7 +369,7 @@ export default function Frame() {
             <div className="bg-[rgba(255,255,255,0.1)] col-1 h-[57.901px] ml-[90.18px] mt-0 relative rounded-[5px] row-1 w-[36.313px]">
               <div aria-hidden="true" className="absolute border border-[rgba(222,128,17,0.6)] border-solid inset-[-1px] pointer-events-none rounded-[6px]" />
               <div className="absolute content-stretch flex flex-col items-center left-[9px] top-[8px]">
-                <p className="font-['Helvetica_Neue:Regular',sans-serif] h-[23px] leading-[normal] not-italic relative shrink-0 text-[9px] text-black text-center w-[18px]">BLD 14</p>
+                <p className="h-[23px] leading-[normal] not-italic relative shrink-0 text-[9px] text-black text-center w-[18px]">BLD 14</p>
                 <AlertsWarningS />
               </div>
             </div>
@@ -388,7 +388,7 @@ export default function Frame() {
                 <div className="absolute contents left-0 top-0">
                   <div className="absolute border border-[#508223] border-solid h-[50px] left-0 rounded-[5px] top-0 w-[30px]">
                     <div className="absolute content-stretch flex flex-col items-center left-[6.18px] top-[5.61px]">
-                      <p className="font-['Helvetica_Neue:Regular',sans-serif] h-[23px] leading-[normal] not-italic relative shrink-0 text-[9px] text-black text-center w-[18px]">BLD 15</p>
+                      <p className="h-[23px] leading-[normal] not-italic relative shrink-0 text-[9px] text-black text-center w-[18px]">BLD 15</p>
                       <Success className="relative shrink-0 size-[14px]" />
                     </div>
                   </div>
@@ -396,7 +396,7 @@ export default function Frame() {
                 <div className="absolute contents left-[37px] top-0">
                   <div className="absolute border border-[#508223] border-solid h-[50px] left-[37px] rounded-[5px] top-0 w-[30px]">
                     <div className="absolute content-stretch flex flex-col items-center left-[6.18px] top-[5.61px]">
-                      <p className="font-['Helvetica_Neue:Regular',sans-serif] h-[23px] leading-[normal] not-italic relative shrink-0 text-[9px] text-black text-center w-[18px]">BLD 16</p>
+                      <p className="h-[23px] leading-[normal] not-italic relative shrink-0 text-[9px] text-black text-center w-[18px]">BLD 16</p>
                       <Success className="relative shrink-0 size-[14px]" />
                     </div>
                   </div>
@@ -404,7 +404,7 @@ export default function Frame() {
                 <div className="absolute contents left-[74px] top-0">
                   <div className="absolute border border-[#508223] border-solid h-[50px] left-[74px] rounded-[5px] top-0 w-[30px]">
                     <div className="absolute content-stretch flex flex-col items-center left-[6.18px] top-[5.61px]">
-                      <p className="font-['Helvetica_Neue:Regular',sans-serif] h-[23px] leading-[normal] not-italic relative shrink-0 text-[9px] text-black text-center w-[18px]">BLD 17</p>
+                      <p className="h-[23px] leading-[normal] not-italic relative shrink-0 text-[9px] text-black text-center w-[18px]">BLD 17</p>
                       <Success className="relative shrink-0 size-[14px]" />
                     </div>
                   </div>
@@ -412,7 +412,7 @@ export default function Frame() {
                 <div className="absolute contents left-[111px] top-0">
                   <div className="absolute border border-[#d63b25] border-solid h-[50px] left-[111px] rounded-[5px] top-0 w-[30px]">
                     <div className="absolute content-stretch flex flex-col items-center left-[6.18px] top-[5.61px]">
-                      <p className="font-['Helvetica_Neue:Regular',sans-serif] h-[23px] leading-[normal] not-italic relative shrink-0 text-[9px] text-black text-center w-[18px]">BLD 18</p>
+                      <p className="h-[23px] leading-[normal] not-italic relative shrink-0 text-[9px] text-black text-center w-[18px]">BLD 18</p>
                       <div className="relative shrink-0 size-[14px]" data-name="Alerts / error-s-24">
                         <div className="absolute inset-[14.29%]" data-name="Vector">
                           <svg className="absolute block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 11.667 11.667">
@@ -426,7 +426,7 @@ export default function Frame() {
                 <div className="absolute contents left-[148px] top-0">
                   <div className="absolute border border-[rgba(222,128,17,0.6)] border-solid h-[50px] left-[148px] rounded-[5px] top-0 w-[30px]">
                     <div className="absolute content-stretch flex flex-col items-center left-[6.18px] top-[5.61px]">
-                      <p className="font-['Helvetica_Neue:Regular',sans-serif] h-[23px] leading-[normal] not-italic relative shrink-0 text-[9px] text-black text-center w-[18px]">BLD 19</p>
+                      <p className="h-[23px] leading-[normal] not-italic relative shrink-0 text-[9px] text-black text-center w-[18px]">BLD 19</p>
                       <AlertsWarningS />
                     </div>
                   </div>
@@ -434,7 +434,7 @@ export default function Frame() {
                 <div className="absolute contents left-[185px] top-0">
                   <div className="absolute border border-[#508223] border-solid h-[50px] left-[185px] rounded-[5px] top-0 w-[30px]">
                     <div className="absolute content-stretch flex flex-col items-center left-[6.18px] top-[5.61px]">
-                      <p className="font-['Helvetica_Neue:Regular',sans-serif] h-[23px] leading-[normal] not-italic relative shrink-0 text-[9px] text-black text-center w-[18px]">BLD 20</p>
+                      <p className="h-[23px] leading-[normal] not-italic relative shrink-0 text-[9px] text-black text-center w-[18px]">BLD 20</p>
                       <Success className="relative shrink-0 size-[14px]" />
                     </div>
                   </div>

@@ -1,7 +1,8 @@
 import { useState, useEffect, useRef } from "react";
 import { useTimeRange } from "../contexts/TimeRangeContext";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, HelpCircle } from "lucide-react";
 import { Link } from "react-router";
+import { HelpDrawer } from "./HelpDrawer";
 
 type TimeRangeOption = 'last24h' | 'lastWeek' | 'last2Weeks' | 'lastMonth' | 'custom';
 
@@ -12,8 +13,9 @@ type ContentHeaderProps = {
 
 export function ContentHeader({ isRegionView = false, regionCode }: ContentHeaderProps) {
   const { startDate, endDate, setTimeRange } = useTimeRange();
-  
+
   const [selectedOption, setSelectedOption] = useState<TimeRangeOption>('lastWeek');
+  const [helpOpen, setHelpOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [startInput, setStartInput] = useState(formatDateForDisplay(startDate));
   const [endInput, setEndInput] = useState(formatDateForDisplay(endDate));
@@ -197,14 +199,19 @@ export function ContentHeader({ isRegionView = false, regionCode }: ContentHeade
         </div>
         
         {/* Spacer */}
-        <div className="flex-1"></div>
-        
-        {/* Help icon */}
-        <button className="flex items-center gap-2 text-sm dark:text-white">
-          
-          
+        <div className="flex-1" />
+
+        {/* Help button */}
+        <button
+          onClick={() => setHelpOpen(true)}
+          className="flex items-center gap-1.5 px-3 py-2 border border-gray-300 dark:border-[#404040] rounded text-sm bg-white dark:bg-[#1a1a1a] dark:text-white hover:bg-gray-50 dark:hover:bg-[#252525] transition-colors"
+        >
+          <HelpCircle className="w-4 h-4 text-[#227e9e]" />
+          <span>Help</span>
         </button>
       </div>
+
+      <HelpDrawer open={helpOpen} onClose={() => setHelpOpen(false)} />
     </div>
   );
 }

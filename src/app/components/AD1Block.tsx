@@ -62,7 +62,7 @@ export default function AD1Block({ onClick, isClickable = false, onBLDClick, isH
         <div className="content-stretch flex flex-col items-start justify-center relative shrink-0">
           <div className="content-stretch flex gap-[5px] items-center relative shrink-0">
             <AlertsWarningS />
-            <p className="font-['Helvetica_Neue:Regular',sans-serif] leading-[normal] not-italic relative self-center shrink-0 text-black dark:text-white w-[65px] text-[14px] text-center px-[0px] pt-[4px] pb-[0px]">AD-1</p>
+            <p className="leading-[normal] not-italic relative self-center shrink-0 text-black dark:text-white w-[65px] text-[14px] text-center px-[0px] pt-[4px] pb-[0px]">AD-1</p>
           </div>
         </div>
       </div>
@@ -75,7 +75,7 @@ export default function AD1Block({ onClick, isClickable = false, onBLDClick, isH
           >
             <div aria-hidden="true" className="absolute border border-[#d63b25] dark:border-[#e85540] border-solid inset-[-1px] pointer-events-none rounded-[6px]" />
             <div className="absolute content-stretch flex flex-col items-center left-[9px] top-[8px]">
-              <p className="font-['Helvetica_Neue:Regular',sans-serif] h-[23px] leading-[normal] not-italic relative shrink-0 text-[9px] text-black dark:text-white text-center w-[18px]">BLD 01</p>
+              <p className="h-[23px] leading-[normal] not-italic relative shrink-0 text-[9px] text-black dark:text-white text-center w-[18px]">BLD 01</p>
               <div className="relative shrink-0 size-[14px]" data-name="Alerts / error-s-24">
                 <div className="absolute inset-[14.29%]" data-name="Vector">
                   <svg className="absolute block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 11.667 11.667">
@@ -104,7 +104,7 @@ export default function AD1Block({ onClick, isClickable = false, onBLDClick, isH
                   onClick={(e) => handleBLDClick('bld02', e)}
                 >
                   <div className="absolute content-stretch flex flex-col items-center left-[6.18px] top-[5.61px]">
-                    <p className="font-['Helvetica_Neue:Regular',sans-serif] h-[23px] leading-[normal] not-italic relative shrink-0 text-[9px] text-black dark:text-white text-center w-[18px]">BLD 02</p>
+                    <p className="h-[23px] leading-[normal] not-italic relative shrink-0 text-[9px] text-black dark:text-white text-center w-[18px]">BLD 02</p>
                     <Success className="relative shrink-0 size-[14px]" />
                   </div>
                 </div>
@@ -116,7 +116,7 @@ export default function AD1Block({ onClick, isClickable = false, onBLDClick, isH
                   onClick={(e) => handleBLDClick('bld03', e)}
                 >
                   <div className="absolute content-stretch flex flex-col items-center left-[6.18px] top-[5.61px]">
-                    <p className="font-['Helvetica_Neue:Regular',sans-serif] h-[23px] leading-[normal] not-italic relative shrink-0 text-[9px] text-black dark:text-white text-center w-[18px]">BLD 03</p>
+                    <p className="h-[23px] leading-[normal] not-italic relative shrink-0 text-[9px] text-black dark:text-white text-center w-[18px]">BLD 03</p>
                     <Success className="relative shrink-0 size-[14px]" />
                   </div>
                 </div>
@@ -129,7 +129,7 @@ export default function AD1Block({ onClick, isClickable = false, onBLDClick, isH
                     onClick={(e) => handleBLDClick('bld04', e)}
                   >
                     <div className="absolute content-stretch flex flex-col items-center left-[6.18px] top-[5.61px]">
-                      <p className="font-['Helvetica_Neue:Regular',sans-serif] h-[23px] leading-[normal] not-italic relative shrink-0 text-[9px] text-black dark:text-white text-center w-[18px]">BLD 04</p>
+                      <p className="h-[23px] leading-[normal] not-italic relative shrink-0 text-[9px] text-black dark:text-white text-center w-[18px]">BLD 04</p>
                       <AlertsWarningS />
                     </div>
                   </div>
@@ -143,7 +143,7 @@ export default function AD1Block({ onClick, isClickable = false, onBLDClick, isH
                     onClick={(e) => handleBLDClick('bld05', e)}
                   >
                     <div className="absolute content-stretch flex flex-col items-center left-[6.18px] top-[5.61px]">
-                      <p className="font-['Helvetica_Neue:Regular',sans-serif] h-[23px] leading-[normal] not-italic relative shrink-0 text-[9px] text-black dark:text-white text-center w-[18px]">BLD 05</p>
+                      <p className="h-[23px] leading-[normal] not-italic relative shrink-0 text-[9px] text-black dark:text-white text-center w-[18px]">BLD 05</p>
                       <AlertsWarningS />
                     </div>
                   </div>
@@ -156,7 +156,7 @@ export default function AD1Block({ onClick, isClickable = false, onBLDClick, isH
                   onClick={(e) => handleBLDClick('bld06', e)}
                 >
                   <div className="absolute content-stretch flex flex-col items-center left-[6.18px] top-[5.61px]">
-                    <p className="font-['Helvetica_Neue:Regular',sans-serif] h-[23px] leading-[normal] not-italic relative shrink-0 text-[9px] text-black dark:text-white text-center w-[18px]">BLD 06</p>
+                    <p className="h-[23px] leading-[normal] not-italic relative shrink-0 text-[9px] text-black dark:text-white text-center w-[18px]">BLD 06</p>
                     <Success className="relative shrink-0 size-[14px]" />
                   </div>
                 </div>
@@ -168,7 +168,7 @@ export default function AD1Block({ onClick, isClickable = false, onBLDClick, isH
                   onClick={(e) => handleBLDClick('bld07', e)}
                 >
                   <div className="absolute content-stretch flex flex-col items-center left-[6.18px] top-[5.61px]">
-                    <p className="font-['Helvetica_Neue:Regular',sans-serif] h-[23px] leading-[normal] not-italic relative shrink-0 text-[9px] text-black dark:text-white text-center w-[18px]">BLD 07</p>
+                    <p className="h-[23px] leading-[normal] not-italic relative shrink-0 text-[9px] text-black dark:text-white text-center w-[18px]">BLD 07</p>
                     <Success className="relative shrink-0 size-[14px]" />
                   </div>
                 </div>

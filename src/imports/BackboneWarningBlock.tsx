@@ -15,7 +15,7 @@ export default function Group() {
               </div>
             </div>
             <div className="content-stretch flex flex-col gap-[5px] items-start justify-center relative shrink-0">
-              <div className="font-['Helvetica_Neue:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[0px] text-black w-[67px]">
+              <div className="leading-[normal] not-italic relative shrink-0 text-[0px] text-black w-[67px]">
                 <p className="mb-0 text-[11px]">Backbone</p>
                 <p className="text-[#665f5b] text-[9px]">Some info. here</p>
               </div>

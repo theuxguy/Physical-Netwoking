@@ -8,7 +8,7 @@ type Text1Props = {
 function Text1({ text, additionalClassNames = "" }: Text1Props) {
   return (
     <div className={clsx("absolute content-stretch flex flex-col gap-[10px] items-center top-[6.61px]", additionalClassNames)}>
-      <p className="font-['Helvetica_Neue:Regular',sans-serif] h-[14.103px] leading-[normal] not-italic relative shrink-0 text-[9px] text-black text-center w-[17.727px]">{text}</p>
+      <p className="h-[14.103px] leading-[normal] not-italic relative shrink-0 text-[9px] text-black text-center w-[17.727px]">{text}</p>
       <AlertsWarningS />
     </div>
   );
@@ -21,7 +21,7 @@ type TextProps = {
 function Text({ text, additionalClassNames = "" }: TextProps) {
   return (
     <div className={clsx("absolute content-stretch flex flex-col items-center", additionalClassNames)}>
-      <p className="font-['Helvetica_Neue:Regular',sans-serif] h-[23px] leading-[normal] not-italic relative shrink-0 text-[9px] text-black text-center w-[18px]">{text}</p>
+      <p className="h-[23px] leading-[normal] not-italic relative shrink-0 text-[9px] text-black text-center w-[18px]">{text}</p>
       <Success className="relative shrink-0 size-[14px]" />
     </div>
   );
@@ -60,7 +60,7 @@ export default function Frame() {
         <div className="content-stretch flex flex-col items-start justify-center relative shrink-0">
           <div className="content-stretch flex gap-[5px] items-center relative shrink-0">
             <AlertsWarningS />
-            <p className="font-['Helvetica_Neue:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[11px] text-black w-[65px]">AD-1</p>
+            <p className="leading-[normal] not-italic relative shrink-0 text-[11px] text-black w-[65px]">AD-1</p>
           </div>
         </div>
       </div>
@@ -108,7 +108,7 @@ export default function Frame() {
               <Text text="BLD 02" additionalClassNames="left-[6.18px] top-[5.61px]" />
               <Text text="BLD 03" additionalClassNames="gap-px left-[43.18px] top-[5.61px]" />
               <div className="absolute content-stretch flex flex-col items-start left-[154.18px] top-[6.61px]">
-                <p className="font-['Helvetica_Neue:Regular',sans-serif] h-[23px] leading-[normal] not-italic relative shrink-0 text-[9px] text-black text-center w-[18px]">BLD 06</p>
+                <p className="h-[23px] leading-[normal] not-italic relative shrink-0 text-[9px] text-black text-center w-[18px]">BLD 06</p>
                 <Success className="relative shrink-0 size-[14px]" />
               </div>
               <Text text="BLD 07" additionalClassNames="left-[191.18px] top-[7.61px]" />
@@ -186,7 +186,7 @@ export default function Frame() {
         <div className="col-1 grid-cols-[max-content] grid-rows-[max-content] inline-grid ml-[calc(50%-7.32px)] mt-[calc(50%-67.93px)] place-items-start relative row-1">
           <div className="col-1 content-stretch flex flex-col items-center ml-0 mt-0 relative row-1">
             <div aria-hidden="true" className="absolute border-0 border-[#b6b2ad] border-solid inset-0 pointer-events-none" />
-            <p className="font-['Helvetica_Neue:Regular',sans-serif] h-[24px] leading-[normal] not-italic relative shrink-0 text-[#222] text-[9px] text-center w-[18.156px]">BLD 01</p>
+            <p className="h-[24px] leading-[normal] not-italic relative shrink-0 text-[#222] text-[9px] text-center w-[18.156px]">BLD 01</p>
             <div className="relative shrink-0 size-[14px]" data-name="Alerts / error-s-24">
               <div className="absolute flex inset-[8.33%] items-center justify-center">
                 <div className="-scale-y-100 flex-none rotate-180 size-[20px]">
