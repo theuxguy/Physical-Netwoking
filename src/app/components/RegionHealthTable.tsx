@@ -15,20 +15,35 @@ type StatusBadgeProps = {
 
 function StatusBadge({ status, onClick }: StatusBadgeProps) {
   const styles = {
-    healthy:  { bg: '#5f7d4f', label: 'Healthy'  },
-    critical: { bg: '#d63b25', label: 'Critical' },
-    warning:  { bg: '#ac630c', label: 'Warning'  },
+    healthy: {
+      bg: 'bg-[rgba(80,130,35,0.2)] dark:bg-[rgba(80,130,35,0.15)]',
+      border: 'border-[#508223] dark:border-[#6ba32e]',
+      text: 'text-[#3a5c1a] dark:text-[#E4E4E4]',
+      label: 'Healthy'
+    },
+    critical: {
+      bg: 'bg-[rgba(214,59,37,0.2)] dark:bg-[rgba(214,59,37,0.15)]',
+      border: 'border-[#d63b25] dark:border-[#e85540]',
+      text: 'text-[#a02a18] dark:text-[#E4E4E4]',
+      label: 'Critical'
+    },
+    warning: {
+      bg: 'bg-[rgba(222,128,17,0.2)] dark:bg-[rgba(222,128,17,0.15)]',
+      border: 'border-[rgba(222,128,17,0.6)] dark:border-[rgba(255,152,30,0.7)]',
+      text: 'text-[#7a4a00] dark:text-[#E4E4E4]',
+      label: 'Warning'
+    }
   };
 
-  const { bg, label } = styles[status];
+  const style = styles[status];
 
   return (
     <div
-      className={`flex items-center justify-center px-[6px] py-[3px] rounded-[3px] shrink-0 ${onClick ? 'cursor-pointer hover:opacity-80' : ''}`}
-      style={{ backgroundColor: bg }}
+      className={`${style.bg} content-stretch flex items-center justify-center p-[4px] relative rounded-[3px] shrink-0 ${onClick ? 'cursor-pointer hover:opacity-80' : ''}`}
       onClick={onClick}
     >
-      <p className="font-normal leading-[normal] not-italic relative shrink-0 text-white text-[11px] whitespace-nowrap">{label}</p>
+      <div aria-hidden="true" className={`absolute border ${style.border} border-solid inset-0 pointer-events-none rounded-[3px]`} />
+      <p className={`font-normal leading-[normal] not-italic relative shrink-0 ${style.text} text-[11px] whitespace-nowrap`}>{style.label}</p>
     </div>
   );
 }

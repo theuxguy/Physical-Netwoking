@@ -40,46 +40,25 @@ type StatusBadgeProps = {
 };
 
 function StatusBadge({ status, onMouseEnter, onMouseLeave }: StatusBadgeProps) {
-  if (status === "Healthy") {
-    return (
-      <div 
-        className="content-stretch flex items-center justify-center p-[10px] relative w-full"
-        onMouseEnter={onMouseEnter}
-        onMouseLeave={onMouseLeave}
-      >
-        <div className="bg-[rgba(80,130,35,0.1)] content-stretch flex items-center justify-center p-[4px] relative rounded-[3px] shrink-0">
-          <div aria-hidden="true" className="absolute border border-[#508223] border-solid inset-0 pointer-events-none rounded-[3px]" />
-          <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[#E4E4E4] text-[11px] whitespace-nowrap">{status}</p>
-        </div>
-      </div>
-    );
-  }
-  
-  if (status === "Warning") {
-    return (
-      <div 
-        className="content-stretch flex items-center justify-center p-[10px] relative w-full cursor-pointer"
-        onMouseEnter={onMouseEnter}
-        onMouseLeave={onMouseLeave}
-      >
-        <div className="bg-[rgba(222,128,17,0.15)] content-stretch flex items-center justify-center p-[4px] relative rounded-[3px] shrink-0">
-          <div aria-hidden="true" className="absolute border border-[#ac630c] border-solid inset-0 pointer-events-none rounded-[3px]" />
-          <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[#E4E4E4] text-[11px] whitespace-nowrap">{status}</p>
-        </div>
-      </div>
-    );
-  }
-  
-  // Critical
+  const styles: Record<string, { bg: string; label: string }> = {
+    Healthy:  { bg: '#5f7d4f', label: 'Healthy'  },
+    Warning:  { bg: '#ac630c', label: 'Warning'  },
+    Critical: { bg: '#d63b25', label: 'Critical' },
+  };
+
+  const { bg, label } = styles[status] ?? { bg: '#d63b25', label: status };
+
   return (
-    <div 
-      className="content-stretch flex items-center justify-center p-[10px] relative w-full cursor-pointer"
+    <div
+      className={`content-stretch flex items-center justify-center p-[10px] relative w-full ${status !== 'Healthy' ? 'cursor-pointer' : ''}`}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
-      <div className="bg-[rgba(214,59,37,0.2)] content-stretch flex items-center justify-center p-[4px] relative rounded-[3px] shrink-0">
-        <div aria-hidden="true" className="absolute border border-[#d63b25] border-solid inset-0 pointer-events-none rounded-[3px]" />
-        <p className="font-normal leading-[normal] not-italic relative shrink-0 text-[#E4E4E4] text-[11px] whitespace-nowrap">{status}</p>
+      <div
+        className="content-stretch flex items-center justify-center px-[6px] py-[3px] relative rounded-[3px] shrink-0"
+        style={{ backgroundColor: bg }}
+      >
+        <p className="font-normal leading-[normal] not-italic relative shrink-0 text-white text-[11px] whitespace-nowrap">{label}</p>
       </div>
     </div>
   );
