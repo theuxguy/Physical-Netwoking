@@ -484,6 +484,7 @@ export default function Group({ overrideEndDate, readOnly }: { overrideEndDate?:
               {airportHealthData.map((airport) => {
                 const isSelected = expandedRegions.some(r => r.code === airport.code);
                 const statusColor = airport.status === "danger" ? "#d63b25" : airport.status === "warning" ? "#ac630c" : "#5f7d4f";
+                const selectedTextColor = airport.status === "danger" ? "#a02a18" : airport.status === "warning" ? "#7a4500" : "#3a5c1a";
                 return (
                 <Marker key={airport.code} coordinates={airport.coordinates}>
                   <foreignObject x="-20" y="-8" width="40" height="16" style={{ overflow: 'visible' }}>
@@ -506,15 +507,15 @@ export default function Group({ overrideEndDate, readOnly }: { overrideEndDate?:
                             <div className="relative shrink-0 size-[10px]">
                               <svg className="absolute block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 10 10">
                                 {airport.status === "danger" ? (
-                                  <path clipRule="evenodd" d={dangerSvgPaths.p1a4c9d80} fill={isSelected ? statusColor : "white"} fillRule="evenodd" />
+                                  <path clipRule="evenodd" d={dangerSvgPaths.p1a4c9d80} fill={isSelected ? selectedTextColor : "white"} fillRule="evenodd" />
                                 ) : airport.status === "warning" ? (
-                                  <path d={warningSvgPaths.pcef2880} fill={isSelected ? statusColor : "white"} />
+                                  <path d={warningSvgPaths.pcef2880} fill={isSelected ? selectedTextColor : "white"} />
                                 ) : (
-                                  <path d={svgPaths.p24a580} fill={isSelected ? statusColor : "white"} />
+                                  <path d={svgPaths.p24a580} fill={isSelected ? selectedTextColor : "white"} />
                                 )}
                               </svg>
                             </div>
-                            <p className="font-normal leading-[16px] not-italic relative shrink-0 text-[10px] text-center whitespace-nowrap" style={{ color: isSelected ? statusColor : 'white' }}>{airport.code}</p>
+                            <p className="font-normal leading-[16px] not-italic relative shrink-0 text-[10px] text-center whitespace-nowrap" style={{ color: isSelected ? selectedTextColor : 'white' }}>{airport.code}</p>
                           </div>
                         </div>
                       </div>
