@@ -40,13 +40,28 @@ type StatusBadgeProps = {
 };
 
 function StatusBadge({ status, onMouseEnter, onMouseLeave }: StatusBadgeProps) {
-  const styles: Record<string, { bg: string; label: string }> = {
-    Healthy:  { bg: '#5f7d4f', label: 'Healthy'  },
-    Warning:  { bg: '#ac630c', label: 'Warning'  },
-    Critical: { bg: '#d63b25', label: 'Critical' },
+  const styles: Record<string, { bg: string; border: string; text: string; label: string }> = {
+    Healthy:  {
+      bg:     'bg-[rgba(80,130,35,0.2)] dark:bg-[rgba(80,130,35,0.15)]',
+      border: 'border-[#508223] dark:border-[#6ba32e]',
+      text:   'text-[#3a5c1a] dark:text-[#E4E4E4]',
+      label:  'Healthy',
+    },
+    Warning:  {
+      bg:     'bg-[rgba(222,128,17,0.2)] dark:bg-[rgba(222,128,17,0.15)]',
+      border: 'border-[rgba(222,128,17,0.6)] dark:border-[rgba(255,152,30,0.7)]',
+      text:   'text-[#7a4a00] dark:text-[#E4E4E4]',
+      label:  'Warning',
+    },
+    Critical: {
+      bg:     'bg-[rgba(214,59,37,0.2)] dark:bg-[rgba(214,59,37,0.15)]',
+      border: 'border-[#d63b25] dark:border-[#e85540]',
+      text:   'text-[#a02a18] dark:text-[#E4E4E4]',
+      label:  'Critical',
+    },
   };
 
-  const { bg, label } = styles[status] ?? { bg: '#d63b25', label: status };
+  const style = styles[status] ?? styles.Critical;
 
   return (
     <div
@@ -54,11 +69,9 @@ function StatusBadge({ status, onMouseEnter, onMouseLeave }: StatusBadgeProps) {
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
-      <div
-        className="content-stretch flex items-center justify-center px-[6px] py-[3px] relative rounded-[3px] shrink-0"
-        style={{ backgroundColor: bg }}
-      >
-        <p className="font-normal leading-[normal] not-italic relative shrink-0 text-white text-[11px] whitespace-nowrap">{label}</p>
+      <div className={`${style.bg} content-stretch flex items-center justify-center p-[4px] relative rounded-[3px] shrink-0`}>
+        <div aria-hidden="true" className={`absolute border ${style.border} border-solid inset-0 pointer-events-none rounded-[3px]`} />
+        <p className={`font-normal leading-[normal] not-italic relative shrink-0 ${style.text} text-[11px] whitespace-nowrap`}>{style.label}</p>
       </div>
     </div>
   );
