@@ -11,7 +11,7 @@ export function DarkModeProvider({ children }: { children: ReactNode }) {
   const [isDarkMode, setIsDarkMode] = useState(() => {
     // Check localStorage for saved preference
     const saved = localStorage.getItem('darkMode');
-    return saved ? JSON.parse(saved) : false;
+    return saved ? JSON.parse(saved) : true;
   });
 
   useEffect(() => {
