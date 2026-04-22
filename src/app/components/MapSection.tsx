@@ -2,7 +2,7 @@ import WorldMapDashboard from "../../imports/WorldMapDashboard";
 import { useTimeRange } from "../contexts/TimeRangeContext";
 import { RefreshCw } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 export function MapSection() {
   const { startDate, endDate, isLoading, hasMovedWindow, setHasMovedWindow, setTimeRange, showComparison, setShowComparison, currentWindowDate, setCurrentWindowDate, comparisonWindowDate, initialEndDate } = useTimeRange();
@@ -22,7 +22,11 @@ export function MapSection() {
     return formatMapDate(currentWindowDate);
   };
 
+  const liveMapPositionRef = useRef<{ coordinates: [number, number]; zoom: number }>({ coordinates: [0, 20], zoom: 3 });
+  const [comparisonInitialPosition, setComparisonInitialPosition] = useState<{ coordinates: [number, number]; zoom: number } | undefined>(undefined);
+
   const handleCompareWithCurrent = () => {
+    setComparisonInitialPosition({ ...liveMapPositionRef.current });
     setShowComparison(true);
   };
 
@@ -45,24 +49,24 @@ export function MapSection() {
               animate={{ x: 0, opacity: 1 }}
               exit={{ x: "-100%", opacity: 0 }}
               transition={{ duration: 0.4, ease: "easeOut" }}
-              className="relative bg-gray-100 dark:bg-[#1a1a1a] border-r border-gray-300 dark:border-[#404040] flex-1 pointer-events-none"
+              className="relative bg-gray-100 dark:bg-[#1a1a1a] border-r border-gray-300 dark:border-[#404040] flex-1"
             >
               {/* Timestamp display - Comparison */}
-              <div className="absolute top-4 right-4 z-10 bg-white dark:bg-[#1a1a1a] border border-gray-300 dark:border-[#404040] rounded px-3 py-2 text-xs dark:text-white pointer-events-auto">
+              <div className="absolute top-4 right-4 z-10 bg-white dark:bg-[#1a1a1a] border border-gray-300 dark:border-[#404040] rounded px-3 py-2 text-xs dark:text-white">
                 <div className="text-[#de8011] font-bold">Showing data for {formatMapDate(comparisonWindowDate)}</div>
               </div>
 
               {/* Close comparison button */}
               <button
                 onClick={() => setShowComparison(false)}
-                className="absolute top-4 left-4 z-10 bg-white dark:bg-[#1a1a1a] border border-gray-300 dark:border-[#404040] rounded px-3 py-2 text-sm dark:text-white hover:bg-gray-50 dark:hover:bg-[#2a2a2a] transition-colors pointer-events-auto"
+                className="absolute top-4 left-4 z-10 bg-white dark:bg-[#1a1a1a] border border-gray-300 dark:border-[#404040] rounded px-3 py-2 text-sm dark:text-white hover:bg-gray-50 dark:hover:bg-[#2a2a2a] transition-colors"
               >
                 ✕ Close comparison
               </button>
               
-              {/* Comparison map — read-only, no interaction */}
-              <div className="w-full h-full absolute inset-0 pointer-events-none">
-                <WorldMapDashboard overrideEndDate={comparisonWindowDate} readOnly />
+              {/* Comparison map — navigable, seeded with live map position */}
+              <div className="w-full h-full absolute inset-0">
+                <WorldMapDashboard overrideEndDate={comparisonWindowDate} initialPosition={comparisonInitialPosition} />
               </div>
             </motion.div>
           )}
@@ -83,9 +87,10 @@ export function MapSection() {
           {/* Search bar */}
           {!showComparison && (
             <div className="absolute top-4 left-4 z-10">
-              <input 
+              <input
                 type="text"
-                placeholder="Find resource on map"
+                placeholder="Search regions, data centers, or airports"
+                aria-label="Search regions, data centers, or airports"
                 className="px-3 py-2 border border-gray-300 dark:border-[#404040] rounded bg-white dark:bg-[#1a1a1a] dark:text-white dark:placeholder-gray-400 text-sm w-64"
               />
             </div>
@@ -111,19 +116,19 @@ export function MapSection() {
                 className="flex items-center gap-2 bg-white dark:bg-[#1a1a1a] border border-gray-300 dark:border-[#404040] rounded px-3 py-2 text-xs dark:text-white hover:bg-gray-50 dark:hover:bg-[#2a2a2a] transition-colors"
               >
                 <RefreshCw className="w-3 h-3" />
-                <span>Refresh</span>
+                <span>{hasMovedWindow ? 'Reset to live' : 'Refresh'}</span>
               </button>
             )}
             <div className="bg-white dark:bg-[#1a1a1a] border border-gray-300 dark:border-[#404040] rounded px-3 py-2 text-xs dark:text-white">
               <span className={showComparison ? "text-[#5ba8d0] font-bold" : "font-bold"}>
-                Showing live data for {formatDateRange()}
+                {hasMovedWindow ? `Historical · ${formatDateRange()}` : `Live · ${formatDateRange()}`}
               </span>
             </div>
           </div>
           
           {/* Map placeholder */}
           <div className="w-full h-full absolute inset-0">
-            <WorldMapDashboard />
+            <WorldMapDashboard onPositionChange={(pos) => { liveMapPositionRef.current = pos; }} />
           </div>
           
           {/* Map controls */}

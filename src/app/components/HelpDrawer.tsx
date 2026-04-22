@@ -172,11 +172,16 @@ export function HelpDrawer({ open, onClose }: HelpDrawerProps) {
         <div
           className="fixed inset-0 bg-black/30 z-[60]"
           onClick={onClose}
+          aria-hidden="true"
         />
       )}
 
-      {/* Drawer */}
+      {/* Drawer — always in DOM for smooth CSS transition; inert when closed */}
       <div
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="help-drawer-title"
+        {...(!open ? { inert: '' } : {})}
         className="fixed top-0 right-0 bottom-0 z-[70] bg-white dark:bg-[#1a1a1a] border-l border-[#e0e0e0] dark:border-[#333] flex flex-col overflow-hidden"
         style={{
           width: '480px',
@@ -187,14 +192,15 @@ export function HelpDrawer({ open, onClose }: HelpDrawerProps) {
         {/* Header */}
         <div className="flex items-center justify-between px-6 py-4 border-b border-[#e0e0e0] dark:border-[#333] shrink-0">
           <div>
-            <h2 className="text-[18px] font-semibold text-[#161513] dark:text-white">Dashboard Guide</h2>
-            <p className="text-[12px] text-[#665f5b] dark:text-[#999] mt-0.5">Physical Networking Dashboard — how to use</p>
+            <h2 id="help-drawer-title" className="text-[18px] font-semibold text-[#161513] dark:text-white">Dashboard Guide</h2>
+            <p className="text-[12px] text-[#665f5b] dark:text-[#999] mt-0.5">How to use this dashboard</p>
           </div>
           <button
             onClick={onClose}
+            aria-label="Close guide"
             className="p-2 rounded hover:bg-gray-100 dark:hover:bg-[#2a2a2a] text-[#665f5b] dark:text-[#999] transition-colors"
           >
-            <X className="w-5 h-5" />
+            <X className="w-5 h-5" aria-hidden="true" />
           </button>
         </div>
 

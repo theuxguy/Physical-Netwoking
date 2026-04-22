@@ -73,8 +73,17 @@ const getHealthPercentage = (status: string) => {
   return Math.floor(Math.random() * 30) + 30; // 30-59% for danger
 };
 
-export default function Group({ overrideEndDate, readOnly }: { overrideEndDate?: Date; readOnly?: boolean }) {
-  const [position, setPosition] = useState({ coordinates: [0, 20], zoom: 3 });
+interface WorldMapProps {
+  overrideEndDate?: Date;
+  readOnly?: boolean;
+  initialPosition?: { coordinates: [number, number]; zoom: number };
+  onPositionChange?: (position: { coordinates: [number, number]; zoom: number }) => void;
+}
+
+export default function Group({ overrideEndDate, readOnly, initialPosition, onPositionChange }: WorldMapProps) {
+  const [position, setPosition] = useState<{ coordinates: [number, number]; zoom: number }>(
+    initialPosition ?? { coordinates: [0, 20], zoom: 3 }
+  );
   const [hoveredAirport, setHoveredAirport] = useState<string | null>(null);
   const [clickedAirport, setClickedAirport] = useState<string | null>(null);
   const [isPanning, setIsPanning] = useState(false);
@@ -178,8 +187,9 @@ export default function Group({ overrideEndDate, readOnly }: { overrideEndDate?:
     return connections;
   }, [endDate, overrideEndDate]);
 
-  function handleMoveEnd(position: any) {
-    setPosition(position);
+  function handleMoveEnd(pos: any) {
+    setPosition(pos);
+    onPositionChange?.(pos);
   }
 
   const handleAddRegion = (code: string, name: string) => {
@@ -290,6 +300,7 @@ export default function Group({ overrideEndDate, readOnly }: { overrideEndDate?:
   const handleMoveEndWithPanning = (newPosition: any) => {
     setPosition(newPosition);
     setIsPanning(false);
+    onPositionChange?.(newPosition);
   };
 
   return (

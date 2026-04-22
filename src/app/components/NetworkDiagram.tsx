@@ -568,10 +568,14 @@ export function NetworkDiagram({ onADClick, expandedAD, expandedBlocks, readOnly
                         userSelect: 'none',
                         zIndex: 1,
                       }}
+                      role={readOnly ? undefined : "button"}
+                      tabIndex={readOnly ? undefined : 0}
+                      aria-label={readOnly ? undefined : "AD-1 — click to view health metrics"}
                       onMouseDown={readOnly ? undefined : (e) => handleMouseDown('ad1', e)}
                       onMouseEnter={readOnly ? undefined : () => setHoveredBlock('ad1')}
                       onMouseLeave={readOnly ? undefined : () => setHoveredBlock(null)}
                       onClick={readOnly ? undefined : () => handleADClick('ad1')}
+                      onKeyDown={readOnly ? undefined : (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handleADClick('ad1'); } }}
                     >
                       <AD1Block onClick={readOnly ? undefined : () => handleADClick('ad1')} isClickable={!readOnly} onBLDClick={readOnly ? () => {} : onADClick} isHovered={!readOnly && (hoveredBlock === 'ad1' || expandedBlocks.includes('ad1'))} expandedBlocks={expandedBlocks} />
                     </div>
@@ -588,10 +592,14 @@ export function NetworkDiagram({ onADClick, expandedAD, expandedBlocks, readOnly
                         userSelect: 'none',
                         zIndex: 1,
                       }}
+                      role={readOnly ? undefined : "button"}
+                      tabIndex={readOnly ? undefined : 0}
+                      aria-label={readOnly ? undefined : "AD-2 — click to view health metrics"}
                       onMouseDown={readOnly ? undefined : (e) => handleMouseDown('ad2', e)}
                       onMouseEnter={readOnly ? undefined : () => setHoveredBlock('ad2')}
                       onMouseLeave={readOnly ? undefined : () => setHoveredBlock(null)}
                       onClick={readOnly ? undefined : () => handleADClick('ad2')}
+                      onKeyDown={readOnly ? undefined : (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handleADClick('ad2'); } }}
                     >
                       <AD2Block onClick={readOnly ? undefined : () => handleADClick('ad2')} isClickable={!readOnly} onBLDClick={readOnly ? () => {} : onADClick} isHovered={!readOnly && (hoveredBlock === 'ad2' || expandedBlocks.includes('ad2'))} />
                     </div>
@@ -608,10 +616,14 @@ export function NetworkDiagram({ onADClick, expandedAD, expandedBlocks, readOnly
                         userSelect: 'none',
                         zIndex: 1,
                       }}
+                      role={readOnly ? undefined : "button"}
+                      tabIndex={readOnly ? undefined : 0}
+                      aria-label={readOnly ? undefined : "AD-3 — click to view health metrics"}
                       onMouseDown={readOnly ? undefined : (e) => handleMouseDown('ad3', e)}
                       onMouseEnter={readOnly ? undefined : () => setHoveredBlock('ad3')}
                       onMouseLeave={readOnly ? undefined : () => setHoveredBlock(null)}
                       onClick={readOnly ? undefined : () => handleADClick('ad3')}
+                      onKeyDown={readOnly ? undefined : (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handleADClick('ad3'); } }}
                     >
                       <AD3Block onClick={readOnly ? undefined : () => handleADClick('ad3')} isClickable={!readOnly} onBLDClick={readOnly ? () => {} : onADClick} isHovered={!readOnly && (hoveredBlock === 'ad3' || expandedBlocks.includes('ad3'))} />
                     </div>
@@ -622,48 +634,6 @@ export function NetworkDiagram({ onADClick, expandedAD, expandedBlocks, readOnly
           </TransformWrapper>
         </div>
         
-        <TransformWrapper
-          initialScale={1}
-          minScale={0.5}
-          maxScale={3}
-          centerOnInit={true}
-          wheel={{ step: 0.1 }}
-        >
-          {({ zoomIn, zoomOut, resetTransform }) => (
-            <>
-              {/* Zoom controls */}
-              <div className="absolute right-4 top-4 z-10 flex flex-col gap-2">
-
-
-
-              </div>
-
-              {/* Legend */}
-              <div className="absolute bottom-4 right-4 z-50 bg-white dark:bg-[#1a1a1a] border border-gray-300 dark:border-[#404040] rounded px-3 py-2 flex items-center gap-4">
-                <span className="flex items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400"><span className="w-3 h-3 rounded-sm bg-[#508223] inline-block shrink-0" />Healthy</span>
-                <span className="flex items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400"><span className="w-3 h-3 rounded-sm bg-[#de8011] inline-block shrink-0" />Warning</span>
-                <span className="flex items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400"><span className="w-3 h-3 rounded-sm bg-[#d63b25] inline-block shrink-0" />Critical</span>
-              </div>
-
-              <TransformComponent
-                wrapperStyle={{
-                  width: '100%',
-                  height: '100%',
-                }}
-                contentStyle={{
-                  width: '100%',
-                  height: '100%',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                }}
-              >
-                {/* Network diagram content */}
-                
-              </TransformComponent>
-            </>
-          )}
-        </TransformWrapper>
       </div>
     </div>
   );

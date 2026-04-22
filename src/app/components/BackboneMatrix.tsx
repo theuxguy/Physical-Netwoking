@@ -70,7 +70,9 @@ function MatrixCell({ fromCode, toCode, seed, fromIndex, toIndex }: MatrixCellPr
 
   if (!connectionData) {
     return (
-      <div className="h-[41px] relative shrink-0 w-full" />
+      <div className="h-[41px] relative shrink-0 w-full flex items-center justify-center text-[#aaa] text-[11px]" aria-label="No direct connection">
+        —
+      </div>
     );
   }
 
@@ -91,8 +93,8 @@ function MatrixCell({ fromCode, toCode, seed, fromIndex, toIndex }: MatrixCellPr
     >
       <div className="flex items-center justify-center p-3 size-full">
         <div className="leading-[0] not-italic w-full text-[#222] dark:text-[#E4E4E4] text-center">
-          <p className="font-medium leading-[normal] mb-0 text-[12px]">{connectionData.latency}.1 m/s</p>
-          <p className="text-[11px] leading-[normal]">{connectionData.packetLoss} %</p>
+          <p className="font-medium leading-[normal] mb-0 text-[12px]">{connectionData.latency} ms</p>
+          <p className="text-[11px] leading-[normal]">{connectionData.packetLoss}%</p>
         </div>
       </div>
     </div>
@@ -113,6 +115,7 @@ export function BackboneMatrix() {
               <tr>
                 {/* Sticky top-left corner: Region label */}
                 <th
+                  scope="col"
                   className="bg-[#eee] dark:bg-[#252525] text-left p-[10px] w-[145px] min-w-[145px]"
                   style={{ position: "sticky", top: 0, left: 0, zIndex: 30 }}
                 >
@@ -132,6 +135,7 @@ export function BackboneMatrix() {
                 {airportCodes.map((toCode) => (
                   <th
                     key={toCode}
+                    scope="col"
                     className="bg-[#eee] dark:bg-[#252525] font-normal text-[14px] text-black dark:text-white p-[10px] min-w-[110px] w-[110px] whitespace-nowrap"
                     style={{ position: "sticky", top: 0, zIndex: 20 }}
                   >
@@ -146,6 +150,7 @@ export function BackboneMatrix() {
                 <tr key={fromCode}>
                   {/* Sticky row label */}
                   <td
+                    scope="row"
                     className="bg-[#eee] dark:bg-[#252525] p-[10px] h-[41px] w-[145px] min-w-[145px]"
                     style={{ position: "sticky", left: 0, zIndex: 10 }}
                   >

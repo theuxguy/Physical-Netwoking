@@ -48,7 +48,7 @@ export function RegionView() {
 
   const handleCloseBlock = (blockName: string) => {
     setExpandedBlocks(expandedBlocks.filter(b => b !== blockName));
-    toast.error(`${getBlockLabel(blockName)} removed from table`);
+    toast(`${getBlockLabel(blockName)} removed from table`);
   };
 
   return (
