@@ -17,9 +17,9 @@ export function MapSection() {
     return `${month} ${day}, ${year} ${hours}:${minutes} UTC`;
   };
 
-  // Format date range for display
+  // Format date range for display — always use current time in live mode
   const formatDateRange = () => {
-    return formatMapDate(currentWindowDate);
+    return formatMapDate(hasMovedWindow ? currentWindowDate : new Date());
   };
 
   const liveMapPositionRef = useRef<{ coordinates: [number, number]; zoom: number }>({ coordinates: [0, 20], zoom: 3 });
@@ -37,7 +37,7 @@ export function MapSection() {
   };
   
   return (
-    <div className="px-6 py-4 flex flex-col h-[600px]">
+    <div className="px-6 py-4 flex flex-col h-full">
       {/* Map container */}
       <div className="relative bg-gray-100 dark:bg-[#1a1a1a] border border-gray-300 dark:border-[#404040] rounded-lg flex-1 flex gap-2 overflow-hidden">
         

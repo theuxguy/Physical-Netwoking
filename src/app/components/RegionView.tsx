@@ -7,7 +7,9 @@ import { IncidentChart } from "./IncidentChart";
 import { BottomControls } from "./BottomControls";
 import { NetworkDiagram } from "./NetworkDiagram";
 import { RegionHealthTable } from "./RegionHealthTable";
+import { DragHandle } from "./DragHandle";
 import { useTimeRange } from "../contexts/TimeRangeContext";
+import { useDragResize } from "../hooks/useDragResize";
 
 const getBlockLabel = (block: string) => {
   if (block.startsWith('bld')) {
@@ -30,8 +32,8 @@ const formatMapDate = (date: Date) => {
 
 export function RegionView() {
   const { regionCode } = useParams<{ regionCode: string }>();
-  // AD-1 is pre-selected as the most critical component (critical/red status)
   const [expandedBlocks, setExpandedBlocks] = useState<string[]>(['ad1']);
+  const { height: diagramHeight, handleDragStart } = useDragResize(360);
   const {
     showComparison, setShowComparison,
     comparisonWindowDate,
@@ -52,16 +54,16 @@ export function RegionView() {
   };
 
   return (
-    <div className="flex-1 flex flex-col bg-white dark:bg-[#0f0f0f] overflow-auto">
+    <div className="flex-1 flex flex-col bg-white dark:bg-[#0f0f0f] overflow-hidden">
       {/* Breadcrumb and header */}
       <ContentHeader isRegionView regionCode={regionCode} />
 
       {/* Chart section */}
       <IncidentChart />
 
-      {/* Network diagram section with comparison support */}
-      <div className="px-6 pb-6">
-        <div className="flex gap-2 items-stretch">
+      {/* Network diagram section — height controlled by drag handle */}
+      <div style={{ height: diagramHeight }} className="flex-shrink-0 min-h-0 px-6 pb-4">
+        <div className="flex gap-2 items-stretch h-full">
 
           {/* Left comparison panel — read-only topology at comparison timestamp */}
           <AnimatePresence>
@@ -97,7 +99,7 @@ export function RegionView() {
           </AnimatePresence>
 
           {/* Right (main) panel — interactive topology */}
-          <div className="flex-1">
+          <div className="flex-1 h-full">
             <NetworkDiagram
               onADClick={handleBlockClick}
               expandedAD={null}
@@ -108,12 +110,15 @@ export function RegionView() {
         </div>
       </div>
 
-      {/* Bottom controls */}
-      <BottomControls />
+      {/* Drag handle */}
+      <DragHandle onMouseDown={handleDragStart} />
 
-      {/* Table section */}
-      <div className="px-6 pb-6">
-        <RegionHealthTable expandedBlocks={expandedBlocks} onCloseBlock={handleCloseBlock} />
+      {/* Bottom section — fills remaining space, scrollable */}
+      <div className="flex-1 overflow-auto min-h-0">
+        <BottomControls />
+        <div className="px-6 pb-6">
+          <RegionHealthTable expandedBlocks={expandedBlocks} onCloseBlock={handleCloseBlock} />
+        </div>
       </div>
     </div>
   );

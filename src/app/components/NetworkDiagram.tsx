@@ -347,10 +347,10 @@ export function NetworkDiagram({ onADClick, expandedAD, expandedBlocks, readOnly
   };
 
   return (
-    <div className="flex flex-col gap-6">
+    <div className="h-full flex flex-col">
       {/* Network Diagram */}
-      <div 
-        className="relative w-full h-[500px] bg-white dark:bg-[#0f0f0f] border border-[#d8d8d8] dark:border-[#404040] rounded-lg overflow-hidden"
+      <div
+        className="relative w-full h-full bg-white dark:bg-[#0f0f0f] border border-[#d8d8d8] dark:border-[#404040] rounded-lg overflow-hidden"
       >
         {/* Compare with historical button — top left */}
         {!readOnly && onCompareClick && !showComparison && (
@@ -376,7 +376,7 @@ export function NetworkDiagram({ onADClick, expandedAD, expandedBlocks, readOnly
             </button>
             <div className="bg-white dark:bg-[#1a1a1a] border border-gray-300 dark:border-[#404040] rounded px-3 py-2 text-xs dark:text-white">
               <span className={showComparison ? "text-[#5ba8d0] font-bold" : "font-bold"}>
-                Showing live data for {formatDate(currentWindowDate)}
+                Showing live data for {formatDate(hasMovedWindow ? currentWindowDate : new Date())}
               </span>
             </div>
           </div>
