@@ -1,5 +1,6 @@
 import { useState, useEffect, useMemo, useRef } from "react";
 import { useTimeRange } from "../contexts/TimeRangeContext";
+import { useSimulate } from "../contexts/SimulateContext";
 import { motion } from "motion/react";
 
 const MARGIN_LEFT = 35;
@@ -89,6 +90,7 @@ function formatTooltipTimestamp(date: Date): string {
 
 export function IncidentChart() {
   const { startDate, endDate, setTimeRange, isLoading, setIsLoading, setHasMovedWindow, showComparison, setCurrentWindowDate, setComparisonWindowDate } = useTimeRange();
+  const { activeScenario } = useSimulate();
   const containerRef = useRef<HTMLDivElement>(null);
   const [containerWidth, setContainerWidth] = useState(1200);
   const [windowPosition, setWindowPosition] = useState(() => computeLastBarPosition(165, 1200));
@@ -132,6 +134,7 @@ export function IncidentChart() {
   // Update data every 5 seconds
   useEffect(() => {
     if (!isPollingActive) return;
+    if (activeScenario === "no-live-data") return;
 
     const interval = setInterval(() => {
       setData(prevData => {
@@ -146,7 +149,7 @@ export function IncidentChart() {
     }, 5000);
 
     return () => clearInterval(interval);
-  }, [isPollingActive]);
+  }, [isPollingActive, activeScenario]);
 
   // Handle window dragging
   const handleMouseDown = (e: React.MouseEvent) => {

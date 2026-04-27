@@ -2,6 +2,7 @@ import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import { useRef, useState, useEffect } from "react";
 import { RefreshCw } from "lucide-react";
 import { useTimeRange } from "../contexts/TimeRangeContext";
+import { useSimulate } from "../contexts/SimulateContext";
 import Pop2Block from "../../imports/Pop2Block";
 import Pop3Block from "./Pop3Block";
 import InternetBlock from "../../imports/InternetBlock";
@@ -55,6 +56,7 @@ const formatDate = (date: Date) => {
 
 export function NetworkDiagram({ onADClick, expandedAD, expandedBlocks, readOnly = false, onCompareClick }: NetworkDiagramProps) {
   const { currentWindowDate, initialEndDate, setCurrentWindowDate, setHasMovedWindow, setShowComparison, hasMovedWindow, showComparison } = useTimeRange();
+  const { activeScenario } = useSimulate();
   const containerRef = useRef<HTMLDivElement>(null);
   const internetRef = useRef<HTMLDivElement>(null);
   const backboneRef = useRef<HTMLDivElement>(null);
@@ -376,7 +378,9 @@ export function NetworkDiagram({ onADClick, expandedAD, expandedBlocks, readOnly
             </button>
             <div className="bg-white dark:bg-[#1a1a1a] border border-gray-300 dark:border-[#404040] rounded px-3 py-2 text-xs dark:text-white">
               <span className={showComparison ? "text-[#5ba8d0] font-bold" : "font-bold"}>
-                Showing live data for {formatDate(hasMovedWindow ? currentWindowDate : new Date())}
+                {activeScenario === "no-live-data" && !hasMovedWindow
+                  ? "Showing historical view"
+                  : `Showing live data for ${formatDate(hasMovedWindow ? currentWindowDate : new Date())}`}
               </span>
             </div>
           </div>

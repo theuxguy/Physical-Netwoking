@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { useTimeRange } from "../contexts/TimeRangeContext";
-import { HelpCircle } from "lucide-react";
+import { useSimulate } from "../contexts/SimulateContext";
+import { HelpCircle, WifiOff } from "lucide-react";
 import { Link } from "react-router";
 import { HelpDrawer } from "./HelpDrawer";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
@@ -12,8 +13,18 @@ type ContentHeaderProps = {
   regionCode?: string;
 };
 
+function formatTimestamp(date: Date) {
+  const month = date.toLocaleString("en-US", { month: "short" });
+  const day   = date.getDate();
+  const year  = date.getFullYear();
+  const hh    = String(date.getHours()).padStart(2, "0");
+  const mm    = String(date.getMinutes()).padStart(2, "0");
+  return `${month} ${day}, ${year} ${hh}:${mm} UTC`;
+}
+
 export function ContentHeader({ isRegionView = false, regionCode }: ContentHeaderProps) {
   const { startDate, endDate, setTimeRange } = useTimeRange();
+  const { activeScenario, activatedAt } = useSimulate();
 
   const [selectedOption, setSelectedOption] = useState<TimeRangeOption>('lastWeek');
   const [helpOpen, setHelpOpen] = useState(false);
@@ -127,6 +138,19 @@ export function ContentHeader({ isRegionView = false, regionCode }: ContentHeade
       <h1 className="text-2xl dark:text-white mb-2 pb-[8px]">
         {isRegionView ? `Region View — ${regionCode}` : 'Realm View'}
       </h1>
+
+      {/* No live data banner */}
+      {activeScenario === "no-live-data" && (
+        <div className="flex items-start gap-3 mb-3 px-4 py-5 rounded-lg bg-[#de8011]/8 dark:bg-[#de8011]/10 border border-[#de8011]/30 dark:border-[#de8011]/25">
+          <WifiOff className="w-4 h-4 text-[#de8011] shrink-0 mt-0.5" />
+          <p className="text-sm text-[#7a4a00] dark:text-[#de8011] leading-snug">
+            <span className="font-semibold">No live data available.</span>
+            {" "}Showing data last polled at{" "}
+            <span className="font-medium">{activatedAt ? formatTimestamp(activatedAt) : "—"}</span>.
+            {" "}The dashboard will automatically refresh and this banner will be dismissed once live data is available.
+          </p>
+        </div>
+      )}
 
       {/* Filters row */}
       <div className="flex items-center gap-4">

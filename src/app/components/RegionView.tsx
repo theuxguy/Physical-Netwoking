@@ -33,7 +33,7 @@ const formatMapDate = (date: Date) => {
 export function RegionView() {
   const { regionCode } = useParams<{ regionCode: string }>();
   const [expandedBlocks, setExpandedBlocks] = useState<string[]>(['ad1']);
-  const { height: diagramHeight, handleDragStart } = useDragResize(360);
+  const { height: tableHeight, handleDragStart } = useDragResize(280, 80, true);
   const {
     showComparison, setShowComparison,
     comparisonWindowDate,
@@ -61,9 +61,9 @@ export function RegionView() {
       {/* Chart section */}
       <IncidentChart />
 
-      {/* Network diagram section — height controlled by drag handle */}
-      <div style={{ height: diagramHeight }} className="flex-shrink-0 min-h-0 px-6 pb-4">
-        <div className="flex gap-2 items-stretch h-full">
+      {/* Network diagram — fills all remaining space between header and tables */}
+      <div className="flex-1 min-h-0 flex flex-col px-6 pb-4">
+        <div className="flex gap-2 items-stretch flex-1 min-h-0">
 
           {/* Left comparison panel — read-only topology at comparison timestamp */}
           <AnimatePresence>
@@ -99,7 +99,7 @@ export function RegionView() {
           </AnimatePresence>
 
           {/* Right (main) panel — interactive topology */}
-          <div className="flex-1 h-full">
+          <div className="flex-1">
             <NetworkDiagram
               onADClick={handleBlockClick}
               expandedAD={null}
@@ -113,8 +113,8 @@ export function RegionView() {
       {/* Drag handle */}
       <DragHandle onMouseDown={handleDragStart} />
 
-      {/* Bottom section — fills remaining space, scrollable */}
-      <div className="flex-1 overflow-auto min-h-0">
+      {/* Tables — fixed height pinned to bottom, scrollable internally */}
+      <div style={{ height: tableHeight }} className="flex-shrink-0 overflow-auto min-h-0">
         <BottomControls />
         <div className="px-6 pb-6">
           <RegionHealthTable expandedBlocks={expandedBlocks} onCloseBlock={handleCloseBlock} />

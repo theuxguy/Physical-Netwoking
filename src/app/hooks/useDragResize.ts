@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 
-export function useDragResize(defaultHeight: number, minHeight = 120) {
+export function useDragResize(defaultHeight: number, minHeight = 120, invert = false) {
   const [height, setHeight] = useState(defaultHeight);
   const isDragging = useRef(false);
   const startY = useRef(0);
@@ -17,7 +17,8 @@ export function useDragResize(defaultHeight: number, minHeight = 120) {
     const onMouseMove = (e: MouseEvent) => {
       if (!isDragging.current) return;
       const delta = e.clientY - startY.current;
-      setHeight(Math.max(minHeight, startHeight.current + delta));
+      // invert=true: dragging up (negative delta) grows the section
+      setHeight(Math.max(minHeight, startHeight.current + (invert ? -delta : delta)));
     };
     const onMouseUp = () => { isDragging.current = false; };
     document.addEventListener("mousemove", onMouseMove);
@@ -26,7 +27,7 @@ export function useDragResize(defaultHeight: number, minHeight = 120) {
       document.removeEventListener("mousemove", onMouseMove);
       document.removeEventListener("mouseup", onMouseUp);
     };
-  }, [minHeight]);
+  }, [minHeight, invert]);
 
   return { height, handleDragStart };
 }

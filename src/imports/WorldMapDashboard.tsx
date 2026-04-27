@@ -78,9 +78,10 @@ interface WorldMapProps {
   readOnly?: boolean;
   initialPosition?: { coordinates: [number, number]; zoom: number };
   onPositionChange?: (position: { coordinates: [number, number]; zoom: number }) => void;
+  visibleStatuses?: { critical: boolean; warning: boolean; healthy: boolean };
 }
 
-export default function Group({ overrideEndDate, readOnly, initialPosition, onPositionChange }: WorldMapProps) {
+export default function Group({ overrideEndDate, readOnly, initialPosition, onPositionChange, visibleStatuses }: WorldMapProps) {
   const [position, setPosition] = useState<{ coordinates: [number, number]; zoom: number }>(
     initialPosition ?? { coordinates: [0, 20], zoom: 3 }
   );
@@ -343,7 +344,13 @@ export default function Group({ overrideEndDate, readOnly, initialPosition, onPo
               </Geographies>
               
               {/* Backbone health connections */}
-              {viewMode === 'backbone' && backboneConnections.map((connection, index) => {
+              {viewMode === 'backbone' && backboneConnections.filter(connection => {
+                if (!visibleStatuses) return true;
+                if (connection.status === 'danger')   return visibleStatuses.critical;
+                if (connection.status === 'warning')  return visibleStatuses.warning;
+                if (connection.status === 'healthy')  return visibleStatuses.healthy;
+                return true;
+              }).map((connection, index) => {
                 const strokeColor = 
                   connection.status === 'healthy' ? '#508223' :
                   connection.status === 'warning' ? '#de8011' :

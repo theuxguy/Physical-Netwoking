@@ -5,20 +5,22 @@ import { TimeRangeProvider } from "./contexts/TimeRangeContext";
 import { ViewModeProvider } from "./contexts/ViewModeContext";
 import { HoveredConnectionProvider } from "./contexts/HoveredConnectionContext";
 import { DarkModeProvider } from "./contexts/DarkModeContext";
+import { SimulateProvider } from "./contexts/SimulateContext";
 
-// Main App component with context providers
 export default function App() {
   return (
     <DarkModeProvider>
-      <TimeRangeProvider>
-        <RegionProvider>
-          <ViewModeProvider>
-            <HoveredConnectionProvider>
-              <RouterProvider router={router} />
-            </HoveredConnectionProvider>
-          </ViewModeProvider>
-        </RegionProvider>
-      </TimeRangeProvider>
+      <SimulateProvider>
+        <TimeRangeProvider>
+          <RegionProvider>
+            <ViewModeProvider>
+              <HoveredConnectionProvider>
+                <RouterProvider router={router} />
+              </HoveredConnectionProvider>
+            </ViewModeProvider>
+          </RegionProvider>
+        </TimeRangeProvider>
+      </SimulateProvider>
     </DarkModeProvider>
   );
 }
